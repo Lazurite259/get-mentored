@@ -12,10 +12,16 @@
             <router-link class="nav-link pr-3" to="/login">Login</router-link>
           </li>
           <li class="nav-item">
-            <router-link class="nav-link" to="/register">Sign Up</router-link>
+            <router-link class="nav-link" to="/mentor-register">Sign Up As Mentor</router-link>
           </li>
           <li class="nav-item">
-            <router-link class="nav-link" to="/profile">Profile</router-link>
+            <router-link class="nav-link" to="/mentee-register">Sign Up As Mnetee</router-link>
+          </li>
+          <li class="nav-item">
+            <router-link class="nav-link" to="/mentor_profile">Mentor Profile</router-link>
+          </li>
+          <li class="nav-item">
+            <router-link class="nav-link" to="/mentee_profile">Mnetee Profile</router-link>
           </li>
         </ul>
       </div>
