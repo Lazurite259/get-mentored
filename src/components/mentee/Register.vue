@@ -23,10 +23,45 @@
                         required />
                 </div>
                 <div class="form-group">
-                    <label>Comfirm Password</Label>
+                    <label>Confirm Password</Label>
                     <input type="password" class="form-control" v-model="user.password_confirm"
-                        placeholder="Comfirm Password" required />
+                        placeholder="Confirm Password" required />
                 </div>
+              <div class="form-group">
+                <label>Birth Date</Label>
+                <input type="date" class="form-control" v-model="user.birth_date"
+                       placeholder="Birth Date" required />
+              </div>
+              <div class="form-group">
+                <label>Education Level</Label>
+                <input type="text" class="form-control" v-model="user.education_level"
+                       placeholder="Occupation Title" required />
+              </div>
+              <div class="form-group">
+                <label>Work Experience</Label>
+                <input type="text" class="form-control" v-model="user.work_experience"
+                       placeholder="Work Experience" required />
+              </div>
+              <div class="form-group">
+                <label>Year of Experience</Label>
+                <input type="text" class="form-control" v-model="user.year_of_experience"
+                       placeholder="Year of Experience" required />
+              </div>
+              <div class="form-group">
+                <label>Skills</Label>
+                <input type="text" class="form-control" v-model="user.skills"
+                       placeholder="Skills" required />
+              </div>
+              <div class="form-group">
+                <label>Interested Industry</Label>
+                <input type="text" class="form-control" v-model="user.interested_industry"
+                       placeholder="Interested Industry" required />
+              </div>
+              <div class="form-group">
+                <label>LinkedIn</Label>
+                <input type="text" class="form-control" v-model="user.linkedin"
+                       placeholder="LinkedIn" />
+              </div>
                 <div class="form-group">
                     <button class="btn btn-danger btn-block">Sign Up</button>
                 </div>
@@ -44,6 +79,12 @@ export default {
                 email: '',
                 password: '',
                 password_confirm: '',
+                birth_date: Date,
+                education_level:'',
+                work_experience:Boolean,
+                skills: [],
+                interested_industry: [],
+                linkedin: ''
             }
         }
     },
