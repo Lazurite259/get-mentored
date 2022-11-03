@@ -1,4 +1,4 @@
-# vue-mevn-stack-app
+# get-mentored
 
 ## Project setup
 ```
