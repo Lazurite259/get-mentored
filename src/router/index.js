@@ -8,9 +8,14 @@ const routes = [
         component: () => import('../components/Home')
     },
     {
-        path: '/login',
-        name: 'login',
-        component: () => import('../components/Login')
+        path: '/mentor-login',
+        name: 'mentor-login',
+        component: () => import('../components/mentor/Login')
+    },
+    {
+        path: '/mentee-login',
+        name: 'mentee-login',
+        component: () => import('../components/mentee/Login')
     },
     {
         path: '/mentor-register',

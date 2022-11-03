@@ -5,11 +5,11 @@
             <form @submit.prevent="handleSubmitForm">
                 <div class="form-group">
                     <label>Email</Label>
-                    <input type="text" class="form-control" v-model="user.email" placeholder="Email" required />
+                    <input type="text" class="form-control" v-model="mentee.email" placeholder="Email" required />
                 </div>
                 <div class="form-group">
                     <label>Password</Label>
-                    <input type="password" class="form-control" v-model="user.password" placeholder="Password"
+                    <input type="password" class="form-control" v-model="mentee.password" placeholder="Password"
                         required />
                 </div>
                 <div class="form-group">
@@ -23,7 +23,7 @@
 export default {
     data() {
         return {
-            user: {
+            mentee: {
                 email: '',
                 password: '',
             }
