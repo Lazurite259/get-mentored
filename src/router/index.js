@@ -13,9 +13,14 @@ const routes = [
         component: () => import('../components/Login')
     },
     {
-        path: '/register',
-        name: 'register',
-        component: () => import('../components/Register')
+        path: '/mentor-register',
+        name: 'mentor-register',
+        component: () => import('../components/mentor/Register')
+    },
+    {
+        path: '/mentee-register',
+        name: 'mentee-register',
+        component: () => import('../components/mentee/Register')
     },
     {
         path: '/career',

@@ -1,14 +1,19 @@
 <template>
-  <div class="home">
-    <h1 style="text-align: center;">Get Mentored</h1>
-
+  <div class="row justify-content-center">
+    <h1 class="text-center">Get Mentored</h1>
+    <div class="text-center">
+      <router-link to="/mentee-register" tag="button" class="btn btn-outline-primary">Become a Mentee</router-link>
+      <router-link to="/mentor-register" tag="button" class="btn btn-outline-primary">Become a Mentor</router-link>
+    </div>
   </div>
 </template>
 
 <script>
-export default {
-  name: 'Home',
+import router from '@/router';
 
+export default {
+  name: "Home",
+  components: { router }
 }
 </script>
 
@@ -30,5 +35,9 @@ li {
 
 a {
   color: #42b983;
+}
+
+.btn {
+  margin: 0 10px;
 }
 </style>
