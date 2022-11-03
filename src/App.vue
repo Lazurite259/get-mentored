@@ -15,7 +15,10 @@
             <router-link class="nav-link pr-3" to="/mentor-register">Sign Up</router-link>
           </li>
           <li class="nav-item">
-            <router-link class="nav-link" to="/profile">Profile</router-link>
+            <router-link class="nav-link" to="/mentor-profile">Profile</router-link>
+          </li>
+          <li class="nav-item">
+            <router-link class="nav-link" to="/view">Test</router-link>
           </li>
         </ul>
       </div>

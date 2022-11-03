@@ -28,10 +28,15 @@ const routes = [
         component: () => import('../components/Career')
     },
     {
-        path: '/profile',
-        name: 'profile',
+        path: '/mentor-profile',
+        name: 'mentor-profile',
         component: () => import('../components/mentor/Profile')
-    }
+    },
+    {
+        path: '/view',
+        name: 'view',
+        component: () => import('../components/TestList')
+    },
 ]
 const router = new VueRouter({
     mode: 'history',
