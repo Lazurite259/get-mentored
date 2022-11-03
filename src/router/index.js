@@ -28,9 +28,14 @@ const routes = [
         component: () => import('../components/Career')
     },
     {
-        path: '/mentor-profile',
-        name: 'mentor-profile',
+        path: '/mentor_profile',
+        name: 'mentor_profile',
         component: () => import('../components/mentor/Profile')
+    },
+    {
+        path: '/mentee_profile',
+        name: 'mentee_profile',
+        component: () => import('../components/mentee/Profile')
     },
     {
         path: '/view',
