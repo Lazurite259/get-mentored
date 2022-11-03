@@ -38,6 +38,6 @@ a {
 }
 
 .btn {
-  margin: 0 10px;
+  margin: 15px;
 }
 </style>
