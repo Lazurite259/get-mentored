@@ -3,8 +3,9 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 // Connect mongoDB
+const uri = "mongodb://admin:admin@us-west-2.aws.realm.mongodb.com:27020/?authMechanism=PLAIN&authSource=%24external&ssl=true&appName=application-0-mtumw:myAtlasCluster:local-userpass"
 mongoose
-    .connect('mongodb://127.0.0.1:27017/mydatabase')
+    .connect(uri)
     .then((x) => {
         console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
     })
