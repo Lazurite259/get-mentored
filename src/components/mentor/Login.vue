@@ -1,7 +1,7 @@
 <template>
     <div class="row justify-content-center">
         <div class="col-md-6">
-            <h3 class="text-center">Login</h3>
+            <h3 class="text-center">Mentor Login</h3>
             <form @submit.prevent="handleSubmitForm">
                 <div class="form-group">
                     <label>Email</Label>

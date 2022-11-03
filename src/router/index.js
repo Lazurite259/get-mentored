@@ -33,13 +33,13 @@ const routes = [
         component: () => import('../components/Career')
     },
     {
-        path: '/mentor_profile',
-        name: 'mentor_profile',
+        path: '/mentor-profile',
+        name: 'mentor-profile',
         component: () => import('../components/mentor/Profile')
     },
     {
-        path: '/mentee_profile',
-        name: 'mentee_profile',
+        path: '/mentee-profile',
+        name: 'mentee-profile',
         component: () => import('../components/mentee/Profile')
     },
     {
