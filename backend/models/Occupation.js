@@ -8,6 +8,6 @@ let occupationSchema = new Schema({
         type: String
     },
 }, {
-    collection: 'occupations'
+    collection: 'occupation'
 })
 module.exports = mongoose.model('Occupation', occupationSchema)

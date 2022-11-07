@@ -32,6 +32,6 @@ let menteeSchema = new Schema({
         type: String
     },
 }, {
-    collection: 'mentees'
+    collection: 'mentee'
 })
 module.exports = mongoose.model('Mentee', menteeSchema)
