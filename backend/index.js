@@ -1,15 +1,17 @@
 const express = require('express');
 const cors = require('cors');
+const dotenv = require("dotenv")
 const mongoose = require('mongoose');
 // const bodyParser = require('body-parser');
 const occupationAPI = require("./routes/occupation.route")
 const mentorAPI = require('./routes/mentor.route')
 const menteeAPI = require('./routes/mentee.route')
 
+dotenv.config()
 const app = express()
 app.use(express.json());
 // Connect mongoDB
-const uri = "mongodb+srv://admin:admin@mentored.kosl2ga.mongodb.net/getmentored?retryWrites=true&w=majority"
+const uri = process.env.MONGODB_URI
 mongoose.connect(uri, {
     useNewUrlParser: true,
     useUnifiedTopology: true
