@@ -1,31 +1,40 @@
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
-const bodyParser = require('body-parser');
-// Connect mongoDB
-const uri = "mongodb://admin:admin@us-west-2.aws.realm.mongodb.com:27020/?authMechanism=PLAIN&authSource=%24external&ssl=true&appName=application-0-mtumw:myAtlasCluster:local-userpass"
-mongoose
-    .connect(uri)
-    .then((x) => {
-        console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
-    })
-    .catch((err) => {
-        console.error('Error connecting to mongo', err.reason)
-    })
-const mentorAPI = require('../backend/routes/mentor.route')
+// const bodyParser = require('body-parser');
+const occupationAPI = require("./routes/occupation.route")
+const mentorAPI = require('./routes/mentor.route')
+const menteeAPI = require('./routes/mentee.route')
+
 const app = express()
-app.use(bodyParser.json())
-app.use(
-    bodyParser.urlencoded({
-        extended: false,
-    }),
-)
+app.use(express.json());
+// Connect mongoDB
+const uri = "mongodb+srv://admin:admin@mentored.kosl2ga.mongodb.net/getmentored?retryWrites=true&w=majority"
+mongoose.connect(uri, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+})
+const db = mongoose.connection;
+db.on("error", console.error.bind(console, "connection error: "));
+db.once("open", function () {
+    console.log("Connected successfully");
+});
+
+// app.use(bodyParser.json())
+// app.use(
+//     bodyParser.urlencoded({
+//         extended: false,
+//     }),
+// )
 app.use(cors())
 // API
-app.use('/api', mentorAPI)
+app.use('/mentor', mentorAPI)
+app.use('/mentee', menteeAPI)
+app.use('/occupation', occupationAPI)
+
 // Create port
-const port = process.env.PORT || 4000
-const server = app.listen(port, () => {
+const port = process.env.PORT || 3000
+app.listen(port, () => {
     console.log('Connected to port ' + port)
 })
 // Find 404
