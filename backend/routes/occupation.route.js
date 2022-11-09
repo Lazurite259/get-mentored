@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 // model
 let OccupationModel = require('../models/Occupation');
+// route
 app.get("/", async (req, res, next) => {
     const occupations = await OccupationModel.find({});
 
