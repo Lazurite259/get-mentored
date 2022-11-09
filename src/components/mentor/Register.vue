@@ -2,7 +2,7 @@
     <div class="row justify-content-center">
         <div class="col-md-6">
             <h3 class="text-center">Mentor Register</h3>
-            <form @submit.prevent="handleSubmitForm">
+            <form @submit.prevent="submit">
                 <div class="form-group">
                     <label>First Name</Label>
                     <input type="text" class="form-control" v-model="mentor.first_name" placeholder="First Name"
@@ -28,7 +28,7 @@
                     <input type="password" class="form-control" v-model="mentor.password_confirm"
                         placeholder="Confirm Password" required />
                 </div>
-                <div class="form-group">
+                <!-- <div class="form-group">
                     <label>Birth Date</Label>
                     <input type="date" class="form-control" v-model="mentor.birth_date" placeholder="Birth Date"
                         required />
@@ -56,16 +56,17 @@
                     <label>Office Hour</Label>
                     <input type="text" class="form-control" v-model="mentor.office_hour" placeholder="Office Hour"
                         required />
-                </div>
+                </div> -->
                 <div class="form-group">
-                    <button class="btn btn-danger btn-block">Sign Up</button>
+                    <button type="submit" class="btn btn-primary btn-block">Sign Up</button>
                 </div>
             </form>
         </div>
     </div>
 </template>
 <script>
-import axios from "axios";
+import EventBus from '@/eventbus';
+import swal from 'sweetalert'
 export default {
     data() {
         return {
@@ -74,37 +75,38 @@ export default {
                 last_name: '',
                 email: '',
                 password: '',
-                birth_date: '',
-                occupation_title: '',
-                company_name: '',
-                year_of_experience: '',
-                linkedin: '',
-                office_hour: '',
+                // birth_date: '',
+                // occupation_title: '',
+                // company_name: '',
+                // year_of_experience: '',
+                // linkedin: '',
+                // office_hour: '',
             }
         }
     },
     methods: {
-        handleSubmitForm() {
-            let apiURL = 'http://localhost:4000/api/create-mentor';
-
-            axios.post(apiURL, this.mentor).then(() => {
-                this.$router.push('/view')
-                this.mentor = {
-                    first_name: '',
-                    last_name: '',
-                    email: '',
-                    password: '',
-                    birth_date: Date,
-                    occupation_title: '',
-                    company_name: '',
-                    year_of_experience: '',
-                    linkedin: '',
-                    office_hour: [],
+        async submit() {
+            try {
+                let response = await this.$http.post("/mentor/mentor-register", this.mentor);
+                console.log(response);
+                let token = response.data.token;
+                if (token) {
+                    localStorage.setItem("jwt", token);
+                    EventBus.$emit('login', true);
+                    this.$router.push("/");
+                    swal("Success", "Registration Was successful", "success");
+                } else {
+                    swal("Error", "Something Went Wrong", "error");
                 }
-            }).catch(error => {
-                console.log(error)
-            });
-        }
+            } catch (err) {
+                let error = err.response;
+                if (error.status == 409) {
+                    swal("Error", error.data.message, "error");
+                } else {
+                    swal("Error", err.message, "error");
+                }
+            }
+        },
     }
 }
 </script>

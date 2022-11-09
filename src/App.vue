@@ -1,34 +1,6 @@
 <template>
   <div>
     <!-- Nav bar -->
-    <!-- <nav class="navbar navbar-dark bg-primary justify-content-between flex-nowrap flex-row">
-      <div class="container">
-        <router-link class="navbar-brand float-left" to="/">GetMentored</router-link>
-        <ul class="nav navbar-nav flex-row float-right">
-          <li class="nav-item">
-            <router-link class="nav-link pr-3" to="/career">Career Resources</router-link>
-          </li>
-          <li class="nav-item">
-            <router-link class="nav-link pr-3" to="/login">Login</router-link>
-          </li>
-          <li class="nav-item">
-            <router-link class="nav-link" to="/mentor-register">Sign Up As Mentor</router-link>
-          </li>
-          <li class="nav-item">
-            <router-link class="nav-link" to="/mentee-register">Sign Up As Mentee</router-link>
-          </li>
-          <li class="nav-item">
-            <router-link class="nav-link" to="/mentor_profile">Mentor Profile</router-link>
-          </li>
-          <li class="nav-item">
-            <router-link class="nav-link" to="/mentee_profile">Mentee Profile</router-link>
-          </li>
-          <li class="nav-item">
-            <router-link class="nav-link" to="/view">Test</router-link>
-          </li>
-        </ul>
-      </div>
-    </nav> -->
     <nav class="navbar navbar-expand-lg">
       <div class="container-fluid">
         <router-link class="navbar-brand float-left" to="/">GetMentored</router-link>
@@ -41,7 +13,20 @@
             <li class="nav-item">
               <router-link class="nav-link pr-3" to="/career">Career Resources</router-link>
             </li>
-            <li class="nav-item dropdown">
+            <li class="nav-link" v-if="isLoggedIn">
+              <a @click="logout">Logout</a>
+            </li>
+            <li class="nav-item dropdown" v-if="isLoggedIn">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownProfile" role="button"
+                data-bs-toggle="dropdown" aria-expanded="false">
+                Profile
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdownProfile">
+                <li><a class="dropdown-item" href="mentor-profile">As Mentor</a></li>
+                <li><a class="dropdown-item" href="mentee-profile">As Mentee</a></li>
+              </ul>
+            </li>
+            <li class="nav-item dropdown" v-if="!isLoggedIn">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownSignUp" role="button"
                 data-bs-toggle="dropdown" aria-expanded="false">
                 Sign Up
@@ -51,7 +36,7 @@
                 <li><a class="dropdown-item" href="mentee-register">As Mentee</a></li>
               </ul>
             </li>
-            <li class="nav-item dropdown">
+            <li class="nav-item dropdown" v-if="!isLoggedIn">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownLogin" role="button"
                 data-bs-toggle="dropdown" aria-expanded="false">
                 Login
@@ -61,6 +46,7 @@
                 <li><a class="dropdown-item" href="mentee-login">As Mentee</a></li>
               </ul>
             </li>
+
           </ul>
         </div>
       </div>
@@ -74,12 +60,31 @@
 
 <script>
 import Home from './components/Home.vue'
+import EventBus from './eventbus';
 
 export default {
   name: 'App',
   components: {
     Home
-  }
+  },
+  data() {
+    return {
+      isLoggedIn: false, // TODO: change to mentor and mentee login
+    }
+  },
+  created() {
+    EventBus.$on('login', (isLogin) => {
+      this.isLoggedIn = isLogin
+    })
+  },
+  methods: {
+    async logout() {
+      localStorage.removeItem("jwt");
+      EventBus.$emit('login', false);
+      this.isLoggedIn = false;
+      this.$router.push("/");
+    },
+  },
 }
 </script>
 

@@ -10,37 +10,44 @@ const routes = [
     {
         path: '/mentor-login',
         name: 'mentor-login',
-        component: () => import('../components/mentor/Login')
+        component: () => import('../components/mentor/Login'),
+        meta: { guest: true },
     },
     {
         path: '/mentee-login',
         name: 'mentee-login',
-        component: () => import('../components/mentee/Login')
+        component: () => import('../components/mentee/Login'),
+        meta: { guest: true },
     },
     {
         path: '/mentor-register',
         name: 'mentor-register',
-        component: () => import('../components/mentor/Register')
+        component: () => import('../components/mentor/Register'),
+        meta: { guest: true },
     },
     {
         path: '/mentee-register',
         name: 'mentee-register',
-        component: () => import('../components/mentee/Register')
+        component: () => import('../components/mentee/Register'),
+        meta: { guest: true },
     },
     {
         path: '/career',
         name: 'career',
-        component: () => import('../components/Career')
+        component: () => import('../components/Career'),
+        meta: { guest: true },
     },
     {
         path: '/mentor-profile',
         name: 'mentor-profile',
-        component: () => import('../components/mentor/Profile')
+        component: () => import('../components/mentor/Profile'),
+        meta: { requiresAuth: true },
     },
     {
         path: '/mentee-profile',
         name: 'mentee-profile',
-        component: () => import('../components/mentee/Profile')
+        component: () => import('../components/mentee/Profile'),
+        meta: { requiresAuth: true },
     },
     {
         path: '/view',
@@ -52,5 +59,16 @@ const router = new VueRouter({
     mode: 'history',
     base: process.env.BASE_URL,
     routes
+})
+router.beforeEach((to, from, next) => {
+    if (to.matched.some(record => record.meta.requiresAuth)) {
+        if (localStorage.getItem("jwt") == null) {
+            next("/mentor-login")
+            return
+        }
+        next()
+    } else {
+        next()
+    }
 })
 export default router
