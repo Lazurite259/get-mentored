@@ -20,7 +20,9 @@
                 </thead>
                 <tbody>
                     <tr v-for="career in displayList">
-                        <td>{{ career.occupation_title }}</td>
+                        <td>
+                            <router-link to="/career-detail">{{ career.occupation_title }}</router-link>
+                        </td>
                     </tr>
                 </tbody>
             </table>
