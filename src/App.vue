@@ -13,20 +13,16 @@
             <li class="nav-item">
               <router-link class="nav-link pr-3" to="/career">Career Resources</router-link>
             </li>
-            <li class="nav-link" v-if="isLoggedIn">
+            <li class="nav-item">
+              <router-link class="nav-link pr-3" to="/mentor-profile" v-if="mentorLoggedIn">Profile</router-link>
+            </li>
+            <li class="nav-item">
+              <router-link class="nav-link pr-3" to="/mentee-profile" v-if="menteeLoggedIn">Profile</router-link>
+            </li>
+            <li class="nav-link" v-if="mentorLoggedIn || menteeLoggedIn">
               <a @click="logout">Logout</a>
             </li>
-            <li class="nav-item dropdown" v-if="isLoggedIn">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownProfile" role="button"
-                data-bs-toggle="dropdown" aria-expanded="false">
-                Profile
-              </a>
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdownProfile">
-                <li><a class="dropdown-item" href="mentor-profile">As Mentor</a></li>
-                <li><a class="dropdown-item" href="mentee-profile">As Mentee</a></li>
-              </ul>
-            </li>
-            <li class="nav-item dropdown" v-if="!isLoggedIn">
+            <li class="nav-item dropdown" v-if="!mentorLoggedIn && !menteeLoggedIn">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownSignUp" role="button"
                 data-bs-toggle="dropdown" aria-expanded="false">
                 Sign Up
@@ -36,7 +32,7 @@
                 <li><a class="dropdown-item" href="mentee-register">As Mentee</a></li>
               </ul>
             </li>
-            <li class="nav-item dropdown" v-if="!isLoggedIn">
+            <li class="nav-item dropdown" v-if="!mentorLoggedIn && !menteeLoggedIn">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownLogin" role="button"
                 data-bs-toggle="dropdown" aria-expanded="false">
                 Login
@@ -69,19 +65,26 @@ export default {
   },
   data() {
     return {
-      isLoggedIn: false, // TODO: change to mentor and mentee login
+      // isLoggedIn: false, // TODO: change to mentor and mentee login
+      mentorLoggedIn: false,
+      menteeLoggedIn: false,
     }
   },
   created() {
-    EventBus.$on('login', (isLogin) => {
-      this.isLoggedIn = isLogin
+    EventBus.$on('mentor-login', (isLogin) => {
+      this.mentorLoggedIn = isLogin
+    })
+    EventBus.$on('mentee-login', (isLogin) => {
+      this.menteeLoggedIn = isLogin
     })
   },
   methods: {
     async logout() {
       localStorage.removeItem("jwt");
-      EventBus.$emit('login', false);
-      this.isLoggedIn = false;
+      EventBus.$emit('mentor-login', false);
+      EventBus.$emit('mentee-login', false);
+      this.mentorLoggedIn = false;
+      this.menteeLoggedIn = false;
       this.$router.push("/");
     },
   },
