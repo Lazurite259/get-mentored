@@ -69,7 +69,7 @@ const router = new VueRouter({
 router.beforeEach((to, from, next) => {
     if (to.matched.some(record => record.meta.requiresAuth)) {
         if (localStorage.getItem("jwt") == null) {
-            next("/mentor-login")
+            next("/")
             return
         }
         next()

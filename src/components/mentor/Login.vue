@@ -13,10 +13,9 @@
                         required />
                 </div>
                 <div class="form-group">
-                    <button type="submit" class="btn btn-primary btn-block">Login</button>
+                    <button type="submit" class="btn btn-danger btn-block">Login</button>
                 </div>
             </form>
-            <p v-if="showError" id="error">Username or Password is incorrect</p>
         </div>
     </div>
 </template>
@@ -29,8 +28,7 @@ export default {
             mentor: {
                 email: '',
                 password: '',
-            },
-            showError: false
+            }
         }
     },
     methods: {
@@ -40,7 +38,7 @@ export default {
                 let token = response.data.token;
                 localStorage.setItem("jwt", token);
                 if (token) {
-                    EventBus.$emit('login', true);
+                    EventBus.$emit('mentor-login', true);
                     swal("Success", "Login Successful", "success");
                     this.$router.push("/mentor-profile");
                 }

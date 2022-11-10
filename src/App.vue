@@ -65,7 +65,6 @@ export default {
   },
   data() {
     return {
-      // isLoggedIn: false, // TODO: change to mentor and mentee login
       mentorLoggedIn: false,
       menteeLoggedIn: false,
     }

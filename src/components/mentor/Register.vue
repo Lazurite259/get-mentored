@@ -58,7 +58,7 @@
                         required />
                 </div> -->
                 <div class="form-group">
-                    <button type="submit" class="btn btn-primary btn-block">Sign Up</button>
+                    <button type="submit" class="btn btn-danger btn-block">Sign Up</button>
                 </div>
             </form>
         </div>
@@ -92,8 +92,8 @@ export default {
                 let token = response.data.token;
                 if (token) {
                     localStorage.setItem("jwt", token);
-                    EventBus.$emit('login', true);
-                    this.$router.push("/");
+                    EventBus.$emit('mentor-login', true);
+                    this.$router.push("/mentor-profile");
                     swal("Success", "Registration Was successful", "success");
                 } else {
                     swal("Error", "Something Went Wrong", "error");
