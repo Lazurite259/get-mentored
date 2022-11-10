@@ -41,7 +41,7 @@ MONGOBD_URI="mongodb+srv://{username}:{password}@{cluster}.mongodb.net/{dbname}?
 npm install --save dotenv
 ```
 
-### Initiate `dotenv`
+### Initiate `dotenv` in `backend/'index.js`
 ```
 const dotenv = require("dotenv")
 dotenv.config()
