@@ -1,13 +1,13 @@
 const express = require('express');
 const app = express();
 // model
-let OccupationModel = require('../models/Occupation');
+let CareerModel = require('../models/Career');
 // route
 app.get("/", async (req, res, next) => {
-    const occupations = await OccupationModel.find({});
+    const careers = await CareerModel.find({});
 
     try {
-        res.send(occupations);
+        res.send(careers);
     } catch (error) {
         res.status(500).send(error);
     }

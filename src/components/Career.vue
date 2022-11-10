@@ -3,7 +3,7 @@
         <div class="col-md-6">
             <div class="row mb-3">
                 <div class="col-auto">
-                    <label class="col-form-label">Search</label>
+                    <label class="col-form-label">Career Search</label>
                 </div>
                 <div class="col">
                     <input type="text" class="form-control" v-model="searchKey" placeholder="Keyword" />
@@ -19,8 +19,8 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr v-for="occupation in displayList">
-                        <td>{{ occupation.occupation_title }}</td>
+                    <tr v-for="career in displayList">
+                        <td>{{ career.occupation_title }}</td>
                     </tr>
                 </tbody>
             </table>
@@ -44,29 +44,29 @@
     </div>
 </template>
 <script>
-import axios from "axios";
 export default {
     data() {
         return {
             searchKey: '',
-            occupations: [],
+            careers: [],
             page: 0,
             perPage: 20,
         }
     },
-    created() {
-        let apiURL = `http://localhost:3000/occupation`;
-        axios.get(apiURL).then(res => {
-            this.occupations = res.data
-        }).catch(error => {
-            console.log(error)
-        });
+    async created() {
+        try {
+            let response = await this.$http.get("/career");
+            this.careers = response.data;
+        }
+        catch (error) {
+            console.log(error.response);
+        }
     },
     computed: {
         filteredList() {
             this.page = 0
-            return this.occupations.filter(occupation => {
-                return occupation.occupation_title.toLowerCase().includes(this.searchKey.toLowerCase())
+            return this.careers.filter(career => {
+                return career.occupation_title.toLowerCase().includes(this.searchKey.toLowerCase())
             })
         },
         displayList() {
@@ -77,10 +77,10 @@ export default {
         }
     },
     methods: {
-        paginate(occupations) {
+        paginate(careers) {
             let start = this.page * this.perPage;
             let end = start + this.perPage;
-            return occupations.slice(start, end);
+            return careers.slice(start, end);
         },
         setPages() {
             let pages = [];

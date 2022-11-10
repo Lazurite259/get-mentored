@@ -28,12 +28,12 @@ app.use(bodyParser.urlencoded({ extended: false }))
 
 app.use(morgan("dev"))
 // API
-const occupationAPI = require('./routes/occupation.route')
+const careerAPI = require('./routes/career.route')
 const mentorAPI = require('./routes/mentor.route')
 const menteeAPI = require('./routes/mentee.route')
 app.use('/mentor', mentorAPI)
 app.use('/mentee', menteeAPI)
-app.use('/occupation', occupationAPI)
+app.use('/career', careerAPI)
 // Create port
 const port = process.env.PORT || 3000
 app.listen(port, () => {

@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-let occupationSchema = new Schema({
+let careerSchema = new Schema({
     onet_code: {
         type: String
     },
@@ -8,6 +8,6 @@ let occupationSchema = new Schema({
         type: String
     },
 }, {
-    collection: 'occupation'
+    collection: 'career'
 })
-module.exports = mongoose.model('Occupation', occupationSchema)
+module.exports = mongoose.model('Career', careerSchema)
