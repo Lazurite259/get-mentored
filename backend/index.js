@@ -1,32 +1,32 @@
-const express = require('express');
-const cors = require('cors');
-const morgan = require("morgan");
+const express = require('express')
+const cors = require('cors')
+const morgan = require('morgan')
 const dotenv = require('dotenv')
-const mongoose = require('mongoose');
-const bodyParser = require('body-parser');
-const createError = require('http-errors');
+const mongoose = require('mongoose')
+const bodyParser = require('body-parser')
+const createError = require('http-errors')
 
 dotenv.config()
 const app = express()
-app.use(express.json());
+app.use(express.json())
 // Connect mongoDB
 const uri = process.env.MONGODB_URI
 mongoose.connect(uri, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
+  useNewUrlParser: true,
+  useUnifiedTopology: true
 })
-const db = mongoose.connection;
-db.on("error", console.error.bind(console, "Connection error: "));
-db.once("open", function () {
-    console.log("Connected successfully");
-});
+const db = mongoose.connection
+db.on('error', console.error.bind(console, 'Connection error: '))
+db.once('open', function () {
+  console.log('Connected successfully')
+})
 // Configuration
 app.use(cors())
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 
-app.use(morgan("dev"))
+app.use(morgan('dev'))
 // API
 const careerAPI = require('./routes/career.route')
 const mentorAPI = require('./routes/mentor.route')
@@ -37,15 +37,15 @@ app.use('/career', careerAPI)
 // Create port
 const port = process.env.PORT || 3000
 app.listen(port, () => {
-    console.log('Connected to port ' + port)
+  console.log('Connected to port ' + port)
 })
 // Find 404
 app.use((req, res, next) => {
-    next(createError(404))
+  next(createError(404))
 })
 // error handler
 app.use(function (err, req, res, next) {
-    console.error(err.message)
-    if (!err.statusCode) err.statusCode = 500
-    res.status(err.statusCode).send(err.message)
+  console.error(err.message)
+  if (!err.statusCode) err.statusCode = 500
+  res.status(err.statusCode).send(err.message)
 })
