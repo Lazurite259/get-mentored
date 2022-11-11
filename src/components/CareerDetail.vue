@@ -7,12 +7,7 @@
           <hr style="margin-top: 0px" />
         </div>
         <div class="mb-4">
-          <iframe
-            allowfullscreen
-            frameborder="0"
-            width="615"
-            height="315"
-          ></iframe>
+          <iframe allowfullscreen frameborder="0" width="615" height="315"></iframe>
         </div>
         <div class="text-start">
           <h3 class="mt-2">Description</h3>
@@ -64,14 +59,15 @@
 </template>
 >
 <script>
-import axios from 'axios';
 export default {
   data() {
     return {};
   },
-  created() {},
+  created() { },
   computed: {},
   methods: {},
 };
 </script>
-<style></style>
+<style>
+
+</style>

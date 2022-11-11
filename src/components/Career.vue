@@ -19,7 +19,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr v-for="career in displayList">
+                    <tr v-for="career in displayList" :key="career.onet_code">
                         <td>
                             <router-link to="/career-detail">{{ career.occupation_title }}</router-link>
                         </td>
@@ -32,7 +32,7 @@
                         <button type="button" class="page-link" v-if="page > 0" @click="page--">Previous</button>
                     </li>
                     <li class="page-item">
-                        <button type="button" class="page-link" v-for="pageNumber in setPages()"
+                        <button type="button" class="page-link" v-for="pageNumber in setPages()" :key="pageNumber"
                             :class="{ active: pageNumber - 1 === page }" @click="page = pageNumber - 1">
                             {{ pageNumber }}</button>
                     </li>
@@ -66,7 +66,7 @@ export default {
     },
     computed: {
         filteredList() {
-            this.page = 0
+            this.initiatePage()
             return this.careers.filter(career => {
                 return career.occupation_title.toLowerCase().includes(this.searchKey.toLowerCase())
             })
@@ -79,6 +79,9 @@ export default {
         }
     },
     methods: {
+        initiatePage() {
+            this.page = 0
+        },
         paginate(careers) {
             let start = this.page * this.perPage;
             let end = start + this.perPage;
@@ -93,10 +96,11 @@ export default {
                         pages.push(page)
                     }
                 }
-            } else if (this.page > this.pageCount - 3) {
+            }
+            else if (this.page > this.pageCount - 3) {
                 for (let i = -1; i < 4; i++) {
                     const page = this.pageCount - 3 + i
-                    if (page <= this.pageCount) {
+                    if (page <= this.pageCount && page > 0) {
                         pages.push(page)
                     }
                 }

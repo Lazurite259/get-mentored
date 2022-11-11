@@ -55,14 +55,10 @@
 </template>
 
 <script>
-import Home from './components/Home.vue'
 import EventBus from './eventbus';
 
 export default {
   name: 'App',
-  components: {
-    Home
-  },
   data() {
     return {
       mentorLoggedIn: false,
