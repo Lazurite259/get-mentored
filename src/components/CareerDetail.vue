@@ -60,13 +60,13 @@
 >
 <script>
 export default {
-  data() {
-    return {};
+  data () {
+    return {}
   },
-  created() { },
+  created () { },
   computed: {},
-  methods: {},
-};
+  methods: {}
+}
 </script>
 <style>
 

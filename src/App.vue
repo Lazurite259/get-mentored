@@ -24,9 +24,7 @@
             </li>
             <li class="nav-item dropdown" v-if="!mentorLoggedIn && !menteeLoggedIn">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownSignUp" role="button"
-                data-bs-toggle="dropdown" aria-expanded="false">
-                Sign Up
-              </a>
+                data-bs-toggle="dropdown" aria-expanded="false">Sign Up</a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdownSignUp">
                 <li><a class="dropdown-item" href="mentor-register">As Mentor</a></li>
                 <li><a class="dropdown-item" href="mentee-register">As Mentee</a></li>
@@ -34,15 +32,12 @@
             </li>
             <li class="nav-item dropdown" v-if="!mentorLoggedIn && !menteeLoggedIn">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownLogin" role="button"
-                data-bs-toggle="dropdown" aria-expanded="false">
-                Login
-              </a>
+                data-bs-toggle="dropdown" aria-expanded="false">Login</a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdownLogin">
                 <li><a class="dropdown-item" href="mentor-login">As Mentor</a></li>
                 <li><a class="dropdown-item" href="mentee-login">As Mentee</a></li>
               </ul>
             </li>
-
           </ul>
         </div>
       </div>
@@ -55,17 +50,17 @@
 </template>
 
 <script>
-import EventBus from './eventbus';
+import EventBus from './eventbus'
 
 export default {
   name: 'App',
-  data() {
+  data () {
     return {
       mentorLoggedIn: false,
-      menteeLoggedIn: false,
+      menteeLoggedIn: false
     }
   },
-  created() {
+  created () {
     EventBus.$on('mentor-login', (isLogin) => {
       this.mentorLoggedIn = isLogin
     })
@@ -74,15 +69,15 @@ export default {
     })
   },
   methods: {
-    async logout() {
-      localStorage.removeItem("jwt");
-      EventBus.$emit('mentor-login', false);
-      EventBus.$emit('mentee-login', false);
-      this.mentorLoggedIn = false;
-      this.menteeLoggedIn = false;
-      this.$router.push("/");
-    },
-  },
+    async logout () {
+      localStorage.removeItem('jwt')
+      EventBus.$emit('mentor-login', false)
+      EventBus.$emit('mentee-login', false)
+      this.mentorLoggedIn = false
+      this.menteeLoggedIn = false
+      this.$router.push('/')
+    }
+  }
 }
 </script>
 
