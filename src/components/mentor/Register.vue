@@ -52,7 +52,7 @@ export default {
         console.log(response)
         const token = response.data.token
         if (token) {
-          localStorage.setItem('jwt', token)
+          localStorage.setItem('mentor-jwt', token)
           EventBus.$emit('mentor-login', true)
           this.$router.push('/mentor-profile')
           swal('Success', 'Registration Was successful', 'success')

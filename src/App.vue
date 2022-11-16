@@ -19,8 +19,10 @@
             <li class="nav-item">
               <router-link class="nav-link pr-3" to="/mentee-profile" v-if="menteeLoggedIn">Profile</router-link>
             </li>
-            <li class="nav-link" v-if="mentorLoggedIn || menteeLoggedIn">
-              <a @click="logout">Logout</a>
+            <li class="nav-item" v-if="mentorLoggedIn || menteeLoggedIn">
+              <router-link to="/" custom v-slot="{ navigate }">
+                <span @click="logout" @keypress.enter="navigate" role="link">Logout</span>
+              </router-link>
             </li>
             <li class="nav-item dropdown" v-if="!mentorLoggedIn && !menteeLoggedIn">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownSignUp" role="button"
@@ -68,14 +70,31 @@ export default {
       this.menteeLoggedIn = isLogin
     })
   },
+  mounted(){
+    this.checkMenteeLogIn(),
+    this.checkMentorLogIn()
+  },
   methods: {
     async logout () {
-      localStorage.removeItem('jwt')
+      localStorage.removeItem('mentor-jwt')
+      localStorage.removeItem('mentee-jwt')
       EventBus.$emit('mentor-login', false)
       EventBus.$emit('mentee-login', false)
       this.mentorLoggedIn = false
       this.menteeLoggedIn = false
       this.$router.push('/')
+    },
+    checkMentorLogIn(){
+      if(localStorage.getItem('mentor-jwt')){
+        EventBus.$emit('mentor-login', true)
+        this.mentorLoggedIn = true
+      }
+    },
+    checkMenteeLogIn(){
+      if(localStorage.getItem('mentee-jwt')){
+        EventBus.$emit('mentee-login', true)
+        this.menteeLoggedIn = true
+      }
     }
   }
 }

@@ -35,7 +35,7 @@ export default {
       try {
         const response = await this.$http.post('/mentor/mentor-login', this.mentor)
         const token = response.data.token
-        localStorage.setItem('jwt', token)
+        localStorage.setItem('mentor-jwt', token)
         if (token) {
           EventBus.$emit('mentor-login', true)
           swal('Success', 'Login Successful', 'success')

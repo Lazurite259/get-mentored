@@ -35,7 +35,7 @@ export default {
       try {
         const response = await this.$http.post('/mentee/mentee-login', this.mentee)
         const token = response.data.token
-        localStorage.setItem('jwt', token)
+        localStorage.setItem('mentee-jwt', token)
         if (token) {
           EventBus.$emit('mentee-login', true)
           swal('Success', 'Login Successful', 'success')

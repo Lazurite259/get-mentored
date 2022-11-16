@@ -52,7 +52,7 @@ export default {
         console.log(response)
         const token = response.data.token
         if (token) {
-          localStorage.setItem('jwt', token)
+          localStorage.setItem('mentee-jwt', token)
           EventBus.$emit('mentee-login', true)
           this.$router.push('/mentee-profile')
           swal('Success', 'Registration Was successful', 'success')
