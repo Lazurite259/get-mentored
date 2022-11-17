@@ -42,25 +42,25 @@
                  Start your career journey with GetMentored
                </p>
                <div class="row form-group">
-                 <div class="col-sm-4 label-column">
-                   <label class="col-form-label" for="name-input-field"
-                     >First Name
-                   </label>
-                 </div>
-                 <div class="col-sm-6 input-column">
-                   <input class="form-control" type="text" v-model="mentor.first_name" placeholder="First Name" required />
-                 </div>
-                 <div class="row form-group">
-                 <div class="col-sm-4 label-column">
-                   <label class="col-form-label"
-                     >Last Name
-                   </label>
-                 </div>
-                 <div class="col-sm-6 input-column">
-                   <input class="form-control" type="text" v-model="mentor.last_name" placeholder="Last Name" required />
-                 </div>
-               </div>
-               </div>
+                <div class="col-sm-4 label-column">
+                  <label class="col-form-label" for="email-input-field"
+                    >First Name
+                  </label>
+                </div>
+                <div class="col-sm-6 input-column">
+                  <input class="form-control" type="text" v-model="mentor.first_name" placeholder="First Name" required/>
+                </div>
+              </div>
+              <div class="row form-group">
+                <div class="col-sm-4 label-column">
+                  <label class="col-form-label" for="email-input-field"
+                    >Last Name
+                  </label>
+                </div>
+                <div class="col-sm-6 input-column">
+                  <input class="form-control" type="text" v-model="mentor.last_name" placeholder="Last Name" required />
+                </div>
+              </div>
                <div class="row form-group">
                  <div class="col-sm-4 label-column">
                    <label class="col-form-label" for="email-input-field"
