@@ -1,0 +1,28 @@
+name: Lint
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    # The branches below must be a subset of the branches above
+    branches: [master]
+
+jobs:
+  lint:
+    name: Run lint scanning
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      security-events: write
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Install Lint
+        run: npm install
+
+      - name: Run ESLint
+        run: npm run lint
+      
+      - name: Run Standard
+        run: npm run standard
