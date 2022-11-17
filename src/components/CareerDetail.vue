@@ -155,7 +155,7 @@ export default {
         this.videoURL = `https://www.careeronestop.org/videos/careeronestop-videos-content.aspx?videocode=${this.career.OnetCode.replace(/\D/g, '')}`
         console.log(this.career)
         this.relatedCareers = Object.entries(this.career.RelatedOnetTitles || {})
-        if(this.career.SkillsDataList){
+        if (this.career.SkillsDataList) {
           this.skills = this.career.SkillsDataList.filter(skill => {
             return parseInt(skill.Importance) > 50
           })
