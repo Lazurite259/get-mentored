@@ -41,29 +41,9 @@
               <p style="color: var(--bs-gray-500)">
                 Start your career journey with GetMentored
               </p>
-              <!-- <div class="row form-group">
-                <div class="col-sm-4 label-column">
-                  <label class="col-form-label" for="name-input-field"
-                    >First Name
-                  </label>
-                </div>
-                <div class="col-sm-6 input-column">
-                  <input class="form-control" type="text" v-model="mentee.first_name" placeholder="First Name" required />
-                </div>
-                <div class="row form-group">
-                <div class="col-sm-4 label-column">
-                  <label class="col-form-label"
-                    >Last Name
-                  </label>
-                </div>
-                <div class="col-sm-6 input-column">
-                  <input class="form-control" type="text" v-model="mentee.last_name" placeholder="Last Name" required />
-                </div>
-              </div>
-              </div> -->
               <div class="row form-group">
                 <div class="col-sm-4 label-column">
-                  <label class="col-form-label" for="email-input-field"
+                  <label class="col-form-label" for="name-input-field"
                     >First Name
                   </label>
                 </div>
@@ -73,7 +53,7 @@
               </div>
               <div class="row form-group">
                 <div class="col-sm-4 label-column">
-                  <label class="col-form-label" for="email-input-field"
+                  <label class="col-form-label" for="name-input-field"
                     >Last Name
                   </label>
                 </div>
@@ -137,7 +117,7 @@
                   </div>
                 </div>
               </div> -->
-              <div class="form-check" style="width: 340.664px">
+              <!-- <div class="form-check" style="width: 340.664px">
                 <input
                   class="form-check-input"
                   type="checkbox"
@@ -145,7 +125,7 @@
                 /><label class="form-check-label" for="formCheck-1"
                   >I've read and accept the terms and conditions</label
                 >
-              </div>
+              </div> -->
               <button
                 class="btn btn-light submit-button"
                 type="submit"
