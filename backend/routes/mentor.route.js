@@ -52,6 +52,15 @@ app.get('/mentor-profile', auth, async (req, res) => {
   res.json(req.userData)
 })
 
+app.get('/:id', async (req, res, next) => {
+  const mentors = await Mentor.find({ occupation_title: `${req.params.id}` })
+  try {
+    res.send(mentors)
+  } catch (error) {
+    res.status(500).send(error)
+  }
+})
+
 // mentorRoute.route('/edit-mentor/:id').get((req, res, next) => {
 //     MentorModel.findById(req.params.id, (error, data) => {
 //         if (error) {

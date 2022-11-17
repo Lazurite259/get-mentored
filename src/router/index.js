@@ -50,7 +50,7 @@ const routes = [
     meta: { requiresAuth: true }
   },
   {
-    path: '/career-detail',
+    path: '/career/:id',
     name: 'career-detail',
     component: () => import('../components/CareerDetail'),
     meta: { guest: true }
