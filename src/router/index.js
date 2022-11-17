@@ -8,11 +8,6 @@ const routes = [
     component: () => import('../components/Home')
   },
   {
-    path: '/homepage',
-    name: 'homepage',
-    component: () => import('../components/HomePage')
-  },
-  {
     path: '/mentor-login',
     name: 'mentor-login',
     component: () => import('../components/mentor/Login'),
