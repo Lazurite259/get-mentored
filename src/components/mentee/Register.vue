@@ -38,7 +38,7 @@
 </template>
 
 <script>
-import EventBus from '@/eventbus';
+import EventBus from '@/eventbus'
 import swal from 'sweetalert'
 
 export default {
@@ -101,7 +101,8 @@ export default {
                 swal("Error", err.message, "error");
               }
             }
-        },
+        }
     }
+  }
 }
 </script>

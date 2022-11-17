@@ -1,15 +1,15 @@
-const express = require('express');
-const app = express();
+const express = require('express')
+const app = express()
 // model
-let CareerModel = require('../models/Career');
+const Career = require('../models/Career')
 // route
-app.get("/", async (req, res, next) => {
-    const careers = await CareerModel.find({});
+app.get('/', async (req, res, next) => {
+  const careers = await Career.find({})
 
-    try {
-        res.send(careers);
-    } catch (error) {
-        res.status(500).send(error);
-    }
-});
-module.exports = app;
+  try {
+    res.send(careers)
+  } catch (error) {
+    res.status(500).send(error)
+  }
+})
+module.exports = app

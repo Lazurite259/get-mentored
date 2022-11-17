@@ -9,11 +9,8 @@
 </template>
 
 <script>
-import router from '@/router';
-
 export default {
-  name: "Home",
-  components: { router }
+  name: 'Home'
 }
 </script>
 

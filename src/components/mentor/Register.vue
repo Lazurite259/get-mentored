@@ -68,16 +68,16 @@
                     <button type="submit" class="btn btn-danger btn-block">Sign Up</button>
                 </div>
             </form>
-        </div>
     </div>
+  </div>
 </template>
 <script>
-import EventBus from '@/eventbus';
+import EventBus from '@/eventbus'
 import swal from 'sweetalert'
 import {useVuelidate} from '@vuelidate/core';
 import {required} from '@vuelidate/validators';
 export default {
-  data() {
+  data () {
     return {
       mentor: {
         first_name: '',
@@ -91,7 +91,6 @@ export default {
       errors:[]
     }
   },
-
     methods: {
       validPassword: function (psw) {
         const pswRegx = new RegExp(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/);
@@ -138,6 +137,6 @@ export default {
               }
             }
           }
-        },
+        }
 }
 </script>

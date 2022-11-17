@@ -1,13 +1,15 @@
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
-let careerSchema = new Schema({
-    onet_code: {
-        type: String
-    },
-    occupation_title: {
-        type: String
-    },
+const mongoose = require('mongoose')
+const Schema = mongoose.Schema
+const careerSchema = new Schema({
+  onet_code: {
+    type: String
+  },
+  occupation_title: {
+    type: String
+  }
 }, {
-    collection: 'career'
+  collection: 'career'
 })
-module.exports = mongoose.model('Career', careerSchema)
+
+const Career = mongoose.model('Career', careerSchema)
+module.exports = Career

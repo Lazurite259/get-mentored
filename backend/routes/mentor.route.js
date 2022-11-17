@@ -1,55 +1,64 @@
-const express = require('express');
-const app = express();
+const express = require('express')
+const app = express()
 const auth = require('../auth')
 // model
-const Mentor = require('../models/Mentor');
+const Mentor = require('../models/Mentor')
 // route
-app.get("/", async (req, res, next) => {
-    Mentor.find((error, data) => {
-        if (error) {
-            return next(error)
-        } else {
-            res.json(data)
-        }
+app.get('/', async (req, res, next) => {
+  Mentor.find((error, data) => {
+    if (error) {
+      return next(error)
+    } else {
+      return res.json(data)
+    }
+  })
+})
+app.post('/mentor-register', async (req, res) => {
+  try {
+    // console.log(isUser);
+    // if (isUser.length >= 1) {
+    //     return res.status(409).json({
+    //         message: "email already in use"
+    //     });
+    // }
+    const mentor = new Mentor({
+      first_name: req.body.first_name,
+      last_name: req.body.last_name,
+      email: req.body.email,
+      password: req.body.password
     })
+    const data = await mentor.save()
+    const token = await mentor.generateAuthToken() // here it is calling the method that we created in the model
+    res.status(201).json({ data, token })
+  } catch (err) {
+    res.status(400).json({ err })
+  }
 })
-app.post("/mentor-register", async (req, res) => {
-    try {
-        // console.log(isUser);
-        // if (isUser.length >= 1) {
-        //     return res.status(409).json({
-        //         message: "email already in use"
-        //     });
-        // }
-        const mentor = new Mentor({
-            first_name: req.body.first_name,
-            last_name: req.body.last_name,
-            email: req.body.email,
-            password: req.body.password
-        });
-        let data = await mentor.save();
-        const token = await mentor.generateAuthToken(); // here it is calling the method that we created in the model
-        res.status(201).json({ data, token });
-    } catch (err) {
-        res.status(400).json({ err: err });
+app.post('/mentor-login', async (req, res) => {
+  try {
+    const email = req.body.email
+    const password = req.body.password
+    const mentor = await Mentor.findByCredentials(email, password)
+    if (!mentor) {
+      return res.status(401).json({ error: 'Login failed! Check authentication credentials' })
     }
+    const token = await mentor.generateAuthToken()
+    res.status(201).json({ mentor, token })
+  } catch (err) {
+    res.status(400).json({ err })
+  }
 })
-app.post("/mentor-login", async (req, res) => {
-    try {
-        const email = req.body.email;
-        const password = req.body.password;
-        const mentor = await Mentor.findByCredentials(email, password);
-        if (!mentor) {
-            return res.status(401).json({ error: "Login failed! Check authentication credentials" });
-        }
-        const token = await mentor.generateAuthToken();
-        res.status(201).json({ mentor, token });
-    } catch (err) {
-        res.status(400).json({ err: err });
-    }
+app.get('/mentor-profile', auth, async (req, res) => {
+  res.json(req.userData)
 })
-app.get("/mentor-profile", auth, async (req, res) => {
-    res.json(req.userData);
+
+app.get('/:id', async (req, res, next) => {
+  const mentors = await Mentor.find({ occupation_title: `${req.params.id}` })
+  try {
+    res.send(mentors)
+  } catch (error) {
+    res.status(500).send(error)
+  }
 })
 
 // mentorRoute.route('/edit-mentor/:id').get((req, res, next) => {
@@ -86,4 +95,4 @@ app.get("/mentor-profile", auth, async (req, res) => {
 //         }
 //     })
 // })
-module.exports = app;
+module.exports = app
