@@ -70,8 +70,8 @@ export default {
       this.menteeLoggedIn = isLogin
     })
   },
-  mounted(){
-    this.checkMenteeLogIn(),
+  mounted () {
+    this.checkMenteeLogIn()
     this.checkMentorLogIn()
   },
   methods: {
@@ -84,14 +84,14 @@ export default {
       this.menteeLoggedIn = false
       this.$router.push('/')
     },
-    checkMentorLogIn(){
-      if(localStorage.getItem('mentor-jwt')){
+    checkMentorLogIn () {
+      if (localStorage.getItem('mentor-jwt')) {
         EventBus.$emit('mentor-login', true)
         this.mentorLoggedIn = true
       }
     },
-    checkMenteeLogIn(){
-      if(localStorage.getItem('mentee-jwt')){
+    checkMenteeLogIn () {
+      if (localStorage.getItem('mentee-jwt')) {
         EventBus.$emit('mentee-login', true)
         this.menteeLoggedIn = true
       }
