@@ -1,51 +1,5 @@
-<!-- <template>
-  <div class="row justify-content-center">
-    <h1 class="text-center">Get Mentored</h1>
-    <div class="text-center">
-      <router-link to="/mentee-register" tag="button" class="btn btn-outline-primary">Become a Mentee</router-link>
-      <router-link to="/mentor-register" tag="button" class="btn btn-outline-primary">Become a Mentor</router-link>
-    </div>
-  </div>
-</template>
-
-<script>
-export default {
-  name: 'Home'
-}
-</script>
-
-Add "scoped" attribute to limit CSS to this component only
-<style>
-h3 {
-  margin: 40px 0 0;
-}
-
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-
-a {
-  color: #42b983;
-}
-
-.btn {
-  margin: 15px;
-}
-</style> -->
-
 <template>
   <div class="row justify-content-center">
-    <!-- <h1 class="text-center">Get Mentored</h1>
-    <div class="text-center">
-      <router-link to="/mentee-register" tag="button" class="btn btn-outline-primary">Become a Mentee</router-link>
-      <router-link to="/mentor-register" tag="button" class="btn btn-outline-primary">Become a Mentor</router-link>
-    </div> -->
     <div style="background: #7057cc">
       <!-- Start: Hero Clean Reverse -->
       <div class="container py-4 py-xl-5">
@@ -95,13 +49,6 @@ a {
                   </h2>
                   <router-link to="/mentee-register" tag="button" class="btn btn-outline-primary"
                     style="border-radius: 20px; color: #fde69a">Become a Mentee</router-link>
-                  <!-- <button
-                    class="btn btn-primary"
-                    type="button"
-                    style="border-radius: 20px; color: #1e266d"
-                  >
-                    Become Mentees
-                  </button> -->
                 </div>
               </div>
             </div>
@@ -123,13 +70,6 @@ a {
                   </h2>
                   <router-link to="/mentor-register" tag="button" class="btn btn-outline-primary"
                     style="border-radius: 20px; color: #fde69a">Become a Mentor</router-link>
-                  <!-- <button
-                    class="btn btn-primary"
-                    type="button"
-                    style="border-radius: 20px; color: #1e266d"
-                  >
-                    Become Mentors
-                  </button> -->
                 </div>
               </div>
             </div>
@@ -378,16 +318,13 @@ a {
 </template>
 
 <script>
-import router from '@/router'
-
 export default {
-  name: 'HomePage',
-  components: { router }
+  name: 'Home'
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style>
+<style scoped>
 @font-face {
   font-family: 'Poppins';
   src: url() format('woff2');

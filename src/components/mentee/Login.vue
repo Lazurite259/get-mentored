@@ -97,7 +97,7 @@ export default {
   }
 }
 </script>
-<style>
+<style scoped>
 @font-face {
   font-family: 'Poppins';
   src: url() format('woff2');
