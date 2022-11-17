@@ -22,7 +22,7 @@
       <div class="col-md-4">
         <div class="row mx-3 mt-4 py-2 bg-light" style="border-radius: 20px">
           <div class="col-3">
-            <img src="Avater 02.jpg" width="51" height="51" />
+            <img src="@/assets/img/Avater 02.jpg" width="51" height="51" />
           </div>
           <div class="col-9" style="padding-left: 0px">
             <h6>Jessie Owner</h6>
