@@ -1,6 +1,6 @@
 <template>
   <div class="row justify-content-center">
-    <div class="col-md-6">
+    <!-- <div class="col-md-6">
       <div class="row mb-3">
         <div class="col-auto">
           <label class="col-form-label">Career Search</label>
@@ -10,10 +10,34 @@
         </div>
 
       </div>
-    </div>
+    </div> -->
+    <section class="newsletter-subscribe py-4 py-xl-5">
+      <div class="container">
+        <div class="row mb-2">
+          <div class="col-md-8 col-xl-6 text-center mx-auto">
+            <h2 class="display-6 fw-bold">
+              Search Industries your are interested in
+            </h2>
+            <p class="text-muted">
+              GetMentored offers tons of news from different&nbsp;
+              industries&nbsp; to help you better understand detail of
+              occupation
+            </p>
+          </div>
+        </div>
+        <form class="d-flex justify-content-center flex-wrap" method="post">
+          <div class="mb-3">
+            <input class="form-control" type="text" v-model="searchKey" name="" placeholder="Keyword" />
+          </div>
+          <!-- <div class="mb-3">
+            <button class="btn btn-primary ms-2" type="submit">Search</button>
+          </div> -->
+        </form>
+      </div>
+    </section>
     <div class="col-md-8">
       <table class="table table-striped table-hover">
-        <thead class="thead-dark">
+        <thead foclass="thead-dark">
           <tr>
             <th>Occupation Title</th>
           </tr>
@@ -119,4 +143,5 @@ button.page-link {
   display: inline-block;
   color: #000;
 }
+
 </style>

@@ -3,7 +3,7 @@
     <!-- Nav bar -->
     <nav class="navbar navbar-expand-lg">
       <div class="container-fluid">
-        <router-link class="navbar-brand float-left" to="/homepage">GetMentored</router-link>
+        <router-link class="navbar-brand float-left" to="/">GetMentored</router-link>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
           aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
