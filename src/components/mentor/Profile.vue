@@ -65,13 +65,26 @@ import axios from "axios";
 export default {
     data() {
         return {
-            mentor: {},
+            mentor: {
+                first_name: '',
+                last_name: '',
+                email: '',
+                password: '',
+                birth_date: '',
+                occupation_title: '',
+                company_name: '',
+                year_of_experience: '',
+                office_hour: '',
+                linkedin: ''
+            },
         }
     },
     created() {
         let apiURL = `http://localhost:4000/api/edit-mentor/${this.$route.params.id}`;
         axios.get(apiURL).then((res) => {
-            this.mentor = res.data;
+            // this.mentor = res.data;
+            consolo.log(res);
+
         })
     },
     methods: {

@@ -30,7 +30,7 @@
 
                 <div class="form-group">
                     <label>Education Level</Label>
-                    <input type="text" class="form-control" v-model="mentee.education_evel" required />
+                    <input type="text" class="form-control" v-model="mentee.education_level" required />
                 </div>
 
                 <div class="form-group">
@@ -65,25 +65,36 @@ import axios from "axios";
 export default {
     data() {
         return {
-            mentee: {},
+            mentee: {
+                first_name: '',
+                last_name: '',
+                email: '',
+                password: '',
+                birth_date: '',
+                education_level: '',
+                work_experience:'',
+                skills: [],
+                interested_industry: [],
+                linkedin: ''
+            },
         }
     },
     created() {
-        let apiURL = `http://localhost:4000/api/edit-mentee/${this.$route.params.id}`;
+        let apiURL = `http://localhost:3000/api/edit-mentee/${this.$route.params.id}`;
         axios.get(apiURL).then((res) => {
             this.mentee = res.data;
         })
     },
     methods: {
         handleUpdateForm() {
-            let apiURL = `http://localhost:4000/api/update-mentee/${this.$route.params.id}`;
+            let apiURL = `http://localhost:3000/api/update-mentee/${this.$route.params.id}`;
             axios.put(apiURL, this.mentee).then((res) => {
                 console.log(res)
                 this.$router.push('/view')
             }).catch(error => {
                 console.log(error)
             });
-        }
+        }        
     }
 }
 </script>
