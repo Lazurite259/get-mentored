@@ -1,10 +1,10 @@
 const express = require('express')
 const app = express()
 // model
-const CareerModel = require('../models/Career')
+const Career = require('../models/Career')
 // route
 app.get('/', async (req, res, next) => {
-  const careers = await CareerModel.find({})
+  const careers = await Career.find({})
 
   try {
     res.send(careers)

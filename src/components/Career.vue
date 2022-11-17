@@ -45,7 +45,9 @@
         <tbody>
           <tr v-for="career in displayList" :key="career.onet_code">
             <td>
-              <router-link to="/career-detail">{{ career.occupation_title }}</router-link>
+              <router-link :to="{ name: 'career-detail', params: { id: career.onet_code } }">
+                {{ career.occupation_title }}
+              </router-link>
             </td>
           </tr>
         </tbody>
