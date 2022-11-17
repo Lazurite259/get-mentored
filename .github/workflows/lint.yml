@@ -21,8 +21,8 @@ jobs:
       - name: Install Lint
         run: npm ci
 
-      - name: Run ESLint
-        run: npm run lint
-      
       - name: Run Standard
         run: npm run standard
+
+      - name: Run ESLint
+        run: npm run lint
