@@ -1,106 +1,67 @@
-<!-- <template>
-  <div class="row justify-content-center">
-    <div class="col-md-6">
-      <h3 class="text-center">Mentee Register</h3>
-      <form @submit.prevent="submit">
-        <div class="form-group">
-          <label>First Name</Label>
-          <input type="text" class="form-control" v-model="mentee.first_name" placeholder="First Name" required />
-        </div>
-        <div class="form-group">
-          <label>Last Name</Label>
-          <input type="text" class="form-control" v-model="mentee.last_name" placeholder="Last Name" required />
-        </div>
-        <div class="form-group">
-          <label>Email</Label>
-          <input type="email" class="form-control" v-model="mentee.email" placeholder="Email" required />
-        </div>
-        <div class="form-group">
-          <label>Password</Label>
-          <input type="password" class="form-control" v-model="mentee.password.password" placeholder="Password"
-            required />
-        </div>
-        <div class="form-group">
-          <label>Confirm Password</Label>
-          <input type="password" class="form-control" v-model="mentee.password.confirm" placeholder="Confirm Password"
-            required />
-        </div>
-        <div v-if="errors.length">
-          <b>Please correct the following error(s):</b>
-          <ul>
-            <li v-for="error in errors">{{ "- " + error.message }}</li>
-          </ul>
-        </div>
-        <div class="form-group">
-          <button type="submit" class="btn btn-danger btn-block">Sign Up</button>
-        </div>
-      </form>
-    </div>
-  </div>
-</template> -->
 <template>
- <div class="bg-primary-gradient">
-      <div class="container-md">
-        <div class="row register-form">
-          <div class="col-md-8 offset-md-2">
-            <form class="custom-form border rounded shadow">
-              <h1 style="margin-bottom: 6px">Mentee Register</h1>
-              <p style="color: var(--bs-gray-500)">
-                Start your career journey with GetMentored
-              </p>
-              <div class="row form-group">
-                <div class="col-sm-4 label-column">
-                  <label class="col-form-label" for="name-input-field"
-                    >First Name
-                  </label>
-                </div>
-                <div class="col-sm-6 input-column">
-                  <input class="form-control" type="text" v-model="mentee.first_name" placeholder="First Name" required/>
-                </div>
+  <div class="bg-primary-gradient">
+    <div class="container-md">
+      <div class="row register-form">
+        <div class="col-md-8 offset-md-2">
+          <form class="custom-form border rounded shadow" @submit.prevent="submit">
+            <h1 style="margin-bottom: 6px">Mentee Register</h1>
+            <p style="color: var(--bs-gray-500)">
+              Start your career journey with GetMentored
+            </p>
+            <div class="row form-group">
+              <div class="col-sm-4 label-column">
+                <label class="col-form-label" for="name-input-field">First Name
+                </label>
               </div>
-              <div class="row form-group">
-                <div class="col-sm-4 label-column">
-                  <label class="col-form-label" for="name-input-field"
-                    >Last Name
-                  </label>
-                </div>
-                <div class="col-sm-6 input-column">
-                  <input class="form-control" type="text" v-model="mentee.last_name" placeholder="Last Name" required />
-                </div>
+              <div class="col-sm-6 input-column">
+                <input class="form-control" type="text" v-model="mentee.first_name" placeholder="First Name" required />
               </div>
-              <div class="row form-group">
-                <div class="col-sm-4 label-column">
-                  <label class="col-form-label" for="email-input-field"
-                    >Email
-                  </label>
-                </div>
-                <div class="col-sm-6 input-column">
-                  <input class="form-control" type="email" v-model="mentee.email" placeholder="Emial" required />
-                </div>
+            </div>
+            <div class="row form-group">
+              <div class="col-sm-4 label-column">
+                <label class="col-form-label" for="name-input-field">Last Name
+                </label>
               </div>
-              <div class="row form-group">
-                <div class="col-sm-4 label-column">
-                  <label class="col-form-label" for="pawssword-input-field"
-                    >Password
-                  </label>
-                </div>
-                <div class="col-sm-6 input-column">
-                  <input class="form-control" type="password" v-model="mentee.password" placeholder="Password" required/>
-                </div>
+              <div class="col-sm-6 input-column">
+                <input class="form-control" type="text" v-model="mentee.last_name" placeholder="Last Name" required />
               </div>
-              <div class="row form-group">
-                <div class="col-sm-4 label-column">
-                  <label
-                    class="col-form-label"
-                    for="repeat-pawssword-input-field"
-                    >Comfirm Password
-                  </label>
-                </div>
-                <div class="col-sm-6 input-column">
-                  <input class="form-control" type="password" v-model="mentee.password_confirm" placeholder="Confirm Password" required />
-                </div>
+            </div>
+            <div class="row form-group">
+              <div class="col-sm-4 label-column">
+                <label class="col-form-label" for="email-input-field">Email
+                </label>
               </div>
-              <!-- <div class="row form-group">
+              <div class="col-sm-6 input-column">
+                <input class="form-control" type="email" v-model="mentee.email" placeholder="Emial" required />
+              </div>
+            </div>
+            <div class="row form-group">
+              <div class="col-sm-4 label-column">
+                <label class="col-form-label" for="pawssword-input-field">Password
+                </label>
+              </div>
+              <div class="col-sm-6 input-column">
+                <input class="form-control" type="password" v-model="mentee.password.password" placeholder="Password"
+                  required />
+              </div>
+            </div>
+            <div class="row form-group">
+              <div class="col-sm-4 label-column">
+                <label class="col-form-label" for="repeat-pawssword-input-field">Comfirm Password
+                </label>
+              </div>
+              <div class="col-sm-6 input-column">
+                <input class="form-control" type="password" v-model="mentee.password.confirm"
+                  placeholder="Confirm Password" required />
+              </div>
+            </div>
+            <div v-if="errors.length">
+              <b>Please correct the following error(s):</b>
+              <ul>
+                <li v-for="(error, index) in errors" :key="index">{{ "- " + error.message }}</li>
+              </ul>
+            </div>
+            <!-- <div class="row form-group">
                 <div class="col-sm-4 label-column">
                   <label class="col-form-label" for="dropdown-input-field"
                     >Dropdown
@@ -124,7 +85,7 @@
                   </div>
                 </div>
               </div> -->
-              <!-- <div class="form-check" style="width: 340.664px">
+            <!-- <div class="form-check" style="width: 340.664px">
                 <input
                   class="form-check-input"
                   type="checkbox"
@@ -133,18 +94,15 @@
                   >I've read and accept the terms and conditions</label
                 >
               </div> -->
-              <button
-                class="btn btn-light submit-button"
-                type="submit"
-                style="background: #7057cc; color: var(--bs-btn-bg)"
-              >
-                Sign Up
-              </button>
-            </form>
-          </div>
+            <button class="btn btn-light submit-button" type="submit"
+              style="background: #7057cc; color: var(--bs-btn-bg)">
+              Sign Up
+            </button>
+          </form>
         </div>
       </div>
-    </div> 
+    </div>
+  </div>
 </template>
 
 <script>
@@ -189,65 +147,65 @@ export default {
         })
       }
       if (!this.errors.length) {
-        return true
-      }
-      try {
-        const response = await this.$http.post('/mentee/mentee-register', this.mentee)
-        console.log(response)
-        const token = response.data.token
-        if (token) {
-          localStorage.setItem('jwt', token)
-          EventBus.$emit('mentee-login', true)
-          this.$router.push('/mentee-profile')
-          swal('Success', 'Registration Was successful', 'success')
-        } else {
-          swal('Error', 'Something Went Wrong', 'error')
-        }
-      } catch (err) {
-        const error = err.response
-        if (error.status == 409) {
-          swal('Error', error.data.message, 'error')
-        } else {
-          swal('Error', err.message, 'error')
+        try {
+          const response = await this.$http.post('/mentee/mentee-register', this.mentee)
+          console.log(response)
+          const token = response.data.token
+          if (token) {
+            localStorage.setItem('mentee-jwt', token)
+            EventBus.$emit('mentee-login', true)
+            this.$router.push('/mentee-profile')
+            swal('Success', 'Registration Was successful', 'success')
+          } else {
+            swal('Error', 'Something Went Wrong', 'error')
+          }
+        } catch (err) {
+          const error = err.response
+          if (error.status === 409) {
+            swal('Error', error.data.message, 'error')
+          } else {
+            swal('Error', err.message, 'error')
+          }
         }
       }
     }
   }
 }
 </script>
-<style>
+<style scoped>
 @font-face {
-	font-family: 'Poppins';
-	src: url() format('woff2');
-	font-weight: 400;
-	font-style: normal;
-	font-display: swap;
-	unicode-range: U+0900-097F, U+1CD0-1CF6, U+1CF8-1CF9, U+200C-200D, U+20A8, U+20B9, U+25CC, U+A830-A839, U+A8E0-A8FB;
+  font-family: 'Poppins';
+  src: url() format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0900-097F, U+1CD0-1CF6, U+1CF8-1CF9, U+200C-200D, U+20A8, U+20B9, U+25CC, U+A830-A839, U+A8E0-A8FB;
 }
 
 @font-face {
-	font-family: 'Poppins';
-	src: url() format('woff2');
-	font-weight: 400;
-	font-style: normal;
-	font-display: swap;
-	unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+  font-family: 'Poppins';
+  src: url() format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
 
 @font-face {
-	font-family: 'Poppins';
-	src: url() format('woff2');
-	font-weight: 400;
-	font-style: normal;
-	font-display: swap;
-	unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  font-family: 'Poppins';
+  src: url() format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
+
 .navbar {
-  background-color: rgba(112,87,204,1);
+  background-color: rgba(112, 87, 204, 1);
 }
 
 .bg-primary-demo {
-  background-color: rgb(112,87,204);
+  background-color: rgb(112, 87, 204);
 }
 
 .font-color {
@@ -264,7 +222,7 @@ export default {
   --bs-btn-hover-color: #fff;
   --bs-btn-hover-bg: #fde69a;
   --bs-btn-hover-border-color: #fde69a;
-  --bs-btn-focus-shadow-rgb: 13,110,253;
+  --bs-btn-focus-shadow-rgb: 13, 110, 253;
   --bs-btn-active-color: #fff;
   --bs-btn-active-bg: #fde69a;
   --bs-btn-active-border-color: #fde69a;
@@ -292,7 +250,7 @@ export default {
   --bs-btn-hover-color: #fff;
   --bs-btn-hover-bg: #0b5ed7;
   --bs-btn-hover-border-color: #0a58ca;
-  --bs-btn-focus-shadow-rgb: 49,132,253;
+  --bs-btn-focus-shadow-rgb: 49, 132, 253;
   --bs-btn-active-color: #fff;
   --bs-btn-active-bg: #0a58ca;
   --bs-btn-active-border-color: #0a53be;
@@ -362,6 +320,7 @@ export default {
 .bs-icon.bs-icon-circle {
   border-radius: 50%;
 }
+
 .register-form form.custom-form {
   padding: 55px;
   box-sizing: border-box;
