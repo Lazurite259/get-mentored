@@ -34,8 +34,7 @@ const routes = [
   {
     path: '/career',
     name: 'career',
-    component: () => import('../components/Career'),
-    meta: { guest: true }
+    component: () => import('../components/Career')
   },
   {
     path: '/mentor-profile',
@@ -52,13 +51,7 @@ const routes = [
   {
     path: '/career/:id',
     name: 'career-detail',
-    component: () => import('../components/CareerDetail'),
-    meta: { guest: true }
-  },
-  {
-    path: '/view',
-    name: 'view',
-    component: () => import('../components/TestList')
+    component: () => import('../components/CareerDetail')
   }
 ]
 const router = new VueRouter({
@@ -70,6 +63,21 @@ router.beforeEach((to, from, next) => {
   if (to.matched.some(record => record.meta.requiresAuth)) {
     if (window.localStorage.getItem('mentor-jwt') == null && window.localStorage.getItem('mentee-jwt') == null) {
       next('/')
+      return
+    }
+    next()
+  } else {
+    next()
+  }
+})
+router.beforeEach((to, from, next) => {
+  if (to.matched.some(record => record.meta.guest)) {
+    if (window.localStorage.getItem('mentor-jwt') != null) {
+      next('/mentor-profile')
+      return
+    }
+    if (window.localStorage.getItem('mentee-jwt') != null) {
+      next('/mentee-profile')
       return
     }
     next()
