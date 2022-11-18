@@ -55,22 +55,22 @@
                   placeholder="Confirm Password" required />
               </div>
             </div>
-            <div v-if="errors.length" style="color: red;">
-              <b>Please correct the following error(s):</b>
-              <ul style="list-style: none;">
-                <li v-for="(error, index) in errors" :key="index">{{ "- " + error.message }}</li>
-              </ul>
-            </div>
             <div class="row form-group">
               <div class="col-sm-4 label-column">
                 <label class="col-form-label" for="dropdown-input-field">Occupation Title
                 </label>
               </div>
               <div class="col-sm-6 input-column">
-                <Dropdown class="dropdownlist" :options="careers" v-on:selected="validateSelection" :maxItem="10"
-                  v-on:filter="getDropdownValues" :disabled="false" name="careers" placeholder="Select a Career">
+                <Dropdown class="dropdownlist" :options="careers" v-on:selected="validateSelection" :maxItem="20"
+                  :disabled="false" name="careerDropdown" placeholder="Select a Career">
                 </Dropdown>
               </div>
+            </div>
+            <div v-if="errors.length" style="color: red;">
+              <b>Please correct the following error(s):</b>
+              <ul style="list-style: none;">
+                <li v-for="(error, index) in errors" :key="index">{{ "- " + error.message }}</li>
+              </ul>
             </div>
             <!-- <div class="form-check" style="width: 340.664px">
               <input class="form-check-input" type="checkbox" id="formCheck-1" /><label class="form-check-label"
@@ -89,9 +89,12 @@
 <script>
 import EventBus from '@/eventbus'
 import swal from 'sweetalert'
-import Dropdown from 'vue-simple-search-dropdown';
+import Dropdown from 'vue-simple-search-dropdown'
 
 export default {
+  components: {
+    Dropdown
+  },
   data () {
     return {
       mentor: {
@@ -108,35 +111,36 @@ export default {
       careers: []
     }
   },
-  async created(){
+  async created () {
     try {
       const response = await this.$http.get('/career')
       this.careers = response.data
       this.renameDropdownKeys()
+      document.getElementsByName('careerDropdown').required = true
     } catch (error) {
       console.log(error.response)
     }
   },
   methods: {
     validPassword: function (psw) {
-      const pswRegx = new RegExp(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/)
+      const pswRegx = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/
       return pswRegx.test(psw)
     },
     matchPassword: function (psw1, psw2) {
       return psw1 === psw2
     },
-    renameDropdownKeys() {
-      this.careers = this.careers.map(function(obj) {
-        obj['name'] = obj['occupation_title']; // Assign new key
-        obj['id'] = obj['onet_code']
-        delete obj['occupation_title']; // Delete old key
-        delete obj['onet_code'];
-        return obj;
-      });
-      console.log(this.careers);
+    renameDropdownKeys () {
+      this.careers = this.careers.map(function (obj) {
+        obj.name = obj.occupation_title // Assign new key
+        obj.id = obj.onet_code
+        delete obj.occupation_title // Delete old key
+        delete obj.onet_code
+        return obj
+      })
+      console.log(this.careers)
     },
-    validateSelection(selection) {
-      this.mentor.occupation_title = selection.name;
+    validateSelection (selection) {
+      this.mentor.occupation_title = selection.name
     },
     async submit () {
       this.errors = []
@@ -144,12 +148,17 @@ export default {
       const psw2 = this.mentor.password.confirm
       if (!this.validPassword(psw1)) {
         this.errors.push({
-          message: 'Password must be Minimum eight characters, at least one letter, one number ,and one special character.'
+          message: 'Password must be Minimum eight characters, at least one letter, one number, and one special character(@$!%*#?&).'
         })
       }
       if (!this.matchPassword(psw1, psw2)) {
         this.errors.push({
           message: 'Password does not match.'
+        })
+      }
+      if (this.mentor.occupation_title === undefined) {
+        this.errors.push({
+          message: 'Occupation title is required.'
         })
       }
       if (!this.errors.length) {
