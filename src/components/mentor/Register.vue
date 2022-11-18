@@ -55,40 +55,27 @@
                   placeholder="Confirm Password" required />
               </div>
             </div>
-            <div v-if="errors.length">
+            <div v-if="errors.length" style="color: red;">
               <b>Please correct the following error(s):</b>
               <ul style="list-style: none;">
                 <li v-for="(error, index) in errors" :key="index">{{ "- " + error.message }}</li>
               </ul>
             </div>
-            <!-- <div class="row form-group">
-                 <div class="col-sm-4 label-column">
-                   <label class="col-form-label" for="dropdown-input-field"
-                     >Dropdown
-                   </label>
-                 </div>
-                 <div class="col-sm-4 input-column">
-                   <div class="dropdown">
-                     <button
-                       class="btn btn-light dropdown-toggle"
-                       aria-expanded="false"
-                       data-bs-toggle="dropdown"
-                       type="button"
-                     >
-                       Dropdown
-                     </button>
-                     <div class="dropdown-menu">
-                       <a class="dropdown-item" href="#">First Item</a
-                       ><a class="dropdown-item" href="#">Second Item</a
-                       ><a class="dropdown-item" href="#">Third Item</a>
-                     </div>
-                   </div>
-                 </div>
-               </div> -->
-            <div class="form-check" style="width: 340.664px">
+            <div class="row form-group">
+              <div class="col-sm-4 label-column">
+                <label class="col-form-label" for="dropdown-input-field">Occupation Title
+                </label>
+              </div>
+              <div class="col-sm-6 input-column">
+                <Dropdown class="dropdownlist" :options="careers" v-on:selected="validateSelection" :maxItem="10"
+                  v-on:filter="getDropdownValues" :disabled="false" name="careers" placeholder="Select a Career">
+                </Dropdown>
+              </div>
+            </div>
+            <!-- <div class="form-check" style="width: 340.664px">
               <input class="form-check-input" type="checkbox" id="formCheck-1" /><label class="form-check-label"
                 for="formCheck-1">I've read and accept the terms and conditions</label>
-            </div>
+            </div> -->
             <button class="btn btn-light submit-button" type="submit"
               style="background: #7057cc; color: var(--bs-btn-bg)">
               Sign Up
@@ -102,6 +89,8 @@
 <script>
 import EventBus from '@/eventbus'
 import swal from 'sweetalert'
+import Dropdown from 'vue-simple-search-dropdown';
+
 export default {
   data () {
     return {
@@ -112,9 +101,20 @@ export default {
         password: {
           password: '',
           confirm: ''
-        }
+        },
+        occupation_title: ''
       },
-      errors: []
+      errors: [],
+      careers: []
+    }
+  },
+  async created(){
+    try {
+      const response = await this.$http.get('/career')
+      this.careers = response.data
+      this.renameDropdownKeys()
+    } catch (error) {
+      console.log(error.response)
     }
   },
   methods: {
@@ -125,13 +125,26 @@ export default {
     matchPassword: function (psw1, psw2) {
       return psw1 === psw2
     },
+    renameDropdownKeys() {
+      this.careers = this.careers.map(function(obj) {
+        obj['name'] = obj['occupation_title']; // Assign new key
+        obj['id'] = obj['onet_code']
+        delete obj['occupation_title']; // Delete old key
+        delete obj['onet_code'];
+        return obj;
+      });
+      console.log(this.careers);
+    },
+    validateSelection(selection) {
+      this.mentor.occupation_title = selection.name;
+    },
     async submit () {
       this.errors = []
       const psw1 = this.mentor.password.password
       const psw2 = this.mentor.password.confirm
       if (!this.validPassword(psw1)) {
         this.errors.push({
-          message: 'Password must be Minimum eight characters, at least one letter, one number and one special character.'
+          message: 'Password must be Minimum eight characters, at least one letter, one number ,and one special character.'
         })
       }
       if (!this.matchPassword(psw1, psw2)) {
@@ -370,26 +383,31 @@ export default {
   height: 42px;
 }
 
-.register-form .custom-form .dropdown .dropdown-toggle {
+::v-deep .dropdownlist .dropdown-input {
   background: #fff;
   border: 1px solid #dbdbdb;
+  border-radius: 2px;
   box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.08);
-  color: #333;
+  font-size: 1rem;
+  padding: 12px;
+  min-width: auto;
+  width: 100%;
+  height: 42px;
   outline: none;
+  color: #5f5f5f;
 }
 
-.register-form .custom-form .dropdown ul {
-  background: #fff;
+::v-deep .dropdownlist .dropdown-content {
+  min-width: auto;
+  width: 100%;
+  max-height: 200px;
+  border: 1px solid #dbdbdb;
+  box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.08);
+  overflow: scroll;
 }
 
-.register-form .custom-form .dropdown ul li a {
-  background: #fff;
-  color: #333;
-  opacity: 0.8;
-}
-
-.register-form .custom-form .dropdown ul li a:hover {
-  opacity: 1;
+::v-deep .dropdownlist .dropdown-content .dropdown-item {
+  font-size: 1em;
 }
 
 .register-form .custom-form .submit-button {

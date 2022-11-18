@@ -25,7 +25,8 @@ app.post('/mentor-register', async (req, res) => {
       first_name: req.body.first_name,
       last_name: req.body.last_name,
       email: req.body.email,
-      password: req.body.password.password
+      password: req.body.password.password,
+      occupation_title: req.body.occupation_title
     })
     const data = await mentor.save()
     const token = await mentor.generateAuthToken() // here it is calling the method that we created in the model
