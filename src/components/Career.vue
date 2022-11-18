@@ -1,22 +1,11 @@
 <template>
   <div class="row justify-content-center">
-    <!-- <div class="col-md-6">
-      <div class="row mb-3">
-        <div class="col-auto">
-          <label class="col-form-label">Career Search</label>
-        </div>
-        <div class="col">
-          <input type="text" class="form-control" v-model="searchKey" placeholder="Keyword" />
-        </div>
-
-      </div>
-    </div> -->
     <section class="newsletter-subscribe py-4 py-xl-5">
       <div class="container">
         <div class="row mb-2">
           <div class="col-md-8 col-xl-6 text-center mx-auto">
             <h2 class="display-6 fw-bold">
-              Search Industries your are interested in
+              Search Industries your are Interested in
             </h2>
             <p class="text-muted">
               GetMentored offers tons of news from different&nbsp;

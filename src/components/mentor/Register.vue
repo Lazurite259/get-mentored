@@ -57,7 +57,7 @@
             </div>
             <div v-if="errors.length">
               <b>Please correct the following error(s):</b>
-              <ul>
+              <ul style="list-style: none;">
                 <li v-for="(error, index) in errors" :key="index">{{ "- " + error.message }}</li>
               </ul>
             </div>
