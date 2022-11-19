@@ -4,6 +4,7 @@ import router from './router'
 import axios from 'axios'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'
+import 'vue-simple-search-dropdown/dist/vue-simple-search-dropdown.min.js'
 
 const base = axios.create({
   baseURL: 'http://localhost:3000'

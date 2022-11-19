@@ -6,6 +6,9 @@ const careerSchema = new Schema({
   },
   occupation_title: {
     type: String
+  },
+  career_cluster: {
+    type: Array
   }
 }, {
   collection: 'career'

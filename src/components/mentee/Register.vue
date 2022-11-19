@@ -61,30 +61,6 @@
                 <li v-for="(error, index) in errors" :key="index">{{ "- " + error.message }}</li>
               </ul>
             </div>
-            <!-- <div class="row form-group">
-                <div class="col-sm-4 label-column">
-                  <label class="col-form-label" for="dropdown-input-field"
-                    >Dropdown
-                  </label>
-                </div>
-                <div class="col-sm-4 input-column">
-                  <div class="dropdown">
-                    <button
-                      class="btn btn-light dropdown-toggle"
-                      aria-expanded="false"
-                      data-bs-toggle="dropdown"
-                      type="button"
-                    >
-                      Dropdown
-                    </button>
-                    <div class="dropdown-menu">
-                      <a class="dropdown-item" href="#">First Item</a
-                      ><a class="dropdown-item" href="#">Second Item</a
-                      ><a class="dropdown-item" href="#">Third Item</a>
-                    </div>
-                  </div>
-                </div>
-              </div> -->
             <!-- <div class="form-check" style="width: 340.664px">
                 <input
                   class="form-check-input"
@@ -126,7 +102,7 @@ export default {
   },
   methods: {
     validPassword: function (psw) {
-      const pswRegx = new RegExp(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/)
+      const pswRegx = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/
       return pswRegx.test(psw)
     },
     matchPassword: function (psw1, psw2) {
@@ -375,28 +351,6 @@ export default {
   border: 1px solid #dbdbdb;
   border-radius: 2px;
   height: 42px;
-}
-
-.register-form .custom-form .dropdown .dropdown-toggle {
-  background: #fff;
-  border: 1px solid #dbdbdb;
-  box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.08);
-  color: #333;
-  outline: none;
-}
-
-.register-form .custom-form .dropdown ul {
-  background: #fff;
-}
-
-.register-form .custom-form .dropdown ul li a {
-  background: #fff;
-  color: #333;
-  opacity: 0.8;
-}
-
-.register-form .custom-form .dropdown ul li a:hover {
-  opacity: 1;
 }
 
 .register-form .custom-form .submit-button {

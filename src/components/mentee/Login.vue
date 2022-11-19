@@ -1,24 +1,3 @@
-<!-- <template>
-  <div class="row justify-content-center">
-    <div class="col-md-6">
-      <h3 class="text-center">Mentee Login</h3>
-      <form @submit.prevent="login">
-        <div class="form-group">
-          <label>Email</Label>
-          <input type="text" class="form-control" v-model="mentee.email" placeholder="Email" required />
-        </div>
-        <div class="form-group">
-          <label>Password</Label>
-          <input type="password" class="form-control" v-model="mentee.password" placeholder="Password" required />
-        </div>
-        <div class="form-group">
-          <button type="submit" class="btn btn-danger btn-block">Login</button>
-        </div>
-      </form>
-    </div>
-  </div>
-</template>
-<script> -->
 <template>
   <section class="position-relative py-4 py-xl-5 bg-primary-gradient">
     <div class="container">
