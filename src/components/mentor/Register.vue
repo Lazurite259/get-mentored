@@ -169,7 +169,10 @@ export default {
           if (token) {
             localStorage.setItem('mentor-jwt', token)
             EventBus.$emit('mentor-login', true)
-            this.$router.push('/mentor-profile')
+            this.$router.push({
+              name: 'mentor-profile',
+              params: { id: response.data.mentor._id }
+            })
             swal('Success', 'Registration Was successful', 'success')
           } else {
             swal('Error', 'Something Went Wrong', 'error')

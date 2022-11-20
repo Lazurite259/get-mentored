@@ -32,9 +32,7 @@
                     placeholder="Password" required />
                 </div>
                 <div class="mb-3">
-                  <button class="btn btn-primary d-block w-100" type="submit">
-                    Login
-                  </button>
+                  <button class="btn btn-primary d-block w-100" type="submit">Login</button>
                 </div>
                 <!-- <p class="text-muted">Forgot your password?</p> -->
               </form>
@@ -66,7 +64,10 @@ export default {
         if (token) {
           EventBus.$emit('mentor-login', true)
           swal('Success', 'Login Successful', 'success')
-          this.$router.push('/mentor-profile')
+          this.$router.push({
+            name: 'mentor-profile',
+            params: { id: response.data.mentor._id }
+          })
         }
       } catch (err) {
         swal('Error', 'Something Went Wrong', 'error')

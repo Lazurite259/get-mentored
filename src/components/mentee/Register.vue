@@ -130,7 +130,10 @@ export default {
           if (token) {
             localStorage.setItem('mentee-jwt', token)
             EventBus.$emit('mentee-login', true)
-            this.$router.push('/mentee-profile')
+            this.$router.push({
+              name: 'mentee-profile',
+              params: { id: response.data.mentee._id }
+            })
             swal('Success', 'Registration Was successful', 'success')
           } else {
             swal('Error', 'Something Went Wrong', 'error')
