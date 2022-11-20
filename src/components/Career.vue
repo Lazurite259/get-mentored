@@ -5,7 +5,7 @@
         <div class="row mb-2">
           <div class="col-md-8 col-xl-6 text-center mx-auto">
             <h2 class="display-6 fw-bold">
-              Search Industries your are Interested in
+              Search Industries you are Interested in
             </h2>
             <p class="text-muted">
               GetMentored offers tons of news from different&nbsp;
