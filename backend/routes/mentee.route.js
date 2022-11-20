@@ -15,8 +15,8 @@ const Mentee = require('../models/Mentee')
 // })
 app.post('/mentee-register', async (req, res) => {
   try {
-    const isUser = await Mentee.find({ email: req.body.email });
-    console.log(isUser);
+    const isUser = await Mentee.find({ email: req.body.email })
+    console.log(isUser)
     if (isUser.length >= 1) {
       return res.status(409).json({
         message: 'Email already in use'
@@ -46,14 +46,14 @@ app.post('/mentee-login', async (req, res) => {
     const token = await mentee.generateAuthToken()
     res.status(201).json({ mentee, token })
   } catch (error) {
-    res.status(400).json({ error: error })
+    res.status(400).json({ error })
   }
 })
 app.get('/mentee-profile/:id', auth, async (req, res) => {
-  try{
+  try {
     const mentee = await Mentee.findById(req.params.id)
     res.json(mentee)
-  }catch (error){
+  } catch (error) {
     res.status(500).send(error)
   }
 })

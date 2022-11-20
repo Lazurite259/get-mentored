@@ -72,7 +72,7 @@
   </div>
 </template>
 <script>
-import VueJwtDecode from "vue-jwt-decode";
+import VueJwtDecode from 'vue-jwt-decode'
 import Dropdown from 'vue-simple-search-dropdown'
 import swal from 'sweetalert'
 export default {
@@ -92,14 +92,14 @@ export default {
       const careerData = await this.$http.get('/career')
       this.careers = careerData.data
       this.renameDropdownKeys()
-      this.token = localStorage.getItem("mentor-jwt");
-      this.decoded = VueJwtDecode.decode(this.token);
+      this.token = localStorage.getItem('mentor-jwt')
+      this.decoded = VueJwtDecode.decode(this.token)
       const response = await this.$http.get(`/mentor/mentor-profile/${this.decoded._id}`, {
         headers: {
           Authorization: `Bearer ${this.token}`
         }
       })
-      this.mentor = response.data;
+      this.mentor = response.data
       console.log(this.mentor)
       document.getElementsByName('careerDropdown')[0].setAttribute('value', this.mentor.occupation_title)
     } catch (error) {
@@ -121,7 +121,7 @@ export default {
       this.mentor.occupation_title = selection.name
     },
     async update () {
-      try{
+      try {
         const response = await this.$http.put(`/mentor/mentor-update/${this.decoded._id}`, this.mentor)
         console.log(response)
         this.token = response.data.token
@@ -131,13 +131,13 @@ export default {
         } else {
           swal('Error', 'Something went wrong', 'error')
         }
-      } catch(err){
+      } catch (err) {
         const error = err.response
-          if (err.status === 409) {
-            swal('Error', error.data.message, 'error')
-          } else {
-            swal('Error', err.message, 'error')
-          }
+        if (err.status === 409) {
+          swal('Error', error.data.message, 'error')
+        } else {
+          swal('Error', err.message, 'error')
+        }
       }
     }
   }

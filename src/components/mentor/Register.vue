@@ -116,7 +116,7 @@ export default {
       const response = await this.$http.get('/career')
       this.careers = response.data
       this.renameDropdownKeys()
-      document.getElementsByName('careerDropdown')[0].setAttribute('required','required')
+      document.getElementsByName('careerDropdown')[0].setAttribute('required', 'required')
     } catch (error) {
       console.log(error.response)
     }

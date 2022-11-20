@@ -60,7 +60,7 @@
   </div>
 </template>
 <script>
-import VueJwtDecode from "vue-jwt-decode";
+import VueJwtDecode from 'vue-jwt-decode'
 export default {
   data () {
     return {
@@ -69,14 +69,14 @@ export default {
   },
   async created () {
     try {
-      let token = localStorage.getItem("mentee-jwt");
-      let decoded = VueJwtDecode.decode(token);
+      const token = localStorage.getItem('mentee-jwt')
+      const decoded = VueJwtDecode.decode(token)
       const response = await this.$http.get(`/mentee/mentee-profile/${decoded._id}`, {
         headers: {
           Authorization: `Bearer ${token}`
         }
       })
-      this.mentee = response.data;
+      this.mentee = response.data
       console.log(this.mentee)
     } catch (error) {
       console.log(error.response)

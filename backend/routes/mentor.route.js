@@ -15,8 +15,8 @@ const Mentor = require('../models/Mentor')
 // })
 app.post('/mentor-register', async (req, res) => {
   try {
-    const isUser = await Mentor.find({ email: req.body.email });
-    console.log(isUser);
+    const isUser = await Mentor.find({ email: req.body.email })
+    console.log(isUser)
     if (isUser.length >= 1) {
       return res.status(409).json({
         message: 'Email already in use'
@@ -47,20 +47,20 @@ app.post('/mentor-login', async (req, res) => {
     const token = await mentor.generateAuthToken()
     res.status(201).json({ mentor, token })
   } catch (error) {
-    res.status(400).json({ error: error })
+    res.status(400).json({ error })
   }
 })
 app.get('/mentor-profile/:id', auth, async (req, res) => {
-  try{
+  try {
     const mentor = await Mentor.findById(req.params.id)
     res.json(mentor)
-  }catch (error){
+  } catch (error) {
     res.status(500).send(error)
   }
 })
 
 app.put('/mentor-update/:id', async (req, res) => {
-  try{
+  try {
     const mentor = await Mentor.findByIdAndUpdate(req.params.id, {
       first_name: req.body.first_name,
       last_name: req.body.last_name,
@@ -70,11 +70,11 @@ app.put('/mentor-update/:id', async (req, res) => {
       year_of_experience: req.body.year_of_experience,
       office_hour: req.body.office_hour,
       linkedin: req.body.linkedin,
-      introduction: req.body.introduction,
+      introduction: req.body.introduction
     })
     const token = await mentor.generateAuthToken()
     res.status(201).json({ mentor, token })
-  }catch (error){
+  } catch (error) {
     res.status(500).send(error)
   }
 })
