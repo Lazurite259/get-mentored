@@ -171,7 +171,7 @@ export default {
             EventBus.$emit('mentor-login', true)
             this.$router.push({
               name: 'mentor-profile',
-              params: { id: response.data.mentor._id }
+              params: { id: response.data.data._id }
             })
             swal('Success', 'Registration Was successful', 'success')
           } else {

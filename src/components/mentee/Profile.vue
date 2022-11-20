@@ -68,11 +68,19 @@ export default {
       mentee: {}
     }
   },
-  created () {
-    const apiURL = `http://localhost:4000/api/edit-mentee/${this.$route.params.id}`
-    axios.get(apiURL).then((res) => {
-      this.mentee = res.data
-    })
+  // created () {
+  //   const apiURL = `http://localhost:4000/api/edit-mentee/${this.$route.params.id}`
+  //   axios.get(apiURL).then((res) => {
+  //     this.mentee = res.data
+  //   })
+  // },
+  async created () {
+    try {
+      const response = await this.$http.get(`/mentee/mentee-profile/${id}`)
+      this.mentee = response.data
+    } catch (error) {
+      console.log(error.response)
+    }
   },
   methods: {
     handleUpdateForm () {

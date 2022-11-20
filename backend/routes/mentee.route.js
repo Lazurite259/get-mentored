@@ -48,9 +48,26 @@ app.post('/mentee-login', async (req, res) => {
     res.status(400).json({ err })
   }
 })
-app.get('/mentee-profile', auth, async (req, res) => {
-  res.json(req.userData)
+// app.get('/mentee-profile', auth, async (req, res) => {
+//   res.json(req.userData)
+// })
+app.get('/mentee-profile/:id', auth, async (req, res) => {
+  // try{
+  //   const mentor = await Mentor.find({_id:`${req.params.id}`})
+  //   res.json(mentor)
+  // }catch (error){
+  //   res.status(500).send(error)
+  // }
+  Mentor.findById(req.params.id, (error, data) => {
+            if (error) {
+                return next(error)
+            } else {
+                res.json(data)
+            }
+        })
 })
+
+
 
 // menteeRoute.route('/edit-mentee/:id').get((req, res, next) => {
 //     MenteeModel.findById(req.params.id, (error, data) => {

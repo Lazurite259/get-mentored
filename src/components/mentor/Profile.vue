@@ -68,11 +68,20 @@ export default {
       mentor: {}
     }
   },
-  created () {
-    const apiURL = `http://localhost:4000/api/edit-mentor/${this.$route.params.id}`
-    axios.get(apiURL).then((res) => {
-      this.mentor = res.data
-    })
+  // created () {
+  //   const apiURL = `http://localhost:4000/api/edit-mentor/${this.$route.params.id}`
+  //   axios.get(apiURL).then((res) => {
+  //     this.mentor = res.data
+  //   })
+  // },
+  async created () {
+    try {
+      const response = await this.$http.get(`/mentor/mentor-profile/${this.$route.params.id}`)
+      this.mentor = response.data
+      console.log(this.mentor)
+    } catch (error) {
+      console.log(error.response)
+    }
   },
   methods: {
     handleUpdateForm () {

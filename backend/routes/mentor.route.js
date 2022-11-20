@@ -49,8 +49,20 @@ app.post('/mentor-login', async (req, res) => {
     res.status(400).json({ err })
   }
 })
-app.get('/mentor-profile', auth, async (req, res) => {
-  res.json(req.userData)
+app.get('/mentor-profile/:id', auth, async (req, res) => {
+  // try{
+  //   const mentor = await Mentor.find({_id:`${req.params.id}`})
+  //   res.json(mentor)
+  // }catch (error){
+  //   res.status(500).send(error)
+  // }
+  Mentor.findById(req.params.id, (error, data) => {
+            if (error) {
+                return next(error)
+            } else {
+                res.json(data)
+            }
+        })
 })
 
 app.get('/:id', async (req, res, next) => {
@@ -61,6 +73,8 @@ app.get('/:id', async (req, res, next) => {
     res.status(500).send(error)
   }
 })
+
+
 
 // mentorRoute.route('/edit-mentor/:id').get((req, res, next) => {
 //     MentorModel.findById(req.params.id, (error, data) => {
