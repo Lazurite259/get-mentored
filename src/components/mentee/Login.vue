@@ -64,14 +64,15 @@ export default {
         if (token) {
           EventBus.$emit('mentee-login', true)
           swal('Success', 'Login Successful', 'success')
-          this.$router.push({
-            name: 'mentee-profile',
-            params: { id: response.data.mentee._id }
-          })
+          this.$router.push('/mentee-profile')
         }
       } catch (err) {
-        swal('Error', 'Something Went Wrong', 'error')
-        console.log(err.response)
+        const error = err.response
+        if (error.status === 401) {
+          swal('Error', error.data.message, 'error')
+        } else {
+          swal('Error', err.message, 'error')
+        }
       }
     }
   }
