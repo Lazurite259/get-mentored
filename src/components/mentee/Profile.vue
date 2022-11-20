@@ -2,7 +2,7 @@
   <div class="row justify-content-center">
     <div class="col-md-6">
       <h3 class="text-center">Mentee Profile</h3>
-      <form @submit.prevent="handleSubmitForm">
+      <form @submit.prevent="update">
         <div class="form-group">
           <label>First Name</Label>
           <input type="text" class="form-control" v-model="mentee.first_name" required />
@@ -15,12 +15,7 @@
 
         <div class="form-group">
           <label>Email</Label>
-          <input type="text" class="form-control" v-model="mentee.email" required />
-        </div>
-
-        <div class="form-group">
-          <label>Password</Label>
-          <input type="password" class="form-control" v-model="mentee.password" required />
+          <input type="text" class="form-control" v-model="mentee.email" disabled />
         </div>
 
         <div class="form-group">
@@ -49,48 +44,53 @@
         </div>
 
         <div class="form-group">
-          <label>Linkedin</Label>
+          <label>LinkedIn</Label>
           <input type="text" class="form-control" v-model="mentee.linkedin" />
         </div>
 
+        <!-- <div class="form-group">
+          <router-link to="#">Change password</router-link>
+        </div> -->
+
         <div class="form-group">
-          <button class="btn btn-primary btn-block">Save</button>
+          <button class="btn btn-primary btn-block" type="submit">Save</button>
         </div>
       </form>
     </div>
   </div>
 </template>
 <script>
-import axios from 'axios'
+import VueJwtDecode from "vue-jwt-decode";
 export default {
   data () {
     return {
       mentee: {}
     }
   },
-  // created () {
-  //   const apiURL = `http://localhost:4000/api/edit-mentee/${this.$route.params.id}`
-  //   axios.get(apiURL).then((res) => {
-  //     this.mentee = res.data
-  //   })
-  // },
   async created () {
     try {
-      const response = await this.$http.get(`/mentee/mentee-profile/${id}`)
-      this.mentee = response.data
+      let token = localStorage.getItem("mentee-jwt");
+      let decoded = VueJwtDecode.decode(token);
+      const response = await this.$http.get(`/mentee/mentee-profile/${decoded._id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      })
+      this.mentee = response.data;
+      console.log(this.mentee)
     } catch (error) {
       console.log(error.response)
     }
   },
   methods: {
-    handleUpdateForm () {
-      const apiURL = `http://localhost:4000/api/update-mentee/${this.$route.params.id}`
-      axios.put(apiURL, this.mentee).then((res) => {
-        console.log(res)
-        this.$router.push('/view')
-      }).catch(error => {
-        console.log(error)
-      })
+    update () {
+      // const apiURL = `http://localhost:4000/api/update-mentee/${this.$route.params.id}`
+      // axios.put(apiURL, this.mentee).then((res) => {
+      //   console.log(res)
+      //   this.$router.push('/view')
+      // }).catch(error => {
+      //   console.log(error)
+      // })
     }
   }
 }
