@@ -14,6 +14,9 @@
               <router-link class="nav-link pr-3" to="/career">Career Resources</router-link>
             </li>
             <li class="nav-item">
+              <router-link class="nav-link pr-3" to="/mentors">Mentor Resources</router-link>
+            </li>
+            <li class="nav-item">
               <router-link class="nav-link pr-3" to="/mentor-profile" v-if="mentorLoggedIn">Profile</router-link>
             </li>
             <li class="nav-item">
@@ -161,7 +164,7 @@ export default {
 }
 
 .navbar {
-  background-color: #4B0082;
+  background-color: rgb(112, 87, 204);
 }
 
 /* .navbar-nav .nav-link {
@@ -173,5 +176,8 @@ export default {
 
 .navbar .navbar-brand {
   color: #fff;
+}
+.bg-primary-demo {
+  background-color: rgb(112, 87, 204);
 }
 </style>
