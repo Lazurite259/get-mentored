@@ -4,15 +4,14 @@ const auth = require('../auth')
 // model
 const Mentor = require('../models/Mentor')
 // route
-// app.get('/', async (req, res, next) => {
-//   Mentor.find((error, data) => {
-//     if (error) {
-//       return next(error)
-//     } else {
-//       return res.json(data)
-//     }
-//   })
-// })
+app.get('/', async (req, res, next) => {
+  const mentors = await Mentor.find({})
+  try {
+    res.send(mentors)
+  } catch (error) {
+    res.status(500).send(error)
+  }
+})
 app.post('/mentor-register', async (req, res) => {
   try {
     const isUser = await Mentor.find({ email: req.body.email })
@@ -88,19 +87,15 @@ app.get('/:career', async (req, res, next) => {
   }
 })
 
-// // Update
-// mentorRoute.route('/update-mentor/:id').put((req, res, next) => {
-//     MentorModel.findByIdAndUpdate(req.params.id, {
-//         $set: req.body
-//     }, (error, data) => {
-//         if (error) {
-//             return next(error);
-//         } else {
-//             res.json(data)
-//             console.log('Mentor successfully updated!')
-//         }
-//     })
-// })
+app.get('/mentor-detail/:id', async (req, res, next) => {
+  const mentor = await Mentor.findById(req.params.id)
+  try {
+    res.send(mentor)
+  } catch (error) {
+    res.status(500).send(error)
+  }
+})
+
 // // Delete
 // mentorRoute.route('/delete-mentor/:id').delete((req, res, next) => {
 //     MentorModel.findByIdAndRemove(req.params.id, (error, data) => {

@@ -4,13 +4,13 @@
       <div class="container">
         <div class="row mb-2">
           <div class="col-md-8 col-xl-6 text-center mx-auto">
-            <h2 class="display-6 fw-bold">
-              Search Industries you are Interested in
-            </h2>
+            <h1>
+              Search Occupations You Like
+            </h1>
             <p class="text-muted">
-              GetMentored offers tons of news from different&nbsp;
-              industries&nbsp; to help you better understand detail of
-              occupation
+              GetMentored offers tons of abundant
+              career resources&nbsp;to help you better understand the details of
+              occupations
             </p>
           </div>
         </div>
@@ -18,9 +18,6 @@
           <div class="mb-3">
             <input class="form-control" type="text" v-model="searchKey" name="" placeholder="Keyword" />
           </div>
-          <!-- <div class="mb-3">
-            <button class="btn btn-primary ms-2" type="submit">Search</button>
-          </div> -->
         </form>
       </div>
     </section>

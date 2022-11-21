@@ -14,13 +14,16 @@
               <router-link class="nav-link pr-3" to="/career">Career Resources</router-link>
             </li>
             <li class="nav-item">
+              <router-link class="nav-link pr-3" to="/mentors">Mentor Resources</router-link>
+            </li>
+            <li class="nav-item">
               <router-link class="nav-link pr-3" to="/mentor-profile" v-if="mentorLoggedIn">Profile</router-link>
             </li>
             <li class="nav-item">
               <router-link class="nav-link pr-3" to="/mentee-profile" v-if="menteeLoggedIn">Profile</router-link>
             </li>
             <li class="nav-item" v-if="mentorLoggedIn || menteeLoggedIn">
-              <router-link to="/" custom v-slot="{ navigate }">
+              <router-link class="nav-link pr-3" to="/" custom v-slot="{ navigate }" style="cursor: pointer">
                 <span @click="logout" @keypress.enter="navigate" role="link">Logout</span>
               </router-link>
             </li>
@@ -103,7 +106,7 @@
 
 <script>
 import EventBus from './eventbus'
-
+import swal from 'sweetalert'
 export default {
   name: 'App',
   data () {
@@ -126,13 +129,20 @@ export default {
   },
   methods: {
     async logout () {
-      localStorage.removeItem('mentor-jwt')
-      localStorage.removeItem('mentee-jwt')
-      EventBus.$emit('mentor-login', false)
-      EventBus.$emit('mentee-login', false)
-      this.mentorLoggedIn = false
-      this.menteeLoggedIn = false
-      this.$router.push('/')
+      try {
+        localStorage.removeItem('mentor-jwt')
+        localStorage.removeItem('mentee-jwt')
+        EventBus.$emit('mentor-login', false)
+        EventBus.$emit('mentee-login', false)
+        this.mentorLoggedIn = false
+        this.menteeLoggedIn = false
+        if (this.$route.path !== '/') {
+          this.$router.push('/')
+        }
+        swal('Success', 'Logout Successful', 'success')
+      } catch (err) {
+        swal('Error', err.message, 'error')
+      }
     },
     checkMentorLogIn () {
       if (localStorage.getItem('mentor-jwt')) {
@@ -161,7 +171,7 @@ export default {
 }
 
 .navbar {
-  background-color: #4B0082;
+  background-color: rgb(112, 87, 204);
 }
 
 /* .navbar-nav .nav-link {
@@ -173,5 +183,9 @@ export default {
 
 .navbar .navbar-brand {
   color: #fff;
+}
+
+.bg-primary-demo {
+  background-color: rgb(112, 87, 204);
 }
 </style>

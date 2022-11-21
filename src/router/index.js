@@ -52,6 +52,16 @@ const routes = [
     path: '/career/:id',
     name: 'career-detail',
     component: () => import('../components/CareerDetail')
+  },
+  {
+    path: '/mentors',
+    name: 'mentors',
+    component: () => import('../components/mentor/MentorSources')
+  },
+  {
+    path: '/mentor/:name',
+    name: 'mentor-detail',
+    component: () => import('../components/mentor/MentorDetail')
   }
 ]
 const router = new VueRouter({
