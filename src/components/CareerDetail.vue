@@ -21,22 +21,25 @@
         <div class="col mt-4">
           <h2 style="margin-bottom: 5px">Mentors</h2>
           <hr style="margin-top: 0px" />
-          <div class="col-md-8">
+          <div class="col mt-4">
             <table class="table table-striped table-hover">
               <thead class="thead-dark">
                 <tr>
                   <th>Name</th>
+                  <th>Location</th>
                   <th>Company</th>
+                  <th>YOE</th>
                   <th>Connect</th>
                 </tr>
               </thead>
               <tbody>
                 <tr v-for="mentor in mentorList" :key="mentor._id">
                   <td>{{ mentor.first_name }} {{ mentor.last_name }}</td>
+                  <td>{{ mentor.location }}</td>
                   <td>{{ mentor.company_name }}</td>
+                  <td>{{ mentor.year_of_experience }}</td>
                   <td>
-                    <router-link
-                      :to="{ name: 'mentor-detail', params: { id: mentor._id, name: `${mentor.first_name} ${mentor.last_name}` } }">
+                    <router-link :to="{ name: 'mentor-detail', params: { id: mentor._id } }">
                       See Profile</router-link>
                   </td>
                 </tr>

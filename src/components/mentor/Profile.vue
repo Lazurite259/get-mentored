@@ -41,8 +41,14 @@
         </div>
 
         <div class="form-group">
+          <label>Location</Label>
+          <input type="text" class="form-control" v-model="mentor.location" placeholder="City, State, Country"
+            required />
+        </div>
+
+        <div class="form-group">
           <label>Year Of Experience</Label>
-          <input type="text" class="form-control" v-model="mentor.year_of_experience" />
+          <input type="number" class="form-control" v-model="mentor.year_of_experience" />
         </div>
 
         <div class="form-group">
@@ -52,7 +58,7 @@
 
         <div class="form-group">
           <label>LinkedIn</Label>
-          <input type="text" class="form-control" v-model="mentor.linkedin" />
+          <input type="url" class="form-control" v-model="mentor.linkedin" />
         </div>
 
         <div class="form-group">
@@ -102,11 +108,23 @@ export default {
       this.mentor = response.data
       console.log(this.mentor)
       document.getElementsByName('careerDropdown')[0].setAttribute('value', this.mentor.occupation_title)
+      if (this.mentor.birth_date !== undefined) {
+        this.setDate(this.mentor.birth_date)
+      }
     } catch (error) {
       console.log(error.response)
     }
   },
   methods: {
+    setDate (birthDate) {
+      const date = new Date(birthDate)
+      const year = date.getUTCFullYear()
+      let month = date.getUTCMonth() + 1
+      month = month <= 9 ? '0' + month : month
+      let day = date.getUTCDate()
+      day = day <= 9 ? '0' + day : day
+      this.mentor.birth_date = year + '-' + month + '-' + day
+    },
     renameDropdownKeys () {
       this.careers = this.careers.map(function (obj) {
         obj.name = obj.occupation_title // Assign new key
@@ -143,7 +161,7 @@ export default {
   }
 }
 </script>
-<style>
+<style scoped>
 ::v-deep .dropdownlist .dropdown-input {
   background: #fff;
   border: 1px solid #dbdbdb;
@@ -165,5 +183,9 @@ export default {
   border: 1px solid #dbdbdb;
   box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.08);
   overflow: scroll;
+}
+
+::v-deep .dropdownlist .dropdown-content .dropdown-item {
+  font-size: 1em;
 }
 </style>

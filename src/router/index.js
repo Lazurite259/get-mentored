@@ -59,7 +59,7 @@ const routes = [
     component: () => import('../components/mentor/MentorSources')
   },
   {
-    path: '/mentor/:name',
+    path: '/mentor/:id',
     name: 'mentor-detail',
     component: () => import('../components/mentor/MentorDetail')
   }

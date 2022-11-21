@@ -32,7 +32,7 @@
                 {{ mentor.occupation_title }}
               </p>
               <p class="card-text">
-                <span style="color: rgb(51, 51, 51)">{{ mentor.introduction }}</span><br />
+                <span style="color: rgb(51, 51, 51)">{{ getIntro(mentor) }}</span><br />
               </p>
               <div class="d-flex">
                 <img class="rounded-circle flex-shrink-0 me-3 fit-cover" width="50" height="50"
@@ -42,8 +42,8 @@
                   <p class="text-muted mb-0">{{ mentor.company_name }}</p>
                 </div>
                 <router-link class="btn btn-outline-dark btn-sm ms-auto"
-                  :to="{ name: 'mentor-detail', params: { id: mentor._id, name: `${mentor.first_name} ${mentor.last_name}` } }">
-                  <i class="fa fa-plus"></i>&nbsp;Connect
+                  :to="{ name: 'mentor-detail', params: { id: mentor._id } }">
+                  <i class="fa fa-plus"></i>&nbsp;Connect&nbsp;
                 </router-link>
               </div>
             </div>
@@ -190,6 +190,16 @@ export default {
     }
   },
   methods: {
+    getIntro (mentor) {
+      console.log(mentor)
+      if (mentor.introduction === undefined) {
+        return ''
+      }
+      if (mentor.introduction.length > 100) {
+        return mentor.introduction.slice(0, 100) + '...'
+      }
+      return mentor.introduction
+    },
     initiatePage () {
       this.page = 0
     },
@@ -229,6 +239,21 @@ export default {
 
 </script>
 <style scoped>
+.card {
+  background-color: #ffffff;
+}
+
+.card-body {
+  flex: 1 1 auto;
+  padding: var(--bs-card-spacer-y) var(--bs-card-spacer-x);
+  color: var(--bs-card-color);
+}
+
+.btn.btn-outline-dark.btn-sm {
+  display: flex;
+  align-items: center;
+}
+
 .filtr-item {
   padding-top: 30px;
 }

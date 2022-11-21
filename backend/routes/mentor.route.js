@@ -66,6 +66,7 @@ app.put('/mentor-update/:id', async (req, res) => {
       occupation_title: req.body.occupation_title,
       birth_date: req.body.birth_date,
       company_name: req.body.company_name,
+      location: req.body.location,
       year_of_experience: req.body.year_of_experience,
       office_hour: req.body.office_hour,
       linkedin: req.body.linkedin,
