@@ -1,186 +1,121 @@
 <template>
-
-<section class="py-5">
-      <!-- Start: Cards container -->
-      <div class="container">
-        <!-- Start: Title -->
-        <h1 class="text-center mb-4">Meet your favorite mentors</h1>
-        <p class="text-muted text-center">
-          GetMentored offers tons of abundant resources to help you find the right mentor for you
-        </p>
-        <!-- End: Title -->
-        <!-- Start: filter controls -->
-        <div class="filtr-controls text-center lead mb-3">
-          <span
-            class="active d-inline-block mx-3 py-1 position-relative"
-            data-filter="all" type="button"
-            >All </span
-           ><span
-            class="d-inline-block mx-3 py-1 position-relative"
-            data-filter="1"
-            >Computer Science</span
-          ><span
-            class="d-inline-block mx-3 py-1 position-relative"
-            data-filter="2"
-            >Mechanics</span
-          ><span
-            class="d-inline-block mx-3 py-1 position-relative"
-            data-filter="3"
-            >Designer
-          </span>
-          <span
-            class="d-inline-block mx-3 py-1 position-relative"
-            data-filter="4"
-            >Psychologist
-          </span>
-          <span
-            class="d-inline-block mx-3 py-1 position-relative"
-            data-filter="5"
-            >Doctor
-          </span>
-          <span
-            class="d-inline-block mx-3 py-1 position-relative"
-            data-filter="6"
-            >Lawyer
-          </span>
-        </div>
-        <!-- End: filter controls -->
-        <!-- Start: Cards -->
-        <div class="row filtr-container">
-          <!-- Start: Card column -->
-          <div class="col-md-6 col-lg-4 filtr-item" data-category="1">
-            <div class="card shadow">
-              <img
-                class="card-img-top w-100 d-block fit-cover"
-                style="height: 200px"
-                src="assets/img/th-02.jpg"
-              />
-              <div class="card-body p-4">
-                <h4 class="card-title">Jessica Jams</h4>
-                <p style="color: #212121; font-weight: bold">
-                  Software Enginner
-                </p>
-                <p class="card-text">
-                  <span style="color: rgb(51, 51, 51)"
-                    >Bachelor’s degree in Information Technology. Help in
-                    computers, networking, and programming.</span
-                  ><br />
-                </p>
-                <div class="d-flex">
-                  <img
-                    class="rounded-circle flex-shrink-0 me-3 fit-cover"
-                    width="50"
-                    height="50"
-                    src="https://cdn.bootstrapstudio.io/placeholders/1400x800.png"
-                  />
-                  <div>
-                    <p class="fw-bold mb-0">Jessica Jams</p>
-                    <p class="text-muted mb-0">ByteDance Inc</p>
-                  </div>
-                  <button
-                    class="btn btn-outline-dark btn-sm ms-auto"
-                    type="button"
-                  >
-                    <i class="fa fa-plus"></i>&nbsp;Connect
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- End: Card column -->
-          <!-- Start: Card column -->
-          <div class="col-md-6 col-lg-4 filtr-item" data-category="2">
-            <div class="card shadow">
-              <img
-                class="card-img-top w-100 d-block fit-cover"
-                style="height: 200px"
-                src="assets/img/th-03.jpg"
-              />
-              <div class="card-body p-4">
-                <h4 class="card-title">Ryan Chen</h4>
-                <p style="color: #212121; font-weight: bold">
-                  Mechanical Engineer
-                </p>
-                <p class="card-text">
-                  <span style="color: rgb(51, 51, 51)"
-                    >16 years’ experience with domestic, foreign, and luxury
-                    cars and heavy equipment.</span
-                  ><br />
-                </p>
-                <div class="d-flex">
-                  <img
-                    class="rounded-circle flex-shrink-0 me-3 fit-cover"
-                    width="50"
-                    height="50"
-                    src="https://cdn.bootstrapstudio.io/placeholders/1400x800.png"
-                  />
-                  <div>
-                    <p class="fw-bold mb-0">Ryan Chen</p>
-                    <p class="text-muted mb-0">Erat netus</p>
-                  </div>
-                  <button
-                    class="btn btn-outline-dark btn-sm ms-auto"
-                    type="button"
-                  >
-                    <i class="fa fa-plus"></i>&nbsp;Connect
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- End: Card column -->
-          <!-- Start: Card column -->
-          <div class="col-md-6 col-lg-4 filtr-item" data-category="3">
-            <div class="card shadow">
-              <img
-                class="card-img-top w-100 d-block fit-cover"
-                style="height: 200px"
-                src="@/assets/img/th-06.jpg"
-              />
-              <div class="card-body p-4">
-                <h4 class="card-title">John Smith</h4>
-                <p style="color: #212121; font-weight: bold">
-                  Interior Designer
-                </p>
-                <p class="card-text">
-                  <span style="color: rgb(51, 51, 51)"
-                    >Currently working in IKEA with 10 year's experience in the
-                    design industry.</span
-                  ><br />
-                </p>
-                <div class="d-flex">
-                  <img
-                    class="rounded-circle flex-shrink-0 me-3 fit-cover"
-                    width="50"
-                    height="50"
-                    src="https://cdn.bootstrapstudio.io/placeholders/1400x800.png"
-                  />
-                  <div>
-                    <p class="fw-bold mb-0">John Smith</p>
-                    <p class="text-muted mb-0">Erat netus</p>
-                  </div>
-                  <button
-                    class="btn btn-outline-dark btn-sm ms-auto"
-                    type="button"
-                  >
-                    <i class="fa fa-plus"></i>&nbsp;Connect
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- End: Card column -->
-        </div>
-        <!-- End: Cards -->
+  <section class="py-5">
+    <!-- Start: Cards container -->
+    <div class="container">
+      <!-- Start: Title -->
+      <h1 class="text-center mb-4">Meet your favorite mentors</h1>
+      <p class="text-muted text-center">
+        GetMentored offers tons of abundant resources to help you find the right mentor for you
+      </p>
+      <!-- End: Title -->
+      <!-- Start: filter controls -->
+      <div class="filtr-controls text-center lead mb-3">
+        <span class="active d-inline-block mx-3 py-1 position-relative" data-filter="all" type="button">All </span><span
+          class="d-inline-block mx-3 py-1 position-relative" data-filter="1">Computer Science</span><span
+          class="d-inline-block mx-3 py-1 position-relative" data-filter="2">Mechanics</span><span
+          class="d-inline-block mx-3 py-1 position-relative" data-filter="3">Designer
+        </span>
+        <span class="d-inline-block mx-3 py-1 position-relative" data-filter="4">Psychologist
+        </span>
+        <span class="d-inline-block mx-3 py-1 position-relative" data-filter="5">Doctor
+        </span>
+        <span class="d-inline-block mx-3 py-1 position-relative" data-filter="6">Lawyer
+        </span>
       </div>
-      <!-- End: Cards container -->
-    </section>
-
-
+      <!-- End: filter controls -->
+      <!-- Start: Cards -->
+      <div class="row filtr-container">
+        <!-- Start: Card column -->
+        <div class="col-md-6 col-lg-4 filtr-item" data-category="1">
+          <div class="card shadow">
+            <img class="card-img-top w-100 d-block fit-cover" style="height: 200px" src="@/assets/img/th-02.jpg" />
+            <div class="card-body p-4">
+              <h4 class="card-title">Jessica Jams</h4>
+              <p style="color: #212121; font-weight: bold">
+                Software Enginner
+              </p>
+              <p class="card-text">
+                <span style="color: rgb(51, 51, 51)">Bachelor’s degree in Information Technology. Help in
+                  computers, networking, and programming.</span><br />
+              </p>
+              <div class="d-flex">
+                <img class="rounded-circle flex-shrink-0 me-3 fit-cover" width="50" height="50"
+                  src="https://cdn.bootstrapstudio.io/placeholders/1400x800.png" />
+                <div>
+                  <p class="fw-bold mb-0">Jessica Jams</p>
+                  <p class="text-muted mb-0">ByteDance Inc</p>
+                </div>
+                <button class="btn btn-outline-dark btn-sm ms-auto" type="button">
+                  <i class="fa fa-plus"></i>&nbsp;Connect
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- End: Card column -->
+        <!-- Start: Card column -->
+        <div class="col-md-6 col-lg-4 filtr-item" data-category="2">
+          <div class="card shadow">
+            <img class="card-img-top w-100 d-block fit-cover" style="height: 200px" src="@/assets/img/th-03.jpg" />
+            <div class="card-body p-4">
+              <h4 class="card-title">Ryan Chen</h4>
+              <p style="color: #212121; font-weight: bold">
+                Mechanical Engineer
+              </p>
+              <p class="card-text">
+                <span style="color: rgb(51, 51, 51)">16 years’ experience with domestic, foreign, and luxury
+                  cars and heavy equipment.</span><br />
+              </p>
+              <div class="d-flex">
+                <img class="rounded-circle flex-shrink-0 me-3 fit-cover" width="50" height="50"
+                  src="https://cdn.bootstrapstudio.io/placeholders/1400x800.png" />
+                <div>
+                  <p class="fw-bold mb-0">Ryan Chen</p>
+                  <p class="text-muted mb-0">Erat netus</p>
+                </div>
+                <button class="btn btn-outline-dark btn-sm ms-auto" type="button">
+                  <i class="fa fa-plus"></i>&nbsp;Connect
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- End: Card column -->
+        <!-- Start: Card column -->
+        <div class="col-md-6 col-lg-4 filtr-item" data-category="3">
+          <div class="card shadow">
+            <img class="card-img-top w-100 d-block fit-cover" style="height: 200px" src="@/assets/img/th-06.jpg" />
+            <div class="card-body p-4">
+              <h4 class="card-title">John Smith</h4>
+              <p style="color: #212121; font-weight: bold">
+                Interior Designer
+              </p>
+              <p class="card-text">
+                <span style="color: rgb(51, 51, 51)">Currently working in IKEA with 10 year's experience in the
+                  design industry.</span><br />
+              </p>
+              <div class="d-flex">
+                <img class="rounded-circle flex-shrink-0 me-3 fit-cover" width="50" height="50"
+                  src="https://cdn.bootstrapstudio.io/placeholders/1400x800.png" />
+                <div>
+                  <p class="fw-bold mb-0">John Smith</p>
+                  <p class="text-muted mb-0">Erat netus</p>
+                </div>
+                <button class="btn btn-outline-dark btn-sm ms-auto" type="button">
+                  <i class="fa fa-plus"></i>&nbsp;Connect
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- End: Card column -->
+      </div>
+      <!-- End: Cards -->
+    </div>
+    <!-- End: Cards container -->
+  </section>
 </template>
 <script>
-import axios from 'axios'
-
 export default {
   data () {
     return {
@@ -240,6 +175,5 @@ export default {
   animation: pulsate 1s ease-out infinite;
 }
 
-@keyframes pulsate {
-}
+@keyframes pulsate {}
 </style>
