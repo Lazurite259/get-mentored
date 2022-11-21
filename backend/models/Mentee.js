@@ -24,6 +24,9 @@ const menteeSchema = new Schema({
   work_experience: {
     type: Boolean
   },
+  year_of_experience: {
+    type: Number
+  },
   skills: {
     type: Array
   },
