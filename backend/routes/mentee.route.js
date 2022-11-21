@@ -13,6 +13,7 @@ const Mentee = require('../models/Mentee')
 //     }
 //   })
 // })
+// Register
 app.post('/mentee-register', async (req, res) => {
   try {
     const isUser = await Mentee.find({ email: req.body.email })
@@ -35,6 +36,7 @@ app.post('/mentee-register', async (req, res) => {
     res.status(400).json({ err })
   }
 })
+// Login
 app.post('/mentee-login', async (req, res) => {
   try {
     const email = req.body.email
@@ -49,6 +51,7 @@ app.post('/mentee-login', async (req, res) => {
     res.status(400).json({ error })
   }
 })
+// Get profile
 app.get('/mentee-profile/:id', auth, async (req, res) => {
   try {
     const mentee = await Mentee.findById(req.params.id)

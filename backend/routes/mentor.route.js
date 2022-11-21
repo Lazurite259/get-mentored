@@ -12,6 +12,7 @@ app.get('/', async (req, res, next) => {
     res.status(500).send(error)
   }
 })
+// Register
 app.post('/mentor-register', async (req, res) => {
   try {
     const isUser = await Mentor.find({ email: req.body.email })
@@ -35,6 +36,7 @@ app.post('/mentor-register', async (req, res) => {
     res.status(400).json({ err })
   }
 })
+// Login
 app.post('/mentor-login', async (req, res) => {
   try {
     const email = req.body.email
@@ -49,6 +51,7 @@ app.post('/mentor-login', async (req, res) => {
     res.status(400).json({ error })
   }
 })
+// Get profile
 app.get('/mentor-profile/:id', auth, async (req, res) => {
   try {
     const mentor = await Mentor.findById(req.params.id)
@@ -57,7 +60,7 @@ app.get('/mentor-profile/:id', auth, async (req, res) => {
     res.status(500).send(error)
   }
 })
-
+// Update profile
 app.put('/mentor-update/:id', async (req, res) => {
   try {
     const mentor = await Mentor.findByIdAndUpdate(req.params.id, {
@@ -78,7 +81,7 @@ app.put('/mentor-update/:id', async (req, res) => {
     res.status(500).send(error)
   }
 })
-
+// Get mentors by career
 app.get('/:career', async (req, res, next) => {
   const mentors = await Mentor.find({ occupation_title: `${req.params.career}` })
   try {
@@ -87,7 +90,7 @@ app.get('/:career', async (req, res, next) => {
     res.status(500).send(error)
   }
 })
-
+// Get mentor detail
 app.get('/mentor-detail/:id', async (req, res, next) => {
   const mentor = await Mentor.findById(req.params.id)
   try {
