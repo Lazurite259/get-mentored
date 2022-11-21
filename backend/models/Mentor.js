@@ -28,7 +28,7 @@ const mentorSchema = new Schema({
     type: String
   },
   year_of_experience: {
-    type: String
+    type: Number
   },
   office_hour: {
     type: Array
