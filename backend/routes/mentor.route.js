@@ -5,13 +5,12 @@ const auth = require('../auth')
 const Mentor = require('../models/Mentor')
 // route
 app.get('/', async (req, res, next) => {
-  Mentor.find((error, data) => {
-    if (error) {
-      return next(error)
-    } else {
-      return res.json(data)
-    }
-  })
+  const mentors = await Mentor.find({})
+  try {
+    res.send(mentors)
+  } catch (error) {
+    res.status(500).send(error)
+  }
 })
 app.post('/mentor-register', async (req, res) => {
   try {
@@ -53,10 +52,19 @@ app.get('/mentor-profile', auth, async (req, res) => {
   res.json(req.userData)
 })
 
-app.get('/:id', async (req, res, next) => {
-  const mentors = await Mentor.find({ occupation_title: `${req.params.id}` })
+app.get('/:career', async (req, res, next) => {
+  const mentors = await Mentor.find({ occupation_title: `${req.params.career}` })
   try {
     res.send(mentors)
+  } catch (error) {
+    res.status(500).send(error)
+  }
+})
+
+app.get('/mentor-detail/:id', async (req, res, next) => {
+  const mentor = await Mentor.findById(req.params.id)
+  try {
+    res.send(mentor)
   } catch (error) {
     res.status(500).send(error)
   }

@@ -24,6 +24,9 @@ const mentorSchema = new Schema({
   company_name: {
     type: String
   },
+  location: {
+    type: String
+  },
   year_of_experience: {
     type: String
   },

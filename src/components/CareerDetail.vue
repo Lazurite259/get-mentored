@@ -74,16 +74,18 @@
               <tr>
                 <th>Name</th>
                 <th>Company</th>
-                <!-- <th>Connect</th> -->
+                <th>Connect</th>
               </tr>
             </thead>
             <tbody>
               <tr v-for="mentor in mentorList" :key="mentor._id">
                 <td>{{ mentor.first_name }} {{ mentor.last_name }}</td>
                 <td>{{ mentor.company_name }}</td>
-                <!-- <td>
-                    <router-link :to="{ name: 'mentor-detail', params: { id: mentor._id } }">See Profile</router-link>
-                  </td> -->
+                <td>
+                  <router-link
+                    :to="{ name: 'mentor-detail', params: { id: mentor._id, name: `${mentor.first_name} ${mentor.last_name}` } }">
+                    See Profile</router-link>
+                </td>
               </tr>
             </tbody>
           </table>
@@ -163,10 +165,10 @@ export default {
         this.getMentors(this.career.OnetTitle)
       })
     },
-    async getMentors (id) {
+    async getMentors (career) {
       this.initiatePage()
       try {
-        const response = await this.$http.get(`/mentor/${id}`)
+        const response = await this.$http.get(`/mentor/${career}`)
         this.mentors = response.data
       } catch (error) {
         console.log(error.response)
