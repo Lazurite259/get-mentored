@@ -1,6 +1,6 @@
 <template>
-  <div class="row justify-content-center">
-    <div style="background: #7057cc">
+  <div>
+    <div class="bg-primary-demo">
       <!-- Start: Hero Clean Reverse -->
       <div class="container py-4 py-xl-5">
         <div class="row gy-4 gy-md-0">
@@ -36,23 +36,13 @@
       </div>
       <!-- End: Hero Clean Reverse -->
     </div>
-    <div class="bg-primary-gradient" style="height: 420px">
-      <div class="container gy-4 gy-md-0">
-        <div class="col-md-6">
+    <div class="bg-primary-gradient" style="height: 500px">
+      <div class="container">
           <div class="row">
-            <div class="col-md-6">
-              <div
-                class="card-body py-lg-5"
-                style="
-                  width: 315px;
-                  padding-right: 33px;
-                  background: rgba(255, 255, 255, 0.1);
-                  border-radius: 25px;
-                  padding-left: 33px;
-                "
-              >
+            <div class="col-md-auto">
+              <div class="card-body py-lg-5 card-frame">
                 <div>
-                  <h2
+                  <h2 class="font-color"
                     style="
                       margin-bottom: 60px;
                       color: var(--bs-white);
@@ -64,26 +54,17 @@
                   <router-link
                     to="/mentee-register"
                     tag="button"
-                    class="btn btn-outline-primary"
-                    style="border-radius: 20px; color: #fde69a"
+                    class="btn btn-outline-primary btn-lg"
+                    style="border-radius: 20px"
                     >Become a Mentee</router-link
                   >
                 </div>
               </div>
             </div>
-            <div class="col-md-6">
-              <div
-                class="card-body py-lg-5"
-                style="
-                  width: 315px;
-                  padding-right: 33px;
-                  background: rgba(255, 255, 255, 0.1);
-                  border-radius: 25px;
-                  padding-left: 33px;
-                "
-              >
+            <div class="col-md-auto">
+              <div class="card-body py-lg-5 card-frame">
                 <div>
-                  <h2
+                  <h2 class="font-color"
                     style="
                       margin-bottom: 60px;
                       color: var(--bs-white);
@@ -95,15 +76,14 @@
                   <router-link
                     to="/mentor-register"
                     tag="button"
-                    class="btn btn-outline-primary"
-                    style="border-radius: 20px; color: #fde69a"
-                    >Become a Mentor</router-link
-                  >
+                    class="btn btn-outline-primary btn-lg"
+                    style="border-radius: 20px">
+                    Become a Mentor
+                    </router-link>
                 </div>
               </div>
             </div>
           </div>
-        </div>
       </div>
     </div>
     <!-- Start: Hero2 -->
@@ -127,7 +107,7 @@
           <div class="col">
             <div class="row">
               <div class="col-md-8 offset-md-2 my-3">
-                <div class="card mx-md-5" style="border-radius: 35px">
+                <div class="card mx-sm-3" style="border-radius: 35px">
                   <div class="card-body px-4 py-5 px-md-5">
                     <div>
                       <h4 class="fw-bold">Connect</h4>
@@ -153,7 +133,7 @@
             </div>
             <div class="row">
               <div class="col-md-8 offset-md-2 my-3">
-                <div class="card mx-md-5" style="border-radius: 35px">
+                <div class="card mx-sm-3" style="border-radius: 35px">
                   <div class="card-body px-4 py-5 px-md-5">
                     <div>
                       <h4 class="fw-bold">Career Search</h4>
@@ -180,7 +160,7 @@
             </div>
             <div class="row">
               <div class="col-md-8 offset-md-2 my-3">
-                <div class="card mx-md-5" style="border-radius: 35px">
+                <div class="card mx-sm-3" style="border-radius: 35px">
                   <div class="card-body px-4 py-5 px-md-5">
                     <div>
                       <h4 class="fw-bold">Connect With Peers</h4>
@@ -209,6 +189,7 @@
       <!-- End: Features Image -->
     </div>
     <!-- End: Hero2 -->
+
     <!-- Start: Metors Cards -->
     <div class="container py-4 py-xl-5">
       <div class="row mb-5">
@@ -222,7 +203,7 @@
           </p>
         </div>
       </div>
-      <div class="row gy-4 row-cols-1 row-cols-md-2 row-cols-xl-3">
+      <div class="row gy-4 row-cols-1 row-cols-sm-2 row-cols-xl-3">
         <div class="col">
           <div class="card shadow">
             <img
@@ -337,8 +318,11 @@
           </div>
         </div>
       </div>
+
     </div>
     <!-- End: Mentors Cards -->
+
+    <!-- Start: Mentees Card -->
     <div class="container py-4 py-xl-5">
       <div class="row mb-5">
         <div class="col-md-8 col-xl-6 text-center mx-auto">
@@ -467,7 +451,7 @@ export default {
 }
 
 .navbar {
-  background-color: rgba(112, 87, 204, 1);
+  background-color: rgba(112, 87, 204);
 }
 
 .bg-primary-demo {
@@ -507,6 +491,13 @@ export default {
   flex: 1 1 auto;
   padding: var(--bs-card-spacer-y) var(--bs-card-spacer-x);
   color: var(--bs-card-color);
+}
+.card-frame {
+  width: 315px;
+  padding-right: 33px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 25px;
+  padding-left: 33px;
 }
 
 .bg-services {

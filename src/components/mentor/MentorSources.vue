@@ -1,114 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
-    />
-    <title>GetMentored</title>
-    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="../css/Poppins.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="../css/Filterable-Cards.css"
-    />
-    <link rel="stylesheet" href="../css/Navbar.css" />
-    <link rel="stylesheet" href="../css/styles.css" />
-  </head>
+<template>
 
-  <body>
-    <!-- Start: Navbar With Button -->
-    <nav class="navbar navbar-light navbar-expand-md py-3">
-      <div class="container">
-        <a class="navbar-brand d-flex align-items-center" href="#"
-          ><span style="font-weight: bold; color: var(--bs-white)"
-            >GetMentored</span
-          ></a
-        ><button
-          data-bs-toggle="collapse"
-          class="navbar-toggler"
-          data-bs-target="#navcol-1"
-        >
-          <span class="visually-hidden">Toggle navigation</span
-          ><span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navcol-1">
-          <ul class="navbar-nav me-auto">
-            <li class="nav-item">
-              <a class="nav-link active" href="#">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Career Resource</a>
-            </li>
-            <li class="nav-item"><a class="nav-link" href="#">FAQ</a></li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Contact us</a>
-            </li>
-            <li class="nav-item dropdown">
-              <a
-                class="dropdown-toggle nav-link"
-                aria-expanded="false"
-                data-bs-toggle="dropdown"
-                href="#"
-                >Dropdown
-              </a>
-              <div class="dropdown-menu">
-                <a class="dropdown-item" href="#">First Item</a
-                ><a class="dropdown-item" href="#">Second Item</a
-                ><a class="dropdown-item" href="#">Third Item</a>
-              </div>
-            </li>
-          </ul>
-          <button
-            class="btn btn-primary"
-            type="button"
-            style="
-              margin-right: 20px;
-              width: 100px;
-              height: 45px;
-              border-radius: 20px;
-              color: var(--bs-black);
-              background: #ffe492;
-              border-color: #7057cc;
-            "
-          >
-            Login</button
-          ><button
-            class="btn btn-primary"
-            type="button"
-            style="
-              width: 100px;
-              height: 45px;
-              border-radius: 20px;
-              background: var(--bs-black);
-              border-color: #7057cc;
-            "
-          >
-            Sign-up
-          </button>
-        </div>
-      </div>
-    </nav>
-    <!-- End: Navbar With Button -->
-    <!-- Start: ♣ Filterable Cards ♣ -->
-    <section class="py-5">
+<section class="py-5">
       <!-- Start: Cards container -->
       <div class="container">
         <!-- Start: Title -->
         <h1 class="text-center mb-4">Meet your favorite mentors</h1>
+        <p class="text-muted text-center">
+          GetMentored offers tons of abundant resources to help you find the right mentor for you
+        </p>
         <!-- End: Title -->
         <!-- Start: filter controls -->
         <div class="filtr-controls text-center lead mb-3">
           <span
             class="active d-inline-block mx-3 py-1 position-relative"
-            data-filter="all"
+            data-filter="all" type="button"
             >All </span
-          ><span
+           ><span
             class="d-inline-block mx-3 py-1 position-relative"
             data-filter="1"
             >Computer Science</span
@@ -228,7 +135,7 @@
               <img
                 class="card-img-top w-100 d-block fit-cover"
                 style="height: 200px"
-                src="assets/img/th-06.jpg"
+                src="@/assets/img/th-06.jpg"
               />
               <div class="card-body p-4">
                 <h4 class="card-title">John Smith</h4>
@@ -268,9 +175,71 @@
       </div>
       <!-- End: Cards container -->
     </section>
-    <!-- End: ♣ Filterable Cards ♣ -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="../js/Filterable-Cards.js"></script>
-  </body>
-</html>
+
+
+</template>
+<script>
+import axios from 'axios'
+
+export default {
+  data () {
+    return {
+      mentor: {}
+    }
+  },
+  created () {
+  },
+  mounted () {
+
+  },
+  methods: {
+
+  }
+}
+
+</script>
+<style scoped>
+.filtr-item {
+  padding-top: 30px;
+}
+
+.filtr-controls span {
+  cursor: pointer;
+}
+
+.filtr-controls span:after {
+  content: ' ';
+  width: 0;
+  height: 1px;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  background: transparent;
+  -webkit-transition: all .6s ease;
+  transition: all .6s ease;
+}
+
+.filtr-controls span.active:after {
+  width: 100%;
+  left: 0;
+  background: #000;
+}
+
+.filtr-loading {
+  border: 5px solid #333;
+  position: relative;
+  border-radius: 40px;
+  height: 40px;
+  left: 50%;
+  margin: 80px 0;
+  opacity: 0;
+  top: 0;
+  width: 40px;
+  z-index: 2;
+  -webkit-animation: pulsate 1s ease-out infinite;
+  animation: pulsate 1s ease-out infinite;
+}
+
+@keyframes pulsate {
+}
+</style>
