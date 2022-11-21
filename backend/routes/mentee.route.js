@@ -60,7 +60,26 @@ app.get('/mentee-profile/:id', auth, async (req, res) => {
     res.status(500).send(error)
   }
 })
-
+// Update profile
+app.put('/mentee-update/:id', async (req, res) => {
+  try {
+    const mentee = await Mentee.findByIdAndUpdate(req.params.id, {
+      first_name: req.body.first_name,
+      last_name: req.body.last_name,
+      occupation_title: req.body.occupation_title,
+      birth_date: req.body.birth_date,
+      eudcation_level: req.body.eudcation_level,
+      year_of_experience: req.body.year_of_experience,
+      skills: req.body.skills,
+      interested_industry:req.body.interested_industry,
+      linkedin: req.body.linkedin,
+    })
+    const token = await mentee.generateAuthToken()
+    res.status(201).json({ mentee, token })
+  } catch (error) {
+    res.status(500).send(error)
+  }
+})
 // // Update
 // menteeRoute.route('/update-mentee/:id').put((req, res, next) => {
 //     MenteeModel.findByIdAndUpdate(req.params.id, {
