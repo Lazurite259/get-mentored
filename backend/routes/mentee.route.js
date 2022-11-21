@@ -4,23 +4,24 @@ const auth = require('../auth')
 // model
 const Mentee = require('../models/Mentee')
 // route
-app.get('/', async (req, res, next) => {
-  Mentee.find((error, data) => {
-    if (error) {
-      return next(error)
-    } else {
-      return res.json(data)
-    }
-  })
-})
+// app.get('/', async (req, res, next) => {
+//   Mentee.find((error, data) => {
+//     if (error) {
+//       return next(error)
+//     } else {
+//       return res.json(data)
+//     }
+//   })
+// })
 app.post('/mentee-register', async (req, res) => {
   try {
-    // console.log(isUser);
-    // if (isUser.length >= 1) {
-    //     return res.status(409).json({
-    //         message: "email already in use"
-    //     });
-    // }
+    const isUser = await Mentee.find({ email: req.body.email })
+    console.log(isUser)
+    if (isUser.length >= 1) {
+      return res.status(409).json({
+        message: 'Email already in use'
+      })
+    }
     const mentee = new Mentee({
       first_name: req.body.first_name,
       last_name: req.body.last_name,
@@ -40,27 +41,23 @@ app.post('/mentee-login', async (req, res) => {
     const password = req.body.password
     const mentee = await Mentee.findByCredentials(email, password)
     if (!mentee) {
-      return res.status(401).json({ error: 'Login failed! Check authentication credentials' })
+      return res.status(401).json({ message: 'Login failed! Check your email or password' })
     }
     const token = await mentee.generateAuthToken()
     res.status(201).json({ mentee, token })
-  } catch (err) {
-    res.status(400).json({ err })
+  } catch (error) {
+    res.status(400).json({ error })
   }
 })
-app.get('/mentee-profile', auth, async (req, res) => {
-  res.json(req.userData)
+app.get('/mentee-profile/:id', auth, async (req, res) => {
+  try {
+    const mentee = await Mentee.findById(req.params.id)
+    res.json(mentee)
+  } catch (error) {
+    res.status(500).send(error)
+  }
 })
 
-// menteeRoute.route('/edit-mentee/:id').get((req, res, next) => {
-//     MenteeModel.findById(req.params.id, (error, data) => {
-//         if (error) {
-//             return next(error)
-//         } else {
-//             res.json(data)
-//         }
-//     })
-// })
 // // Update
 // menteeRoute.route('/update-mentee/:id').put((req, res, next) => {
 //     MenteeModel.findByIdAndUpdate(req.params.id, {

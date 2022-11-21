@@ -32,7 +32,7 @@
                 </label>
               </div>
               <div class="col-sm-6 input-column">
-                <input class="form-control" type="email" v-model="mentor.email" placeholder="Emial" required />
+                <input class="form-control" type="email" v-model="mentor.email" placeholder="Email" required />
               </div>
             </div>
             <div class="row form-group">
@@ -116,7 +116,7 @@ export default {
       const response = await this.$http.get('/career')
       this.careers = response.data
       this.renameDropdownKeys()
-      document.getElementsByName('careerDropdown').required = true
+      document.getElementsByName('careerDropdown')[0].setAttribute('required', 'required')
     } catch (error) {
       console.log(error.response)
     }
@@ -170,13 +170,13 @@ export default {
             localStorage.setItem('mentor-jwt', token)
             EventBus.$emit('mentor-login', true)
             this.$router.push('/mentor-profile')
-            swal('Success', 'Registration Was successful', 'success')
+            swal('Success', 'Registration was successful', 'success')
           } else {
-            swal('Error', 'Something Went Wrong', 'error')
+            swal('Error', 'Something went wrong', 'error')
           }
         } catch (err) {
           const error = err.response
-          if (error.status === 409) {
+          if (err.status === 409) {
             swal('Error', error.data.message, 'error')
           } else {
             swal('Error', err.message, 'error')

@@ -32,9 +32,7 @@
                     placeholder="Password" required />
                 </div>
                 <div class="mb-3">
-                  <button class="btn btn-primary d-block w-100" type="submit">
-                    Login
-                  </button>
+                  <button class="btn btn-primary d-block w-100" type="submit">Login</button>
                 </div>
                 <!-- <p class="text-muted">Forgot your password?</p> -->
               </form>
@@ -69,8 +67,12 @@ export default {
           this.$router.push('/mentor-profile')
         }
       } catch (err) {
-        swal('Error', 'Something Went Wrong', 'error')
-        console.log(err.response)
+        const error = err.response
+        if (error.status === 401) {
+          swal('Error', error.data.message, 'error')
+        } else {
+          swal('Error', err.message, 'error')
+        }
       }
     }
   }

@@ -24,6 +24,9 @@ const menteeSchema = new Schema({
   work_experience: {
     type: Boolean
   },
+  year_of_experience: {
+    type: Number
+  },
   skills: {
     type: Array
   },
@@ -64,15 +67,15 @@ menteeSchema.methods.generateAuthToken = async function () {
   return token
 }
 
-// this method search for a user by email and password.
+// This method search for a user by email and password.
 menteeSchema.statics.findByCredentials = async (email, password) => {
   const mentee = await Mentee.findOne({ email })
   if (!mentee) {
-    throw new Error({ error: 'Invalid login details' })
+    return null
   }
   const isPasswordMatch = await bcrypt.compare(password, mentee.password)
   if (!isPasswordMatch) {
-    throw new Error({ error: 'Invalid login details' })
+    return null
   }
   return mentee
 }

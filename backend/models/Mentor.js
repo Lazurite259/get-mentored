@@ -28,12 +28,15 @@ const mentorSchema = new Schema({
     type: String
   },
   year_of_experience: {
-    type: String
+    type: Number
   },
   office_hour: {
     type: Array
   },
   linkedin: {
+    type: String
+  },
+  introduction: {
     type: String
   },
   tokens: [
@@ -67,15 +70,15 @@ mentorSchema.methods.generateAuthToken = async function () {
   return token
 }
 
-// this method search for a user by email and password.
+// This method search for a user by email and password.
 mentorSchema.statics.findByCredentials = async (email, password) => {
   const mentor = await Mentor.findOne({ email })
   if (!mentor) {
-    throw new Error({ error: 'Invalid login details' })
+    return null
   }
   const isPasswordMatch = await bcrypt.compare(password, mentor.password)
   if (!isPasswordMatch) {
-    throw new Error({ error: 'Invalid login details' })
+    return null
   }
   return mentor
 }

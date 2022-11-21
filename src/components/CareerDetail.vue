@@ -18,6 +18,50 @@
           <hr style="margin-top: 0px; margin-bottom: 5px" />
           <p style="font-size: 15px">{{ career.OnetDescription }}</p>
         </div>
+        <div class="col mt-4">
+          <h2 style="margin-bottom: 5px">Mentors</h2>
+          <hr style="margin-top: 0px" />
+          <div class="col mt-4">
+            <table class="table table-striped table-hover">
+              <thead class="thead-dark">
+                <tr>
+                  <th>Name</th>
+                  <th>Location</th>
+                  <th>Company</th>
+                  <th>YOE</th>
+                  <th>Connect</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr v-for="mentor in mentorList" :key="mentor._id">
+                  <td>{{ mentor.first_name }} {{ mentor.last_name }}</td>
+                  <td>{{ mentor.location }}</td>
+                  <td>{{ mentor.company_name }}</td>
+                  <td>{{ mentor.year_of_experience }}</td>
+                  <td>
+                    <router-link :to="{ name: 'mentor-detail', params: { id: mentor._id } }">
+                      See Profile</router-link>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <nav aria-label="page navigation">
+              <ul class="pagination justify-content-center">
+                <li class="page-item">
+                  <button type="button" class="page-link" v-if="page > 0" @click="page--">Previous</button>
+                </li>
+                <li class="page-item">
+                  <button type="button" class="page-link" v-for="pageNumber in setPages()" :key="pageNumber"
+                    :class="{ active: pageNumber - 1 === page }" @click="page = pageNumber - 1">
+                    {{ pageNumber }}</button>
+                </li>
+                <li class="page-item">
+                  <button type="button" class="page-link" @click="page++" v-if="page < pageCount - 1">Next</button>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
       </div>
       <div class="col-md-4">
         <div class="row mx-3 mt-4 py-2 bg-light" style="border-radius: 20px">
@@ -65,51 +109,9 @@
             style="font-size: 13px; color: purple;">Less skills</a>
         </div>
       </div>
-      <div class="col mt-4">
-        <h2 style="margin-bottom: 5px">Mentors</h2>
-        <hr style="margin-top: 0px" />
-        <div class="col-md-8">
-          <table class="table table-striped table-hover">
-            <thead class="thead-dark">
-              <tr>
-                <th>Name</th>
-                <th>Company</th>
-                <th>Connect</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr v-for="mentor in mentorList" :key="mentor._id">
-                <td>{{ mentor.first_name }} {{ mentor.last_name }}</td>
-                <td>{{ mentor.company_name }}</td>
-                <td>
-                  <router-link
-                    :to="{ name: 'mentor-detail', params: { id: mentor._id, name: `${mentor.first_name} ${mentor.last_name}` } }">
-                    See Profile</router-link>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-          <nav aria-label="page navigation">
-            <ul class="pagination justify-content-center">
-              <li class="page-item">
-                <button type="button" class="page-link" v-if="page > 0" @click="page--">Previous</button>
-              </li>
-              <li class="page-item">
-                <button type="button" class="page-link" v-for="pageNumber in setPages()" :key="pageNumber"
-                  :class="{ active: pageNumber - 1 === page }" @click="page = pageNumber - 1">
-                  {{ pageNumber }}</button>
-              </li>
-              <li class="page-item">
-                <button type="button" class="page-link" @click="page++" v-if="page < pageCount - 1">Next</button>
-              </li>
-            </ul>
-          </nav>
-        </div>
-      </div>
     </div>
   </div>
 </template>
->
 <script>
 import axios from 'axios'
 const accessToken = 'ZNmEuvhcOoyed+qv1rqfxiJsWvwY5M7qKZH1QDjOuis37B8Gjr4xiIHA5sAtooJoM8tXz/GWwtHVrxLeOF77YA=='
@@ -228,6 +230,9 @@ export default {
   watch: { $route (to, from) { if (to !== from) { location.reload() } } }
 }
 </script>
-<style>
-
+<style scoped>
+button.page-link {
+  display: inline-block;
+  color: #000;
+}
 </style>
