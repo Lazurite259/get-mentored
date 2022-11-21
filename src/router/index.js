@@ -61,7 +61,8 @@ const routes = [
   {
     path: '/mentor/:id',
     name: 'mentor-detail',
-    component: () => import('../components/mentor/MentorDetail')
+    component: () => import('../components/mentor/MentorDetail'),
+    meta: { requiresAuth: true }
   }
 ]
 const router = new VueRouter({
@@ -72,7 +73,7 @@ const router = new VueRouter({
 router.beforeEach((to, from, next) => {
   if (to.matched.some(record => record.meta.requiresAuth)) {
     if (window.localStorage.getItem('mentor-jwt') == null && window.localStorage.getItem('mentee-jwt') == null) {
-      next('/')
+      next('/mentee-login')
       return
     }
     next()
