@@ -164,15 +164,15 @@
                   required />
               </div>
             </div>
-            <div class="row form-group">
+            <!-- <div class="row form-group">
               <div class="col-sm-4 label-column">
-                <label class="col-form-label">Office Hour
+                <label class="col-form-label">Office Hours
                 </label>
               </div>
               <div class="col-sm-6 input-column">
-                <input class="form-control" type="text" v-model="mentor.office_hour" placeholder="Office Hour" />
+                <input class="form-control" type="text" v-model="mentor.office_hour" placeholder="Office Hours" />
               </div>
-            </div>
+            </div> -->
             <div class="row form-group">
               <div class="col-sm-4 label-column">
                 <label class="col-form-label">LinkedIn</label>
