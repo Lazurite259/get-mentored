@@ -39,8 +39,7 @@
                   <td>{{ mentor.company_name }}</td>
                   <td>{{ mentor.year_of_experience }}</td>
                   <td>
-                    <router-link :to="{ name: 'mentor-detail', params: { id: mentor._id } }">
-                      See Profile</router-link>
+                    <router-link :to="{ name: 'mentor-detail', params: { id: mentor._id } }">See Profile</router-link>
                   </td>
                 </tr>
               </tbody>
@@ -69,16 +68,12 @@
             <img src="@/assets/img/Avater 02.jpg" width="51" height="51" />
           </div>
           <div class="col-9" style="padding-left: 0px">
-            <h6>Jessie Owner</h6>
-            <p style="margin-bottom: 0px; font-size: 13px">
-              Founder XYZ company
-            </p>
+            <h6>CareerOneStop</h6>
+            <p style="margin-bottom: 0px; font-size: 13px">CareerOneStop</p>
           </div>
         </div>
         <div class="row mx-3 mt-4">
-          <h5 style="margin-bottom: 5px; color: var(--bs-gray-700)">
-            Relative Careers
-          </h5>
+          <h5 style="margin-bottom: 5px; color: var(--bs-gray-700)">Relative Careers</h5>
           <hr style="margin-top: 0px" />
           <ul style="list-style: none;">
             <li v-for="relatedCareer in relatedCareersLoaded" :key="relatedCareer[0]">
@@ -88,15 +83,12 @@
             </li>
           </ul>
           <a href="#" @click.prevent="showMoreRelatedCareers" v-if="!readMore['relatedCareer']"
-            style="font-size: 13px; color: purple;">More relative
-            careers</a>
+            style="font-size: 13px; color: purple;">More relative careers</a>
           <a href="#" @click.prevent="showLessRelatedCareers" v-if="readMore['relatedCareer']"
             style="font-size: 13px; color: purple;">Less relative careers</a>
         </div>
         <div class="row mx-3 mt-4">
-          <h5 style="margin-bottom: 5px; color: var(--bs-gray-700)">
-            Skills
-          </h5>
+          <h5 style="margin-bottom: 5px; color: var(--bs-gray-700)">Skills</h5>
           <hr style="margin-top: 0px" />
           <ul style="list-style: none;">
             <li v-for="skill in skillsLoaded" :key="skill.ElementId" style="font-size: 15px">
