@@ -1,18 +1,19 @@
+const sendEmail = require('../sendEmail')
 const express = require('express')
+const crypto = require('crypto')
 const app = express()
 const auth = require('../auth')
 // model
 const Mentee = require('../models/Mentee')
 // route
-// app.get('/', async (req, res, next) => {
-//   Mentee.find((error, data) => {
-//     if (error) {
-//       return next(error)
-//     } else {
-//       return res.json(data)
-//     }
-//   })
-// })
+app.get('/', async (req, res, next) => {
+  const mentees = await Mentee.find({})
+  try {
+    res.send(mentees)
+  } catch (error) {
+    res.status(500).send(error)
+  }
+})
 // Register
 app.post('/mentee-register', async (req, res) => {
   try {
@@ -72,8 +73,8 @@ app.put('/mentee-update/:id', async (req, res) => {
       work_experience: req.body.work_experience,
       year_of_experience: req.body.year_of_experience,
       skills: req.body.skills,
-      interested_industry:req.body.interested_industry,
-      linkedin: req.body.linkedin,
+      interested_industry: req.body.interested_industry,
+      linkedin: req.body.linkedin
     })
     const token = await mentee.generateAuthToken()
     res.status(201).json({ mentee, token })
@@ -81,22 +82,56 @@ app.put('/mentee-update/:id', async (req, res) => {
     res.status(500).send(error)
   }
 })
-// // Update
-// menteeRoute.route('/update-mentee/:id').put((req, res, next) => {
-//     MenteeModel.findByIdAndUpdate(req.params.id, {
-//         $set: req.body
-//     }, (error, data) => {
-//         if (error) {
-//             return next(error);
-//         } else {
-//             res.json(data)
-//             console.log('Mentee successfully updated!')
-//         }
-//     })
-// })
+// Forgot password
+app.post('/forgot-password', async (req, res, next) => {
+  const mentee = await Mentee.findOne({ email: req.body.email })
+  if (!mentee) {
+    return res.status(404).json({ message: 'Email does not exist' })
+  }
+  const resetToken = mentee.getResetPasswordToken()
+  await mentee.save({ validateBeforeSave: false })
+  // Create reset url
+  const resetUrl = `${process.env.BASE_URI}/mentee-reset-password/${resetToken}`
+  const message = `You have requested the reset of a password. Click this link to reset your password: ${resetUrl}.`
+  try {
+    await sendEmail({
+      email: mentee.email,
+      message
+    })
+    res.status(200).json({ success: true, message: 'Email sent' })
+  } catch (error) {
+    mentee.reset_password_token = undefined
+    mentee.reset_password_expire = undefined
+    await mentee.save({ validateBeforeSave: false })
+    return res.status(500).json({ message: 'Email could not be sent' })
+  }
+})
+// Reset password
+app.put('/reset-password/:resetToken', async (req, res, next) => {
+  try {
+    // Get hashed token
+    const resetPasswordToken = crypto.createHash('sha256').update(req.params.resetToken).digest('hex')
+    const mentee = await Mentee.findOne({
+      reset_password_token: resetPasswordToken,
+      reset_password_expire: { $gt: Date.now() }
+    })
+    if (!mentee) {
+      res.status(400).json({ message: 'Invalid token' })
+    }
+    // Set new password
+    mentee.password = req.body.password
+    mentee.reset_password_token = undefined
+    mentee.reset_password_expire = undefined
+    await mentee.save()
+    res.status(200).json({ mentee })
+  } catch (error) {
+    res.status(500).send(error)
+  }
+})
+
 // // Delete
-// menteeRoute.route('/delete-mentee/:id').delete((req, res, next) => {
-//     MenteeModel.findByIdAndRemove(req.params.id, (error, data) => {
+// app.delete('/delete-mentee/:id', (req, res, next) => {
+//     Mentee.findByIdAndRemove(req.params.id, (error, data) => {
 //         if (error) {
 //             return next(error);
 //         } else {
