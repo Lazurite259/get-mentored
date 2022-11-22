@@ -189,7 +189,7 @@ export default {
         }
       } catch (err) {
         const error = err.response
-        if (err.status === 409) {
+        if (error.status === 409) {
           swal('Error', error.data.message, 'error')
         } else {
           swal('Error', err.message, 'error')
