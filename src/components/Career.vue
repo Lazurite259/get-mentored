@@ -5,7 +5,7 @@
         <div class="row mb-2">
           <div class="col-md-8 col-xl-6 text-center mx-auto">
             <h1>
-              Search Occupations You Like
+              Search Careers
             </h1>
             <p class="text-muted">
               GetMentored offers tons of abundant

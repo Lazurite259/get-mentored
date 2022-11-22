@@ -28,7 +28,7 @@
                   <th>Name</th>
                   <th>Location</th>
                   <th>Company</th>
-                  <th>YOE</th>
+                  <th>Experiences</th>
                   <th>Connect</th>
                 </tr>
               </thead>
