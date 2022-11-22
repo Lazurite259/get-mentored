@@ -1,83 +1,3 @@
-<!-- <template>
-  <div class="row justify-content-center">
-    <div class="col-md-6">
-      <h3 class="text-center">Mentor Profile</h3>
-      <form @submit.prevent="update">
-        <div class="form-group">
-          <label>First Name</Label>
-          <input type="text" class="form-control" v-model="mentor.first_name" required />
-        </div>
-
-        <div class="form-group">
-          <label>Last Name</Label>
-          <input type="text" class="form-control" v-model="mentor.last_name" required />
-        </div>
-
-        <div class="form-group">
-          <label>Email</Label>
-          <input type="text" class="form-control" v-model="mentor.email" disabled />
-        </div>
-
-        <div class="form-group">
-          <label>Birth Date</Label>
-          <input type="date" class="form-control" v-model="mentor.birth_date" required />
-        </div>
-
-        <div class="row form-group">
-          <div class="col-sm-4 label-column">
-            <label class="col-form-label" for="dropdown-input-field">Occupation Title
-            </label>
-          </div>
-          <div class="col-sm-6 input-column">
-            <Dropdown class="dropdownlist" :options="careers" v-on:selected="validateSelection" :maxItem="20"
-              :disabled="false" name="careerDropdown">
-            </Dropdown>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label>Company Name</Label>
-          <input type="text" class="form-control" v-model="mentor.company_name" required />
-        </div>
-
-        <div class="form-group">
-          <label>Location</Label>
-          <input type="text" class="form-control" v-model="mentor.location" placeholder="City, State, Country"
-            required />
-        </div>
-
-        <div class="form-group">
-          <label>Year Of Experience</Label>
-          <input type="number" class="form-control" v-model="mentor.year_of_experience" />
-        </div>
-
-        <div class="form-group">
-          <label>Office Hour</Label>
-          <input type="text" class="form-control" v-model="mentor.office_hour" />
-        </div>
-
-        <div class="form-group">
-          <label>LinkedIn</Label>
-          <input type="url" class="form-control" v-model="mentor.linkedin" />
-        </div>
-
-        <div class="form-group">
-          <label>Introduction</Label>
-          <textarea type="text" class="form-control" v-model="mentor.introduction" />
-        </div>
-
-        <div class="form-group">
-          <router-link to="#">Change password</router-link>
-        </div>
-
-        <div class="form-group">
-          <button class="btn btn-primary btn-block" type="submit">Save</button>
-        </div>
-      </form>
-    </div>
-  </div>
-</template> -->
-
 <template>
   <div class="bg-primary-gradient">
     <div class="container-md">
@@ -85,13 +5,10 @@
         <div class="col-md-8 offset-md-2">
           <form class="custom-form border rounded shadow" @submit.prevent="update">
             <h1 style="margin-bottom: 6px">Mentor Profile</h1>
-            <p style="color: var(--bs-gray-500)">
-
-            </p>
+            <!-- TODO: Add image upload -->
             <div class="row form-group">
               <div class="col-sm-4 label-column">
-                <label class="col-form-label" for="name-input-field">First Name
-                </label>
+                <label class="col-form-label" for="name-input-field">First Name</label>
               </div>
               <div class="col-sm-6 input-column">
                 <input class="form-control" type="text" v-model="mentor.first_name" placeholder="First Name" />
@@ -99,8 +16,7 @@
             </div>
             <div class="row form-group">
               <div class="col-sm-4 label-column">
-                <label class="col-form-label" for="name-input-field">Last Name
-                </label>
+                <label class="col-form-label" for="name-input-field">Last Name</label>
               </div>
               <div class="col-sm-6 input-column">
                 <input class="form-control" type="text" v-model="mentor.last_name" placeholder="Last Name" />
@@ -108,8 +24,7 @@
             </div>
             <div class="row form-group">
               <div class="col-sm-4 label-column">
-                <label class="col-form-label" for="email-input-field">Email
-                </label>
+                <label class="col-form-label" for="email-input-field">Email</label>
               </div>
               <div class="col-sm-6 input-column">
                 <input class="form-control" type="email" v-model="mentor.email" placeholder="Email" disabled />
@@ -117,8 +32,7 @@
             </div>
             <div class="row form-group">
               <div class="col-sm-4 label-column">
-                <label class="col-form-label" for="birthdate-input-field">Birth Date
-                </label>
+                <label class="col-form-label" for="birthdate-input-field">Birth Date</label>
               </div>
               <div class="col-sm-6 input-column">
                 <input class="form-control" type="date" v-model="mentor.birth_date" placeholder="Birth Date" />
@@ -126,8 +40,7 @@
             </div>
             <div class="row form-group">
               <div class="col-sm-4 label-column">
-                <label class="col-form-label" for="dropdown-input-field">Occupation Title
-                </label>
+                <label class="col-form-label" for="dropdown-input-field">Occupation Title</label>
               </div>
               <div class="col-sm-6 input-column">
                 <Dropdown class="dropdownlist" :options="careers" v-on:selected="validateSelection" :maxItem="20"
@@ -137,8 +50,7 @@
             </div>
             <div class="row form-group">
               <div class="col-sm-4 label-column">
-                <label class="col-form-label" for="work-experience-input-field">Company Name
-                </label>
+                <label class="col-form-label" for="work-experience-input-field">Company Name</label>
               </div>
               <div class="col-sm-6 input-column">
                 <input class="form-control" type="text" v-model="mentor.company_name" placeholder="Company Name"
@@ -147,8 +59,7 @@
             </div>
             <div class="row form-group">
               <div class="col-sm-4 label-column">
-                <label class="col-form-label">Year Of Experience
-                </label>
+                <label class="col-form-label">Year Of Experience</label>
               </div>
               <div class="col-sm-6 input-column">
                 <input class="form-control" type="text" v-model="mentor.year_of_experience" placeholder="Number" />
@@ -156,14 +67,14 @@
             </div>
             <div class="row form-group">
               <div class="col-sm-4 label-column">
-                <label class="col-form-label">Location
-                </label>
+                <label class="col-form-label">Location</label>
               </div>
               <div class="col-sm-6 input-column">
                 <input type="text" class="form-control" v-model="mentor.location" placeholder="City, State, Country"
                   required />
               </div>
             </div>
+            <!-- TODO: Implement "Office Hours" with selection feature -->
             <!-- <div class="row form-group">
               <div class="col-sm-4 label-column">
                 <label class="col-form-label">Office Hours
@@ -183,11 +94,14 @@
             </div>
             <div class="row form-group">
               <div class="col-sm-4 label-column">
-                <label>Introduction</Label>
+                <label class="col-form-label">Introduction</Label>
               </div>
               <div class="col-sm-6 input-column">
                 <textarea type="text" class="form-control" v-model="mentor.introduction"></textarea>
               </div>
+            </div>
+            <div class="form-group">
+              <router-link to="#">Reset password</router-link>
             </div>
             <button class="btn btn-light submit-button" type="submit"
               style="background: #7057cc; color: var(--bs-btn-bg)">
@@ -351,7 +265,6 @@ export default {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  text-fill-color: transparent;
 }
 
 .btn-outline-primary {
@@ -522,33 +435,6 @@ export default {
   border: 1px solid #dbdbdb;
   border-radius: 2px;
   height: 100px;
-}
-
-::v-deep .dropdownlist .dropdown-input {
-  background: #fff;
-  border: 1px solid #dbdbdb;
-  border-radius: 2px;
-  box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.08);
-  font-size: 1rem;
-  padding: 12px;
-  min-width: auto;
-  width: 100%;
-  height: 42px;
-  outline: none;
-  color: #5f5f5f;
-}
-
-::v-deep .dropdownlist .dropdown-content {
-  min-width: auto;
-  width: 100%;
-  max-height: 200px;
-  border: 1px solid #dbdbdb;
-  box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.08);
-  overflow: scroll;
-}
-
-::v-deep .dropdownlist .dropdown-content .dropdown-item {
-  font-size: 1em;
 }
 
 .profile-form .custom-form .submit-button {

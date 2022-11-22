@@ -158,7 +158,8 @@
       <div class="row gy-4 row-cols-1 row-cols-sm-2 row-cols-xl-3">
         <div class="col">
           <div class="card shadow">
-            <img class="card-img-top w-100 d-block fit-cover" style="height: 200px" src="@/assets/img/th-01.jpg" />
+            <img class="card-img-top w-100 d-block fit-cover" style="height: 200px; object-fit: cover;"
+              src="@/assets/img/th-01.jpg" />
             <div class="card-body p-4">
               <h4 class="card-title">Jessica Jams</h4>
               <p style="color: #212121; font-weight: bold">Software Enginner</p>
@@ -182,7 +183,8 @@
         </div>
         <div class="col">
           <div class="card shadow">
-            <img class="card-img-top w-100 d-block fit-cover" style="height: 200px" src="@/assets/img/th-03.jpg" />
+            <img class="card-img-top w-100 d-block fit-cover" style="height: 200px; object-fit: cover;"
+              src="@/assets/img/th-03.jpg" />
             <div class="card-body p-4">
               <h4 class="card-title">Ryan Chen</h4>
               <p style="color: #212121; font-weight: bold">
@@ -208,7 +210,8 @@
         </div>
         <div class="col">
           <div class="card shadow">
-            <img class="card-img-top w-100 d-block fit-cover" style="height: 200px" src="@/assets/img/th-08.jpg" />
+            <img class="card-img-top w-100 d-block fit-cover" style="height: 200px; object-fit: cover;"
+              src="@/assets/img/th-08.jpg" />
             <div class="card-body p-4">
               <h4 class="card-title">John Smith</h4>
               <p style="color: #212121; font-weight: bold">Interior Designer</p>
@@ -358,7 +361,6 @@ export default {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  text-fill-color: transparent;
 }
 
 .btn-outline-primary {

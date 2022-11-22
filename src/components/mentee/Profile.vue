@@ -1,82 +1,3 @@
-<!-- <template>
-  <div class="row justify-content-center">
-    <div class="col-md-6">
-      <h3 class="text-center">Mentee Profile</h3>
-      <form @submit.prevent="update">
-        <div class="form-group">
-          <label>First Name</Label>
-          <input type="text" class="form-control" v-model="mentee.first_name" required />
-        </div>
-
-        <div class="form-group">
-          <label>Last Name</Label>
-          <input type="text" class="form-control" v-model="mentee.last_name" required />
-        </div>
-
-        <div class="form-group">
-          <label>Email</Label>
-          <input type="email" class="form-control" v-model="mentee.email" disabled />
-        </div>
-
-        <div class="form-group">
-          <label>Birth Date</Label>
-          <input type="date" class="form-control" v-model="mentee.birth_date" required />
-        </div>
-
-        <div class="row form-group">
-          <div class="col-sm-4 label-column">
-            <label class="col-form-label" for="dropdown-input-field">Education Level
-            </label>
-          </div>
-          <div class="col-sm-6 input-column">
-            <Multiselect v-model="mentee.education_level" :options="education_levels" :searchable="false"
-              :close-on-select="true" :show-labels="false" placeholder="Education level"></Multiselect>
-          </div>
-        </div>
-
-        <div class="form-check">
-          <input id="work-experience" type="checkbox" class="form-check-input" @click="checkWorkExperience()"
-            v-model="mentee.work_experience" />
-          <label class="form-check-label">Work Experience</Label>
-        </div>
-
-        <div id="yoe" class="form-group" style="display: none;">
-          <label>Year Of Experience</Label>
-          <input type="number" class="form-control" v-model="mentee.year_of_experience" />
-        </div>
-
-        <div class="form-group">
-          <label>Skills</Label>
-          <input type="text" class="form-control" v-model="mentee.skills" />
-        </div>
-
-        <div class="form-group">
-          <label>Interested Careers</Label>
-          <Multiselect v-model="mentee.interested_industry" :options="careers" :multiple="true" :close-on-select="false"
-            :clear-on-select="false" :preserve-search="true" placeholder="Choose careers" label="occupation_title"
-            track-by="onet_code" :preselect-first="true">
-            <template slot="selection" slot-scope="{ values, isOpen }"><span class="multiselect__single"
-                v-if="values.length &amp;&amp; !isOpen">{{ values.length }} careers selected</span></template>
-          </Multiselect>
-        </div>
-
-        <div class="form-group">
-          <label>LinkedIn</Label>
-          <input type="url" class="form-control" v-model="mentee.linkedin" />
-        </div>
-
-        <div class="form-group">
-          <router-link to="#">Change password</router-link>
-        </div> bu yao
-
-        <div class="form-group">
-          <button class="btn btn-primary btn-block" type="submit">Save</button>
-        </div>
-      </form>
-    </div>
-  </div>
-</template> -->
-
 <template>
   <div class="bg-primary-gradient">
     <div class="container-md">
@@ -84,12 +5,10 @@
         <div class="col-md-8 offset-md-2">
           <form class="custom-form border rounded shadow" @submit.prevent="update">
             <h1 style="margin-bottom: 6px">Mentee Profile</h1>
-            <p style="color: var(--bs-gray-500)">
-            </p>
+            <!-- TODO: Add image upload -->
             <div class="row form-group">
               <div class="col-sm-4 label-column">
-                <label class="col-form-label" for="name-input-field">First Name
-                </label>
+                <label class="col-form-label" for="name-input-field">First Name</label>
               </div>
               <div class="col-sm-6 input-column">
                 <input class="form-control" type="text" v-model="mentee.first_name" placeholder="First Name" required />
@@ -97,8 +16,7 @@
             </div>
             <div class="row form-group">
               <div class="col-sm-4 label-column">
-                <label class="col-form-label" for="name-input-field">Last Name
-                </label>
+                <label class="col-form-label" for="name-input-field">Last Name</label>
               </div>
               <div class="col-sm-6 input-column">
                 <input class="form-control" type="text" v-model="mentee.last_name" placeholder="Last Name" required />
@@ -106,8 +24,7 @@
             </div>
             <div class="row form-group">
               <div class="col-sm-4 label-column">
-                <label class="col-form-label" for="email-input-field">Email
-                </label>
+                <label class="col-form-label" for="email-input-field">Email</label>
               </div>
               <div class="col-sm-6 input-column">
                 <input class="form-control" type="email" v-model="mentee.email" placeholder="Email" disabled />
@@ -115,17 +32,15 @@
             </div>
             <div class="row form-group">
               <div class="col-sm-4 label-column">
-                <label class="col-form-label" for="birthdate-input-field">Birth Date
-                </label>
+                <label class="col-form-label" for="birthdate-input-field">Birth Date</label>
               </div>
               <div class="col-sm-6 input-column">
-                <input class="form-control" type="date" v-model="mentee.birth_date" placeholder="Birth Date" />
+                <input class="form-control" type="date" v-model="mentee.birth_date" />
               </div>
             </div>
             <div class="row form-group">
               <div class="col-sm-4 label-column">
-                <label class="col-form-label" for="dropdown-input-field">Education Level
-                </label>
+                <label class="col-form-label" for="dropdown-input-field">Education Level</label>
               </div>
               <div class="col-sm-6 input-column">
                 <Multiselect v-model="mentee.education_level" :options="education_levels" :searchable="false"
@@ -149,12 +64,14 @@
                 <input class="form-control" type="number" v-model="mentee.year_of_experience" placeholder="Number" />
               </div>
             </div>
+            <!-- TODO: Change "Skills" input to multiselect, using ISOT API(https://skillsapiv5.docs.apiary.io/) -->
             <div class="row form-group">
               <div class="col-sm-4 label-column">
                 <label class="col-form-label" for="skills-input-field">Skills</label>
               </div>
               <div class="col-sm-6 input-column">
-                <input class="form-control" type="text" v-model="mentee.skills" placeholder="Skills" />
+                <textarea class="form-control" type="text" v-model="mentee.skills"
+                  placeholder="Type your skills here"></textarea>
               </div>
             </div>
             <div class="row form-group">
@@ -178,6 +95,9 @@
                 <input class="form-control" type="url" v-model="mentee.linkedin" placeholder="URL" />
               </div>
             </div>
+            <div class="form-group">
+              <router-link to="#">Reset password</router-link>
+            </div>
             <button class="btn btn-light submit-button" type="submit"
               style="background: #7057cc; color: var(--bs-btn-bg)">
               Save
@@ -191,6 +111,7 @@
 <script>
 import VueJwtDecode from 'vue-jwt-decode'
 import Multiselect from 'vue-multiselect'
+import swal from 'sweetalert'
 export default {
   components: {
     Multiselect
@@ -229,7 +150,7 @@ export default {
       if (this.mentee.birth_date !== undefined) {
         this.setDate(this.mentee.birth_date)
       }
-      if(this.mentee.work_experience){
+      if (this.mentee.work_experience) {
         document.getElementById('yoe').style.display = 'flex'
       }
     } catch (error) {
@@ -281,33 +202,6 @@ export default {
 
 </style>
 <style scoped>
-::v-deep .dropdownlist .dropdown-input {
-  background: #fff;
-  border: 1px solid #dbdbdb;
-  border-radius: 2px;
-  box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.08);
-  font-size: 1rem;
-  padding: 12px;
-  min-width: auto;
-  width: 100%;
-  height: 42px;
-  outline: none;
-  color: #5f5f5f;
-}
-
-::v-deep .dropdownlist .dropdown-content {
-  min-width: auto;
-  width: 100%;
-  max-height: 200px;
-  border: 1px solid #dbdbdb;
-  box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.08);
-  overflow: scroll;
-}
-
-::v-deep .dropdownlist .dropdown-content .dropdown-item {
-  font-size: 1em;
-}
-
 @font-face {
   font-family: 'Poppins';
   src: url() format('woff2');
@@ -348,7 +242,6 @@ export default {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  text-fill-color: transparent;
 }
 
 .btn-outline-primary {
@@ -512,31 +405,13 @@ export default {
   height: 42px;
 }
 
-::v-deep .dropdownlist .dropdown-input {
-  background: #fff;
+.profile-form .custom-form .input-column textarea {
+  color: #5f5f5f;
+  box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.08);
+  padding: 12px;
   border: 1px solid #dbdbdb;
   border-radius: 2px;
-  box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.08);
-  font-size: 1rem;
-  padding: 12px;
-  min-width: auto;
-  width: 100%;
-  height: 42px;
-  outline: none;
-  color: #5f5f5f;
-}
-
-::v-deep .dropdownlist .dropdown-content {
-  min-width: auto;
-  width: 100%;
-  max-height: 200px;
-  border: 1px solid #dbdbdb;
-  box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.08);
-  overflow: scroll;
-}
-
-::v-deep .dropdownlist .dropdown-content .dropdown-item {
-  font-size: 1em;
+  height: 100px;
 }
 
 .profile-form .custom-form .submit-button {
