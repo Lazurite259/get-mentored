@@ -24,16 +24,20 @@
     <div class="col-md-8">
       <table class="table table-striped table-hover">
         <thead foclass="thead-dark">
-          <tr>
-            <th>Occupation Title</th>
+          <tr class="row">
+            <th class="col-md-8">Occupation Title</th>
+            <th class="col-md-4">Category</th>
           </tr>
         </thead>
         <tbody>
-          <tr v-for="career in displayList" :key="career.onet_code">
-            <td>
+          <tr class="row" v-for="career in displayList" :key="career.onet_code">
+            <td class="col-md-8">
               <router-link :to="{ name: 'career-detail', params: { id: career.onet_code } }">
                 {{ career.occupation_title }}
               </router-link>
+            </td>
+            <td class="col-md-4">
+              <span v-for="(category, index) in career.career_cluster" :key="index">{{ category }}<br></span>
             </td>
           </tr>
         </tbody>

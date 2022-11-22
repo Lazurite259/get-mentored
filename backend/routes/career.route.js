@@ -4,7 +4,7 @@ const app = express()
 const Career = require('../models/Career')
 // route
 app.get('/', async (req, res, next) => {
-  const careers = await Career.find({})
+  const careers = await Career.find({}).sort({occupation_title: 'asc'})
 
   try {
     res.send(careers)
