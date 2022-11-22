@@ -59,4 +59,5 @@ SMTP_PASSWORD = {Gmail App Password}
 BASE_URI = 'http://localhost:8080'
 ```
 Resource: https://nodemailer.com/about/
+
 How to generate gmail app password: https://miracleio.me/snippets/use-gmail-with-nodemailer/
