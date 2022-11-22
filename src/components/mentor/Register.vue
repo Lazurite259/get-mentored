@@ -55,9 +55,11 @@
                 <label class="col-form-label" for="dropdown-input-field">Occupation Title</label>
               </div>
               <div class="col-sm-6 input-column">
-                <Dropdown class="dropdownlist" :options="careers" v-on:selected="validateSelection" :maxItem="20"
-                  :disabled="false" name="careerDropdown" placeholder="Select a Career">
-                </Dropdown>
+                <Multiselect v-model="mentor.career" :options="careers" :close-on-select="true" :preserve-search="true"
+                  :allow-empty="false" placeholder="Choose your career" label="occupation_title" track-by="onet_code"
+                  :preselect-first="true">
+                  <template slot="singleLabel" slot-scope="{ option }">{{ option.occupation_title }}</template>
+                </Multiselect>
               </div>
             </div>
             <div v-if="errors.length" style="color: red;">
@@ -81,11 +83,11 @@
 <script>
 import EventBus from '@/eventbus'
 import swal from 'sweetalert'
-import Dropdown from 'vue-simple-search-dropdown'
+import Multiselect from 'vue-multiselect'
 
 export default {
   components: {
-    Dropdown
+    Multiselect
   },
   data () {
     return {
@@ -97,7 +99,7 @@ export default {
           password: '',
           confirm: ''
         },
-        occupation_title: ''
+        career: null
       },
       errors: [],
       careers: []
@@ -107,8 +109,6 @@ export default {
     try {
       const response = await this.$http.get('/career')
       this.careers = response.data
-      this.renameDropdownKeys()
-      document.getElementsByName('careerDropdown')[0].setAttribute('required', 'required')
     } catch (error) {
       console.log(error.response)
     }
@@ -120,19 +120,6 @@ export default {
     },
     matchPassword: function (psw1, psw2) {
       return psw1 === psw2
-    },
-    renameDropdownKeys () {
-      this.careers = this.careers.map(function (obj) {
-        obj.name = obj.occupation_title // Assign new key
-        obj.id = obj.onet_code
-        delete obj.occupation_title // Delete old key
-        delete obj.onet_code
-        return obj
-      })
-      console.log(this.careers)
-    },
-    validateSelection (selection) {
-      this.mentor.occupation_title = selection.name
     },
     async submit () {
       this.errors = []
@@ -146,6 +133,11 @@ export default {
       if (!this.matchPassword(psw1, psw2)) {
         this.errors.push({
           message: 'Password does not match.'
+        })
+      }
+      if (this.mentor.career === null) {
+        this.errors.push({
+          message: 'Occupation title is required.'
         })
       }
       if (!this.errors.length) {
@@ -174,6 +166,8 @@ export default {
   }
 }
 </script>
+
+<style src="vue-multiselect/dist/vue-multiselect.min.css" />
 <style scoped>
 @font-face {
   font-family: 'Poppins';
@@ -260,33 +254,6 @@ export default {
   border: 1px solid #dbdbdb;
   border-radius: 2px;
   height: 42px;
-}
-
-::v-deep .dropdownlist .dropdown-input {
-  background: #fff;
-  border: 1px solid #dbdbdb;
-  border-radius: 2px;
-  box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.08);
-  font-size: 1rem;
-  padding: 12px;
-  min-width: auto;
-  width: 100%;
-  height: 42px;
-  outline: none;
-  color: #5f5f5f;
-}
-
-::v-deep .dropdownlist .dropdown-content {
-  min-width: auto;
-  width: 100%;
-  max-height: 200px;
-  border: 1px solid #dbdbdb;
-  box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.08);
-  overflow: scroll;
-}
-
-::v-deep .dropdownlist .dropdown-content .dropdown-item {
-  font-size: 1em;
 }
 
 .register-form .custom-form .submit-button {

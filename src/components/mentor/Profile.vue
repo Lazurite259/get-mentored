@@ -43,9 +43,11 @@
                 <label class="col-form-label" for="dropdown-input-field">Occupation Title</label>
               </div>
               <div class="col-sm-6 input-column">
-                <Dropdown class="dropdownlist" :options="careers" v-on:selected="validateSelection" :maxItem="20"
-                  :disabled="false" name="careerDropdown">
-                </Dropdown>
+                <Multiselect v-model="mentor.career" :options="careers" :close-on-select="true" :preserve-search="true"
+                  :allow-empty="false" placeholder="Choose your career" label="occupation_title" track-by="onet_code"
+                  :preselect-first="true">
+                  <template slot="singleLabel" slot-scope="{ option }">{{ option.occupation_title }}</template>
+                </Multiselect>
               </div>
             </div>
             <div class="row form-group">
@@ -116,11 +118,12 @@
 </template>
 <script>
 import VueJwtDecode from 'vue-jwt-decode'
-import Dropdown from 'vue-simple-search-dropdown'
 import swal from 'sweetalert'
+import Multiselect from 'vue-multiselect'
+
 export default {
   components: {
-    Dropdown
+    Multiselect
   },
   data () {
     return {
@@ -134,7 +137,6 @@ export default {
     try {
       const careerData = await this.$http.get('/career')
       this.careers = careerData.data
-      this.renameDropdownKeys()
       this.token = localStorage.getItem('mentor-jwt')
       this.decoded = VueJwtDecode.decode(this.token)
       const response = await this.$http.get(`/mentor/mentor-profile/${this.decoded._id}`, {
@@ -144,7 +146,6 @@ export default {
       })
       this.mentor = response.data
       console.log(this.mentor)
-      document.getElementsByName('careerDropdown')[0].setAttribute('value', this.mentor.occupation_title)
       if (this.mentor.birth_date !== undefined) {
         this.setDate(this.mentor.birth_date)
       }
@@ -161,19 +162,6 @@ export default {
       let day = date.getUTCDate()
       day = day <= 9 ? '0' + day : day
       this.mentor.birth_date = year + '-' + month + '-' + day
-    },
-    renameDropdownKeys () {
-      this.careers = this.careers.map(function (obj) {
-        obj.name = obj.occupation_title // Assign new key
-        obj.id = obj.onet_code
-        delete obj.occupation_title // Delete old key
-        delete obj.onet_code
-        return obj
-      })
-      console.log(this.careers)
-    },
-    validateSelection (selection) {
-      this.mentor.occupation_title = selection.name
     },
     async update () {
       try {
@@ -198,34 +186,9 @@ export default {
   }
 }
 </script>
+
+<style src="vue-multiselect/dist/vue-multiselect.min.css" />
 <style scoped>
-::v-deep .dropdownlist .dropdown-input {
-  background: #fff;
-  border: 1px solid #dbdbdb;
-  border-radius: 2px;
-  box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.08);
-  font-size: 1rem;
-  padding: 12px;
-  min-width: auto;
-  width: 100%;
-  height: 42px;
-  outline: none;
-  color: #5f5f5f;
-}
-
-::v-deep .dropdownlist .dropdown-content {
-  min-width: auto;
-  width: 100%;
-  max-height: 200px;
-  border: 1px solid #dbdbdb;
-  box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.08);
-  overflow: scroll;
-}
-
-::v-deep .dropdownlist .dropdown-content .dropdown-item {
-  font-size: 1em;
-}
-
 @font-face {
   font-family: 'Poppins';
   src: url() format('woff2');

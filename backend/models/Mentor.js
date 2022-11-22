@@ -20,8 +20,8 @@ const mentorSchema = new Schema({
   birth_date: {
     type: Date
   },
-  occupation_title: {
-    type: String
+  career: {
+    type: Object
   },
   company_name: {
     type: String

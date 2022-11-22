@@ -67,7 +67,6 @@ app.put('/mentee-update/:id', async (req, res) => {
     const mentee = await Mentee.findByIdAndUpdate(req.params.id, {
       first_name: req.body.first_name,
       last_name: req.body.last_name,
-      occupation_title: req.body.occupation_title,
       birth_date: req.body.birth_date,
       education_level: req.body.education_level,
       work_experience: req.body.work_experience,

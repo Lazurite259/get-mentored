@@ -29,7 +29,7 @@ app.post('/mentor-register', async (req, res) => {
       last_name: req.body.last_name,
       email: req.body.email,
       password: req.body.password.password,
-      occupation_title: req.body.occupation_title
+      career: req.body.career
     })
     const data = await mentor.save()
     const token = await mentor.generateAuthToken() // here it is calling the method that we created in the model
@@ -68,7 +68,7 @@ app.put('/mentor-update/:id', async (req, res) => {
     const mentor = await Mentor.findByIdAndUpdate(req.params.id, {
       first_name: req.body.first_name,
       last_name: req.body.last_name,
-      occupation_title: req.body.occupation_title,
+      career: req.body.career,
       birth_date: req.body.birth_date,
       company_name: req.body.company_name,
       location: req.body.location,
@@ -85,7 +85,7 @@ app.put('/mentor-update/:id', async (req, res) => {
 })
 // Get mentors by career
 app.get('/:career', async (req, res, next) => {
-  const mentors = await Mentor.find({ occupation_title: `${req.params.career}` })
+  const mentors = await Mentor.find({ 'career.onet_code': `${req.params.career}` })
   try {
     res.send(mentors)
   } catch (error) {

@@ -156,7 +156,7 @@ export default {
             return parseInt(skill.Importance) > 50
           })
         }
-        this.getMentors(this.career.OnetTitle)
+        this.getMentors(this.career.OnetCode)
       })
     },
     async getMentors (career) {

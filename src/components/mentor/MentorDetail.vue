@@ -13,7 +13,7 @@
               <ul>
                 <li class="row">
                   <span class="col-md-5"><b>Occupation Title</b></span>
-                  <span class="col-md-7 profile-right">{{ mentor.occupation_title }}</span>
+                  <span class="col-md-7 profile-right">{{ mentor.career.occupation_title }}</span>
                 </li>
                 <li class="row">
                   <span class="col-md-5"><b>Company Name</b></span>
@@ -33,10 +33,10 @@
                   <span class="col-md-5"><b>Year of Experiences (YOE)</b></span>
                   <span class="col-md-7 profile-right">{{ mentor.year_of_experience }}</span>
                 </li>
-                <li class="row">
+                <!-- <li class="row">
                   <span class="col-md-5"><b>Office Hour</b></span>
                   <span class="col-md-7 profile-right">{{ mentor.office_hour }}</span>
-                </li>
+                </li> -->
                 <li class="row">
                   <span class="col-md-5"><b>LinkedIn</b></span>
                   <span class="col-md-7 profile-right"><a :href="mentor.linkedin">Go to LinkedIn</a></span>

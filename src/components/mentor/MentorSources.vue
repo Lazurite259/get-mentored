@@ -29,7 +29,7 @@
             <div class="card-body p-4">
               <h4 class="card-title">{{ mentor.first_name }} {{ mentor.last_name }}</h4>
               <p style="color: #212121; font-weight: bold">
-                {{ mentor.occupation_title }}
+                {{ mentor.career.occupation_title }}
               </p>
               <p class="card-text">
                 <span style="color: rgb(51, 51, 51)">{{ getIntro(mentor) }}</span><br />

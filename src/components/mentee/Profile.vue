@@ -199,9 +199,8 @@ export default {
   }
 }
 </script>
-<style src="vue-multiselect/dist/vue-multiselect.min.css">
 
-</style>
+<style src="vue-multiselect/dist/vue-multiselect.min.css" />
 <style scoped>
 @font-face {
   font-family: 'Poppins';
