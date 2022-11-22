@@ -32,7 +32,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 touch .env
 ```
 
-### Add MongoDB connection string in `.env` file
+### Add MongoDB connection string to `.env` file
 ```
 MONGOBD_URI='mongodb+srv://{username}:{password}@{cluster}.mongodb.net/{dbname}?retryWrites=true&w=majority'
 ```
@@ -48,4 +48,15 @@ const dotenv = require("dotenv")
 dotenv.config()
 ```
 
+## Setup SMTP Server  
 
+### Add following string to `backend/.env` file
+```
+SMTP_HOST = 'smtp.gmail.com'
+SMTP_PORT = 465
+SMTP_EMAIL = {Gmail Account}
+SMTP_PASSWORD = {Gmail App Password}
+BASE_URI = 'http://localhost:8080'
+```
+Resource: https://nodemailer.com/about/
+How to generate gmail app password: https://miracleio.me/snippets/use-gmail-with-nodemailer/
