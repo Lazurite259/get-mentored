@@ -8,13 +8,12 @@
             class="col-md-6 text-center text-md-start d-flex d-sm-flex d-md-flex justify-content-center align-items-center justify-content-md-start align-items-md-center justify-content-xl-center">
             <div style="max-width: 650px">
               <h2 class="text-uppercase fw-bold font-color" style="font-family: Poppins, sans-serif; font-size: 46px">
-                Your career is a lifetime journey
+                <i>Your career is a lifetime journey</i>
               </h2>
               <p class="my-3" style="color: rgb(255, 255, 255)">
                 Let’s get started with the support and guidance from Mentors who
                 have accomplished their goal
               </p>
-              <button class="btn btn-outline-primary btn-lg" @click="scrollToService">See Our Works</button>
             </div>
           </div>
           <div class="col-md-6">
@@ -66,7 +65,7 @@
       </div>
     </div>
     <!-- Start: Hero2 -->
-    <div class="bg-services" id="service">
+    <div class="bg-services">
       <!-- Start: Features Image -->
       <div class="container py-4 py-xl-5 bg-services">
         <div class="row row-cols-1 row-cols-md-2">
@@ -309,12 +308,7 @@
 
 <script>
 export default {
-  name: 'Home',
-  methods: {
-    scrollToService () {
-      document.getElementById('service').scrollIntoView({ behavior: 'smooth' })
-    }
-  }
+  name: 'Home'
 }
 </script>
 
