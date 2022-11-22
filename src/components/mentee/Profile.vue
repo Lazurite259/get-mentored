@@ -85,7 +85,6 @@
           <form class="custom-form border rounded shadow" @submit.prevent="update">
             <h1 style="margin-bottom: 6px">Mentee Profile</h1>
             <p style="color: var(--bs-gray-500)">
-                
             </p>
             <div class="row form-group">
               <div class="col-sm-4 label-column">
@@ -93,7 +92,7 @@
                 </label>
               </div>
               <div class="col-sm-6 input-column">
-                <input class="form-control" type="text" v-model="mentee.first_name" placeholder="First Name" required/>
+                <input class="form-control" type="text" v-model="mentee.first_name" placeholder="First Name" required />
               </div>
             </div>
             <div class="row form-group">
@@ -102,7 +101,7 @@
                 </label>
               </div>
               <div class="col-sm-6 input-column">
-                <input class="form-control" type="text" v-model="mentee.last_name" placeholder="Last Name"  required/>
+                <input class="form-control" type="text" v-model="mentee.last_name" placeholder="Last Name" required />
               </div>
             </div>
             <div class="row form-group">
@@ -111,16 +110,7 @@
                 </label>
               </div>
               <div class="col-sm-6 input-column">
-                <input class="form-control" type="email" v-model="mentee.email" placeholder="Email" disabled/>
-              </div>
-            </div>
-            <div class="row form-group">
-              <div class="col-sm-4 label-column">
-                <label class="col-form-label" for="pawssword-input-field">Password
-                </label>
-              </div>
-              <div class="col-sm-6 input-column">
-                <input class="form-control" type="password" v-model="mentee.password" placeholder="Password" required/>
+                <input class="form-control" type="email" v-model="mentee.email" placeholder="Email" disabled />
               </div>
             </div>
             <div class="row form-group">
@@ -139,59 +129,55 @@
               </div>
               <div class="col-sm-6 input-column">
                 <Multiselect v-model="mentee.education_level" :options="education_levels" :searchable="false"
-                  :close-on-select="true" :show-labels="false" placeholder="Education level"></Multiselect>
+                  :close-on-select="true" :show-labels="false" placeholder="Education Level"></Multiselect>
               </div>
             </div>
-            <!-- <div class="row form-group">
+            <div class="row form-group">
               <div class="col-sm-4 label-column">
                 <label class="form-check-label">Work Experience</Label>
               </div>
-              <div class="form-check">
-                <input id="work-experience" type="checkbox" class="form-check-input" @click="checkWorkExperience()"
-                v-model="mentee.work_experience" />
+              <div class="col-sm-6">
+                <input id="work-experience" type="checkbox" class="form-check form-check-input"
+                  @click="checkWorkExperience()" v-model="mentee.work_experience" />
               </div>
-            </div> -->
-            <div class="row form-group">
+            </div>
+            <div id="yoe" class="row form-group" style="display: none;">
               <div class="col-sm-4 label-column">
-                <label class="col-form-label" for="birthdate-input-field">Year Of Experience
-                </label>
+                <label class="col-form-label" for="yoe-input-field">Year Of Experience</label>
               </div>
               <div class="col-sm-6 input-column">
-                <input class="form-control" type="number" v-model="mentee.year_of_experience" placeholder="Year Of Experience" />
+                <input class="form-control" type="number" v-model="mentee.year_of_experience" placeholder="Number" />
               </div>
             </div>
             <div class="row form-group">
               <div class="col-sm-4 label-column">
-                <label class="col-form-label" for="work-experience-input-field">Skills 
-                </label>
+                <label class="col-form-label" for="skills-input-field">Skills</label>
               </div>
               <div class="col-sm-6 input-column">
                 <input class="form-control" type="text" v-model="mentee.skills" placeholder="Skills" />
               </div>
             </div>
             <div class="row form-group">
-              <div class="col-sm-4 input-column">
+              <div class="col-sm-4 label-column">
                 <label class="col-form-label" for="dropdown-input-field">Interested Careers</Label>
               </div>
               <div class="col-sm-6 input-column">
-                <Multiselect v-model="mentee.interested_industry" :options="careers" :multiple="true" :close-on-select="false"
-                :clear-on-select="false" :preserve-search="true" placeholder="Choose careers" label="occupation_title"
-                track-by="onet_code" :preselect-first="true">
-                <template slot="selection" slot-scope="{ values, isOpen }"><span class="multiselect__single"
-                  v-if="values.length &amp;&amp; !isOpen">{{ values.length }} careers selected</span></template>
-              </Multiselect>
+                <Multiselect v-model="mentee.interested_industry" :options="careers" :multiple="true"
+                  :close-on-select="false" :clear-on-select="false" :preserve-search="true" placeholder="Choose careers"
+                  label="occupation_title" track-by="onet_code" :preselect-first="true">
+                  <template slot="selection" slot-scope="{ values, isOpen }"><span class="multiselect__single"
+                      v-if="values.length &amp;&amp; !isOpen">{{ values.length }} careers selected</span></template>
+                </Multiselect>
               </div>
             </div>
             <div class="row form-group">
               <div class="col-sm-4 label-column">
-                <label lass="col-form-label" for="work-experience-input-field">Linkedin
-                </label>
+                <label class="col-form-label">LinkedIn</label>
               </div>
               <div class="col-sm-6 input-column">
-                <input class="form-control" type="text" v-model="mentee.linkedin" placeholder="Linkedin" />
+                <input class="form-control" type="url" v-model="mentee.linkedin" placeholder="URL" />
               </div>
             </div>
-            
             <button class="btn btn-light submit-button" type="submit"
               style="background: #7057cc; color: var(--bs-btn-bg)">
               Save
@@ -243,6 +229,9 @@ export default {
       if (this.mentee.birth_date !== undefined) {
         this.setDate(this.mentee.birth_date)
       }
+      if(this.mentee.work_experience){
+        document.getElementById('yoe').style.display = 'flex'
+      }
     } catch (error) {
       console.log(error.response)
     }
@@ -258,10 +247,9 @@ export default {
       this.mentee.birth_date = year + '-' + month + '-' + day
     },
     checkWorkExperience () {
-      console.log(document.getElementById('work-experience').checked)
       const yoe = document.getElementById('yoe')
       if (document.getElementById('work-experience').checked === true) {
-        yoe.style.display = 'block'
+        yoe.style.display = 'flex'
       } else {
         yoe.style.display = 'none'
       }
@@ -291,7 +279,6 @@ export default {
 </script>
 <style src="vue-multiselect/dist/vue-multiselect.min.css">
 
-
 </style>
 <style scoped>
 ::v-deep .dropdownlist .dropdown-input {
@@ -320,6 +307,7 @@ export default {
 ::v-deep .dropdownlist .dropdown-content .dropdown-item {
   font-size: 1em;
 }
+
 @font-face {
   font-family: 'Poppins';
   src: url() format('woff2');
