@@ -6,7 +6,7 @@
           <div class="profile-card shadow">
             <div class="profile-bar">
               <div class="profile-back"></div>
-              <img class="rounded-circle profile-pic" src="@/assets/img/mentor-1.jpg">
+              <img class="rounded-circle profile-pic" src="@/assets/img/users.jpg">
             </div>
             <div class="profile-block mx-auto px-md-3">
               <h3>{{ mentor.first_name }} {{ mentor.last_name }}</h3>
