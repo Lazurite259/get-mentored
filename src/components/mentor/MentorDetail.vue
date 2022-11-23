@@ -76,18 +76,21 @@ export default {
 
 .profile-bar {
   text-align: center;
+
 }
 
 .profile-back {
   background-color: rgba(112, 87, 204, 0.85);
   height: 150px;
   margin-bottom: -75px;
+  border-radius: 20px 20px 0 0;
 }
 
 .profile-pic {
   width: 150px;
   height: 150px;
   margin-bottom: 10px;
+
 }
 
 .profile-block {

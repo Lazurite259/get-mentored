@@ -158,8 +158,8 @@
       </div>
       <div class="row gy-4 row-cols-1 row-cols-sm-2 row-cols-xl-3">
         <div class="col">
-          <div class="card shadow">
-            <img class="card-img-top w-100 d-block fit-cover" style="height: 200px" src="@/assets/img/th-01.jpg" />
+          <div class="card shadow mx-md-2">
+            <img class="card-img-top w-100 d-block fit-cover" style="height: 200px" src="@/assets/img/mentor04.jpeg" />
             <div class="card-body p-4">
               <h4 class="card-title">Jessica Jams</h4>
               <p style="color: #212121; font-weight: bold">Software Enginner</p>
@@ -169,7 +169,7 @@
               </p>
               <div class="d-flex">
                 <img class="rounded-circle flex-shrink-0 me-3 fit-cover" width="50" height="50"
-                  src="@/assets/img/th-01.jpg" />
+                  src="@/assets/img/mentor04.jpeg" />
                 <div>
                   <p class="fw-bold mb-0">Jessica Jams</p>
                   <p class="text-muted mb-0">ByteDance Inc</p>
@@ -182,8 +182,8 @@
           </div>
         </div>
         <div class="col">
-          <div class="card shadow">
-            <img class="card-img-top w-100 d-block fit-cover" style="height: 200px" src="@/assets/img/th-03.jpg" />
+          <div class="card shadow mx-md-2">
+            <img class="card-img-top w-100 d-block fit-cover" style="height: 200px" src="@/assets/img/mentor05.jpeg" />
             <div class="card-body p-4">
               <h4 class="card-title">Ryan Chen</h4>
               <p style="color: #212121; font-weight: bold">
@@ -195,7 +195,7 @@
               </p>
               <div class="d-flex">
                 <img class="rounded-circle flex-shrink-0 me-3 fit-cover" width="50" height="50"
-                  src="@/assets/img/th-03.jpg" />
+                  src="@/assets/img/mentor05.jpeg" />
                 <div>
                   <p class="fw-bold mb-0">Ryan Chen</p>
                   <p class="text-muted mb-0">Erat netus</p>
@@ -208,8 +208,8 @@
           </div>
         </div>
         <div class="col">
-          <div class="card shadow">
-            <img class="card-img-top w-100 d-block fit-cover" style="height: 200px" src="@/assets/img/th-08.jpg" />
+          <div class="card shadow mx-md-2">
+            <img class="card-img-top w-100 d-block fit-cover" style="height: 200px" src="@/assets/img/mentor08.jpg" />
             <div class="card-body p-4">
               <h4 class="card-title">John Smith</h4>
               <p style="color: #212121; font-weight: bold">Interior Designer</p>
@@ -219,7 +219,7 @@
               </p>
               <div class="d-flex">
                 <img class="rounded-circle flex-shrink-0 me-3 fit-cover" width="50" height="50"
-                  src="@/assets/img/th-08.jpg" />
+                  src="@/assets/img/mentor08.jpg" />
                 <div>
                   <p class="fw-bold mb-0">John Smith</p>
                   <p class="text-muted mb-0">Erat netus</p>
