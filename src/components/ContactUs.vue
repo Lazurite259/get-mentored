@@ -41,7 +41,7 @@ export default {
         })
         if (response.data.success) {
           swal('Success', response.data.message, 'success')
-          // this.$router.push('/')
+          this.$router.push('/')
         } else {
           swal('Error', 'Something went wrong', 'error')
         }
