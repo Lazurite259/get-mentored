@@ -88,8 +88,8 @@
                           continuing development of you GetMentored is always
                           here to support your vision.</span>
                       </p>
-                      <router-link to="/mentors" tag="button" class="btn btn-primary"
-                        style="border-radius: 20px; color: #1e266d">Learn More</router-link>
+                      <router-link to="/mentors" tag="button" class="btn btn-primary" style="border-radius: 20px;">Learn
+                        More</router-link>
                     </div>
                   </div>
                 </div>
@@ -108,8 +108,8 @@
                           journey.&nbsp;We understand that you grow,
                           reconsider, and career plans pivot.&nbsp;&nbsp;</span>
                       </p>
-                      <router-link to="/career" tag="button" class="btn btn-primary"
-                        style="border-radius: 20px; color: #1e266d">Learn More</router-link>
+                      <router-link to="/career" tag="button" class="btn btn-primary" style="border-radius: 20px;">Learn
+                        More</router-link>
                     </div>
                   </div>
                 </div>
@@ -126,7 +126,7 @@
                           has a peer to peer social group where Mentorees can
                           connect with peers.</span>
                       </p>
-                      <!-- <button class="btn btn-primary" type="button" style="border-radius: 20px; color: #1e266d">
+                      <!-- <button class="btn btn-primary" type="button" style="border-radius: 20px;">
                         Learn more
                       </button> -->
                     </div>
@@ -359,7 +359,7 @@ export default {
 .btn-outline-primary {
   --bs-btn-color: #fde69a;
   --bs-btn-border-color: #fde69a;
-  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-color: #1e266d;
   --bs-btn-hover-bg: #fde69a;
   --bs-btn-hover-border-color: #fde69a;
   --bs-btn-focus-shadow-rgb: 13, 110, 253;
@@ -401,7 +401,7 @@ export default {
 }
 
 .btn-primary {
-  --bs-btn-color: #fff;
+  --bs-btn-color: #1e266d;
   --bs-btn-bg: #fde69a;
   --bs-btn-border-color: #fde69a;
   --bs-btn-hover-color: #fff;

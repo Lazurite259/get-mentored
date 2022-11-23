@@ -39,7 +39,8 @@
                   <td>{{ mentor.company_name }}</td>
                   <td>{{ mentor.year_of_experience }}</td>
                   <td>
-                    <router-link :to="{ name: 'mentor-detail', params: { id: mentor._id } }">See Profile</router-link>
+                    <router-link class="text-link" :to="{ name: 'mentor-detail', params: { id: mentor._id } }">See
+                      Profile</router-link>
                   </td>
                 </tr>
               </tbody>
@@ -77,7 +78,8 @@
           <hr style="margin-top: 0px" />
           <ul style="list-style: none;">
             <li v-for="relatedCareer in relatedCareersLoaded" :key="relatedCareer[0]">
-              <router-link :to="{ name: 'career-detail', params: { id: relatedCareer[0] } }" style="font-size: 15px">
+              <router-link class="text-link" :to="{ name: 'career-detail', params: { id: relatedCareer[0] } }"
+                style="font-size: 15px">
                 {{ relatedCareer[1] }}
               </router-link>
             </li>
@@ -223,8 +225,16 @@ export default {
 }
 </script>
 <style scoped>
+.text-link {
+  text-decoration: none;
+}
+
 button.page-link {
   display: inline-block;
   color: #000;
+}
+
+.page-link.active {
+  color: #fff;
 }
 </style>

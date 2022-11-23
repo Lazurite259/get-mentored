@@ -3,7 +3,8 @@
     <!-- Nav bar -->
     <nav class="navbar navbar-light navbar-expand-lg">
       <div class="container">
-        <router-link class="navbar-brand d-flex align-items-center" to="/"><span style="font-weight: bold">GetMentored</span></router-link>
+        <router-link class="navbar-brand d-flex align-items-center" to="/"><span
+            style="font-weight: bold">GetMentored</span></router-link>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
           aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -176,11 +177,12 @@ export default {
   background-color: rgb(112, 87, 204);
 }
 
-/* .navbar-nav .nav-link {
-  color: #fff;
-} */
 .navbar .navbar-nav .nav-item .nav-link {
   color: #fff;
+}
+
+.navbar .navbar-nav .nav-item .nav-link:hover {
+  color: #000;
 }
 
 .navbar .navbar-brand {
