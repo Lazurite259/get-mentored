@@ -55,7 +55,7 @@ export default {
         const error = err.response
         if (error.status === 404) {
           swal('Error', error.data.message, 'error')
-        } else if (err.status === 500) {
+        } else if (error.status === 500) {
           swal('Error', error.data.message, 'error')
         } else {
           swal('Error', err.message, 'error')
@@ -68,7 +68,7 @@ export default {
 <style scoped>
 @font-face {
   font-family: 'Poppins';
-  src: url() format('woff2');
+  src: url(@/assets/fonts/pxiEyp8kv8JHgFVrJJbecnFHGPezSQ.woff2) format('woff2');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -77,7 +77,7 @@ export default {
 
 @font-face {
   font-family: 'Poppins';
-  src: url() format('woff2');
+  src: url(@/assets/fonts/pxiEyp8kv8JHgFVrJJnecnFHGPezSQ.woff2) format('woff2');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -86,7 +86,7 @@ export default {
 
 @font-face {
   font-family: 'Poppins';
-  src: url() format('woff2');
+  src: url(@/assets/fonts/pxiEyp8kv8JHgFVrJJfecnFHGPc.woff2) format('woff2');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
