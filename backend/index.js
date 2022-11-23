@@ -28,12 +28,14 @@ app.use(bodyParser.urlencoded({ extended: false }))
 
 app.use(morgan('dev'))
 // API
+const mainAPI = require('./routes/main.route')
 const careerAPI = require('./routes/career.route')
 const mentorAPI = require('./routes/mentor.route')
 const menteeAPI = require('./routes/mentee.route')
+app.use('/main', mainAPI)
+app.use('/career', careerAPI)
 app.use('/mentor', mentorAPI)
 app.use('/mentee', menteeAPI)
-app.use('/career', careerAPI)
 // Create port
 const port = process.env.PORT || 3000
 app.listen(port, () => {

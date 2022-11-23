@@ -171,7 +171,7 @@ export default {
 <style scoped>
 @font-face {
   font-family: 'Poppins';
-  src: url() format('woff2');
+  src: url(@/assets/fonts/pxiEyp8kv8JHgFVrJJbecnFHGPezSQ.woff2) format('woff2');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -180,7 +180,7 @@ export default {
 
 @font-face {
   font-family: 'Poppins';
-  src: url() format('woff2');
+  src: url(@/assets/fonts/pxiEyp8kv8JHgFVrJJnecnFHGPezSQ.woff2) format('woff2');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -189,7 +189,7 @@ export default {
 
 @font-face {
   font-family: 'Poppins';
-  src: url() format('woff2');
+  src: url(@/assets/fonts/pxiEyp8kv8JHgFVrJJfecnFHGPc.woff2) format('woff2');
   font-weight: 400;
   font-style: normal;
   font-display: swap;

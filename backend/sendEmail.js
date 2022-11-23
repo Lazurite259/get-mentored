@@ -12,9 +12,9 @@ const sendEmail = async (option) => {
       tls: { ciphers: 'SSLv3' }
     })
     const message = {
-      from: `GetMentored <${process.env.SMTP_EMAIL}>`,
-      to: option.email,
-      subject: 'Reset GetMentored.com Password',
+      from: option.from_email,
+      to: option.to_email,
+      subject: option.subject,
       text: option.message
     }
     transporter.sendMail(message, function (error, info) {

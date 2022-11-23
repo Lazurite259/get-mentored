@@ -7,6 +7,11 @@ const routes = [
     name: 'home',
     component: () => import('../components/Home')
   },
+  {
+    path: '/contact',
+    name: 'contact',
+    component: () => import('../components/ContactUs')
+  },
   // career
   {
     path: '/career',

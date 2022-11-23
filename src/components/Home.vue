@@ -246,15 +246,14 @@
         <div class="col">
           <div class="d-flex flex-column justify-content-center align-items-center">
             <p class="text-center">
-              Nisi sit justo faucibus nec ornare amet, tortor torquent. Blandit
-              class dapibus.
+              This website helps me find which field I am interested in. Really Professional!!!
             </p>
             <div class="d-flex">
               <img class="rounded-circle flex-shrink-0 me-3 fit-cover" width="50" height="50"
                 src="@/assets/img/th-12.jpg" />
               <div>
-                <p class="fw-bold text-primary mb-0">John Smith</p>
-                <p class="text-muted mb-0">Erat netus</p>
+                <p class="fw-bold text-primary mb-0">Jimmy Lee</p>
+                <p class="text-muted mb-0">Data Science Mentee</p>
               </div>
             </div>
             <div class="card border-0 shadow-none">
@@ -265,15 +264,15 @@
         <div class="col">
           <div class="d-flex flex-column justify-content-center align-items-center">
             <p class="text-center">
-              Nisi sit justo faucibus nec ornare amet, tortor torquent. Blandit
-              class dapibus.
+              Best Mentor website I've ever seen. John Smith teach me how to prepare my interview and his own experience
+              in his software career.
             </p>
             <div class="d-flex">
               <img class="rounded-circle flex-shrink-0 me-3 fit-cover" width="50" height="50"
                 src="@/assets/img/th-07.jpg" />
               <div>
-                <p class="fw-bold text-primary mb-0">John Smith</p>
-                <p class="text-muted mb-0">Erat netus</p>
+                <p class="fw-bold text-primary mb-0">Cheryl</p>
+                <p class="text-muted mb-0">Software Enginner Mentee</p>
               </div>
             </div>
             <div class="card border-0 shadow-none">
@@ -284,15 +283,14 @@
         <div class="col">
           <div class="d-flex flex-column justify-content-center align-items-center">
             <p class="text-center">
-              Nisi sit justo faucibus nec ornare amet, tortor torquent. Blandit
-              class dapibus.
+              There are more than 1000 industries we can get in touch with. That was insane!
             </p>
             <div class="d-flex">
               <img class="rounded-circle flex-shrink-0 me-3 fit-cover" width="50" height="50"
                 src="@/assets/img/th-06.jpg" />
               <div>
-                <p class="fw-bold text-primary mb-0">John Smith</p>
-                <p class="text-muted mb-0">Erat netus</p>
+                <p class="fw-bold text-primary mb-0">Vinnie</p>
+                <p class="text-muted mb-0">Web Programming Mentee</p>
               </div>
             </div>
             <div class="card border-0 shadow-none">
@@ -315,34 +313,30 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 @font-face {
-  font-family: "Poppins";
-  src: url() format("woff2");
+  font-family: 'Poppins';
+  src: url(@/assets/fonts/pxiEyp8kv8JHgFVrJJbecnFHGPezSQ.woff2) format('woff2');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
-  unicode-range: U+0900-097F, U+1CD0-1CF6, U+1CF8-1CF9, U+200C-200D, U+20A8,
-    U+20B9, U+25CC, U+A830-A839, U+A8E0-A8FB;
+  unicode-range: U+0900-097F, U+1CD0-1CF6, U+1CF8-1CF9, U+200C-200D, U+20A8, U+20B9, U+25CC, U+A830-A839, U+A8E0-A8FB;
 }
 
 @font-face {
-  font-family: "Poppins";
-  src: url() format("woff2");
+  font-family: 'Poppins';
+  src: url(@/assets/fonts/pxiEyp8kv8JHgFVrJJnecnFHGPezSQ.woff2) format('woff2');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
-  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB,
-    U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
 
 @font-face {
-  font-family: "Poppins";
-  src: url() format("woff2");
+  font-family: 'Poppins';
+  src: url(@/assets/fonts/pxiEyp8kv8JHgFVrJJfecnFHGPc.woff2) format('woff2');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
-    U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
-    U+FEFF, U+FFFD;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
 .bg-primary-demo {

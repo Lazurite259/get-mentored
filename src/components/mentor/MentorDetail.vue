@@ -65,7 +65,9 @@
 export default {
   data () {
     return {
-      mentor: {}
+      mentor: {
+        career: {}
+      }
     }
   },
   async created () {

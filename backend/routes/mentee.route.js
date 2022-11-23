@@ -94,7 +94,9 @@ app.post('/forgot-password', async (req, res, next) => {
   const message = `You have requested the reset of a password. Click this link to reset your password: ${resetUrl}.`
   try {
     await sendEmail({
-      email: mentee.email,
+      from_email: `GetMentored <${process.env.SMTP_EMAIL}>`,
+      to_email: mentee.email,
+      subject: 'Reset GetMentored.com Password',
       message
     })
     res.status(200).json({ success: true, message: 'Email sent' })
