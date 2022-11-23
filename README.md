@@ -59,3 +59,5 @@ SMTP_PASSWORD = {Outlook Password}
 BASE_URI = 'http://localhost:8080'
 ```
 Resource: https://nodemailer.com/about/
+
+Set account authentication: https://stackoverflow.com/questions/64166563/send-email-using-microsoft-365-email-server-in-nodejs
