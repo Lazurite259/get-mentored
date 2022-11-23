@@ -17,6 +17,9 @@
               <router-link class="nav-link pr-3" to="/mentors">Mentor Resources</router-link>
             </li>
             <li class="nav-item">
+              <router-link class="nav-link pr-3" to="/contact">Contact Us</router-link>
+            </li>
+            <li class="nav-item">
               <router-link class="nav-link pr-3" to="/mentor-profile" v-if="mentorLoggedIn">Profile</router-link>
             </li>
             <li class="nav-item">
@@ -60,7 +63,7 @@
       <router-view></router-view>
       <footer class="text-white text-center bg-primary-demo">
         <div class="container text-white py-4 py-lg-5">
-          <ul class="list-inline">
+          <!-- <ul class="list-inline">
             <li class="list-inline-item me-4">
               <a class="link-light" href="#">Web design</a>
             </li>
@@ -70,7 +73,7 @@
             <li class="list-inline-item">
               <a class="link-light" href="#">Hosting</a>
             </li>
-          </ul>
+          </ul> -->
           <ul class="list-inline">
             <li class="list-inline-item me-4">
               <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16"
@@ -97,7 +100,7 @@
               </svg>
             </li>
           </ul>
-          <p class="text-muted mb-0">Copyright © 2022 Brand</p>
+          <p class="text-muted mb-0">Copyright © 2022 GetMentored</p>
         </div>
       </footer>
     </div>
