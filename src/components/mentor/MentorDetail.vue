@@ -6,22 +6,41 @@
           <div class="profile-card shadow">
             <div class="profile-bar">
               <div class="profile-back"></div>
-              <img class="rounded-circle profile-pic" src="@/assets/img/mentor-1.jpg">
+              <img class="rounded-circle profile-pic" src="@/assets/img/users.jpg">
             </div>
             <div class="profile-block mx-auto px-md-3">
               <h3>{{ mentor.first_name }} {{ mentor.last_name }}</h3>
               <ul>
-                <li><span>Occupation Title:</span><span class="profile-right">{{ mentor.occupation_title }}</span> </li>
-                <li><span>Company Name:</span><span class="profile-right">{{ mentor.company_name }}</span> </li>
-                <li><span>Location:</span><span class="profile-right">{{ mentor.location }}</span> </li>
-                <li><span>Email:</span><span class="profile-right">
-                    <a :href="'mailto:' + mentor.email">{{ mentor.email }}</a>
-                  </span></li>
-                <li><span>Year of Experiences:</span><span class="profile-right">{{ mentor.year_of_experience }}</span>
+                <li class="row">
+                  <span class="col-md-5"><b>Occupation Title</b></span>
+                  <span class="col-md-7 profile-right">{{ mentor.career.occupation_title }}</span>
                 </li>
-                <li><span>Office Hour:</span><span class="profile-right">{{ mentor.office_hour }}</span></li>
-                <li><span>LinkedIn:</span><span class="profile-right"><a :href="mentor.linkedin">Go to
-                      LinkedIn</a></span></li>
+                <li class="row">
+                  <span class="col-md-5"><b>Company Name</b></span>
+                  <span class="col-md-7 profile-right">{{ mentor.company_name }}</span>
+                </li>
+                <li class="row">
+                  <span class="col-md-5"><b>Location</b></span>
+                  <span class="col-md-7 profile-right">{{ mentor.location }}</span>
+                </li>
+                <li class="row">
+                  <span class="col-md-5"><b>Email</b></span>
+                  <span class="col-md-7 profile-right">
+                    <a :href="'mailto:' + mentor.email">{{ mentor.email }}</a>
+                  </span>
+                </li>
+                <li class="row">
+                  <span class="col-md-5"><b>Year of Experiences (YOE)</b></span>
+                  <span class="col-md-7 profile-right">{{ mentor.year_of_experience }}</span>
+                </li>
+                <!-- <li class="row">
+                  <span class="col-md-5"><b>Office Hour</b></span>
+                  <span class="col-md-7 profile-right">{{ mentor.office_hour }}</span>
+                </li> -->
+                <li class="row">
+                  <span class="col-md-5"><b>LinkedIn</b></span>
+                  <span class="col-md-7 profile-right"><a :href="mentor.linkedin">Go to LinkedIn</a></span>
+                </li>
               </ul>
               <!-- <a class="btn btn-outline-primary" role="button" href="#">Book an experience</a> -->
             </div>
@@ -56,9 +75,6 @@ export default {
     } catch (error) {
       console.log(error.response)
     }
-  },
-  methods: {
-
   }
 }
 </script>

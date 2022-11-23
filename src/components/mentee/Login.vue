@@ -34,7 +34,12 @@
                 <div class="mb-3">
                   <button class="btn btn-primary d-block w-100" type="submit">Login</button>
                 </div>
-                <!-- <p class="text-muted">Forgot your password?</p> -->
+                <div class="mb-3">
+                  <router-link style="color: white;" to="/mentee-register">Create an account</router-link>
+                </div>
+                <div class="mb-3">
+                  <router-link style="color: white;" to="/mentee-forgot-password">Forgot password</router-link>
+                </div>
               </form>
             </div>
           </div>
@@ -106,39 +111,6 @@ export default {
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
-.navbar {
-  background-color: rgba(112, 87, 204, 1);
-}
-
-.bg-primary-demo {
-  background-color: rgb(112, 87, 204);
-}
-
-.font-color {
-  background: linear-gradient(248.66deg, #FFF973 0%, #62FFE3 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  text-fill-color: transparent;
-}
-
-.btn-outline-primary {
-  --bs-btn-color: #fde69a;
-  --bs-btn-border-color: #fde69a;
-  --bs-btn-hover-color: #fff;
-  --bs-btn-hover-bg: #fde69a;
-  --bs-btn-hover-border-color: #fde69a;
-  --bs-btn-focus-shadow-rgb: 13, 110, 253;
-  --bs-btn-active-color: #fff;
-  --bs-btn-active-bg: #fde69a;
-  --bs-btn-active-border-color: #fde69a;
-  --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
-  --bs-btn-disabled-color: #fde69a;
-  --bs-btn-disabled-bg: transparent;
-  --bs-btn-disabled-border-color: #fde69a;
-  --bs-gradient: none;
-}
-
 .card {
   background-color: #ffffff;
 }
@@ -150,7 +122,7 @@ export default {
 }
 
 .btn-primary {
-  --bs-btn-color: #fff;
+  --bs-btn-color: #7057cc;
   --bs-btn-bg: #fde69a;
   --bs-btn-border-color: #fde69a;
   --bs-btn-hover-color: #fff;
@@ -180,24 +152,6 @@ export default {
   width: calc(var(--bs-icon-size) * 2);
   height: calc(var(--bs-icon-size) * 2);
   color: var(--bs-primary);
-}
-
-.bs-icon-xs {
-  --bs-icon-size: 1rem;
-  width: calc(var(--bs-icon-size) * 1.5);
-  height: calc(var(--bs-icon-size) * 1.5);
-}
-
-.bs-icon-sm {
-  --bs-icon-size: 1rem;
-}
-
-.bs-icon-md {
-  --bs-icon-size: 1.5rem;
-}
-
-.bs-icon-lg {
-  --bs-icon-size: 2rem;
 }
 
 .bs-icon-xl {

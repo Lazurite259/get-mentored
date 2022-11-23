@@ -8,13 +8,12 @@
             class="col-md-6 text-center text-md-start d-flex d-sm-flex d-md-flex justify-content-center align-items-center justify-content-md-start align-items-md-center justify-content-xl-center">
             <div style="max-width: 650px">
               <h2 class="text-uppercase fw-bold font-color" style="font-family: Poppins, sans-serif; font-size: 46px">
-                Your career is a lifetime journey
+                <i>Your career is a lifetime journey</i>
               </h2>
               <p class="my-3" style="color: rgb(255, 255, 255)">
                 Let’s get started with the support and guidance from Mentors who
                 have accomplished their goal
               </p>
-              <button class="btn btn-outline-primary btn-lg" @click="scrollToService">See Our Works</button>
             </div>
           </div>
           <div class="col-md-6">
@@ -33,11 +32,8 @@
           <div class="col-md-auto">
             <div class="card-body py-lg-5 card-frame">
               <div>
-                <h2 class="font-color" style="
-                      margin-bottom: 60px;
-                      color: var(--bs-white);
-                      font-family: Poppins, sans-serif;
-                    ">
+                <h2 class="font-color"
+                  style="margin-bottom: 60px;color: var(--bs-white);font-family: Poppins, sans-serif;">
                   Begin your Career Journey with GetMentored
                 </h2>
                 <router-link to="/mentee-register" tag="button" class="btn btn-outline-primary btn-lg"
@@ -66,7 +62,7 @@
       </div>
     </div>
     <!-- Start: Hero2 -->
-    <div class="bg-services" id="service">
+    <div class="bg-services">
       <!-- Start: Features Image -->
       <div class="container py-4 py-xl-5 bg-services">
         <div class="row row-cols-1 row-cols-md-2">
@@ -159,7 +155,8 @@
       <div class="row gy-4 row-cols-1 row-cols-sm-2 row-cols-xl-3">
         <div class="col">
           <div class="card shadow mx-md-2">
-            <img class="card-img-top w-100 d-block fit-cover" style="height: 200px" src="@/assets/img/mentor04.jpeg" />
+            <img class="card-img-top w-100 d-block fit-cover" style="height: 200px; object-fit: cover;"
+              src="@/assets/img/mentor04.jpeg" />
             <div class="card-body p-4">
               <h4 class="card-title">Jessica Jams</h4>
               <p style="color: #212121; font-weight: bold">Software Enginner</p>
@@ -174,16 +171,17 @@
                   <p class="fw-bold mb-0">Jessica Jams</p>
                   <p class="text-muted mb-0">ByteDance Inc</p>
                 </div>
-                <button class="btn btn-outline-dark btn-sm ms-auto" type="button">
-                  <i class="fa fa-plus"></i>&nbsp;Connect
-                </button>
+                <router-link class="btn btn-outline-dark btn-sm ms-auto" :to="{ name: 'mentors' }">
+                  <i class="fa fa-plus"></i>&nbsp;Connect&nbsp;
+                </router-link>
               </div>
             </div>
           </div>
         </div>
         <div class="col">
           <div class="card shadow mx-md-2">
-            <img class="card-img-top w-100 d-block fit-cover" style="height: 200px" src="@/assets/img/mentor05.jpeg" />
+            <img class="card-img-top w-100 d-block fit-cover" style="height: 200px; object-fit: cover;"
+              src="@/assets/img/mentor05.jpeg" />
             <div class="card-body p-4">
               <h4 class="card-title">Ryan Chen</h4>
               <p style="color: #212121; font-weight: bold">
@@ -200,16 +198,17 @@
                   <p class="fw-bold mb-0">Ryan Chen</p>
                   <p class="text-muted mb-0">Erat netus</p>
                 </div>
-                <button class="btn btn-outline-dark btn-sm ms-auto" type="button">
-                  <i class="fa fa-plus"></i>&nbsp;Connect
-                </button>
+                <router-link class="btn btn-outline-dark btn-sm ms-auto" :to="{ name: 'mentors' }">
+                  <i class="fa fa-plus"></i>&nbsp;Connect&nbsp;
+                </router-link>
               </div>
             </div>
           </div>
         </div>
         <div class="col">
           <div class="card shadow mx-md-2">
-            <img class="card-img-top w-100 d-block fit-cover" style="height: 200px" src="@/assets/img/mentor08.jpg" />
+            <img class="card-img-top w-100 d-block fit-cover" style="height: 200px; object-fit: cover;"
+              src="@/assets/img/mentor08.jpg" />
             <div class="card-body p-4">
               <h4 class="card-title">John Smith</h4>
               <p style="color: #212121; font-weight: bold">Interior Designer</p>
@@ -224,9 +223,9 @@
                   <p class="fw-bold mb-0">John Smith</p>
                   <p class="text-muted mb-0">Erat netus</p>
                 </div>
-                <button class="btn btn-outline-dark btn-sm ms-auto" type="button">
-                  <i class="fa fa-plus"></i>&nbsp;Connect
-                </button>
+                <router-link class="btn btn-outline-dark btn-sm ms-auto" :to="{ name: 'mentors' }">
+                  <i class="fa fa-plus"></i>&nbsp;Connect&nbsp;
+                </router-link>
               </div>
             </div>
           </div>
@@ -309,12 +308,7 @@
 
 <script>
 export default {
-  name: 'Home',
-  methods: {
-    scrollToService () {
-      document.getElementById('service').scrollIntoView({ behavior: 'smooth' })
-    }
-  }
+  name: 'Home'
 }
 </script>
 
@@ -351,10 +345,6 @@ export default {
     U+FEFF, U+FFFD;
 }
 
-.navbar {
-  background-color: rgba(112, 87, 204);
-}
-
 .bg-primary-demo {
   background-color: rgb(112, 87, 204);
 }
@@ -364,7 +354,6 @@ export default {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  text-fill-color: transparent;
 }
 
 .btn-outline-primary {
@@ -402,6 +391,11 @@ export default {
   padding-left: 33px;
 }
 
+.btn.btn-outline-dark.btn-sm {
+  display: flex;
+  align-items: center;
+}
+
 .bg-services {
   background-color: #fafafa;
 }
@@ -426,83 +420,4 @@ export default {
 .bg-primary-gradient {
   background: linear-gradient(180deg, #7057cc, cornflowerblue);
 }
-
-.bs-icon {
-  --bs-icon-size: 0.75rem;
-  display: flex;
-  flex-shrink: 0;
-  justify-content: center;
-  align-items: center;
-  font-size: var(--bs-icon-size);
-  width: calc(var(--bs-icon-size) * 2);
-  height: calc(var(--bs-icon-size) * 2);
-  color: var(--bs-primary);
-}
-
-.bs-icon-xs {
-  --bs-icon-size: 1rem;
-  width: calc(var(--bs-icon-size) * 1.5);
-  height: calc(var(--bs-icon-size) * 1.5);
-}
-
-.bs-icon-sm {
-  --bs-icon-size: 1rem;
-}
-
-.bs-icon-md {
-  --bs-icon-size: 1.5rem;
-}
-
-.bs-icon-lg {
-  --bs-icon-size: 2rem;
-}
-
-.bs-icon-xl {
-  --bs-icon-size: 2.5rem;
-}
-
-.bs-icon.bs-icon-primary {
-  color: var(--bs-white);
-  background: var(--bs-primary);
-}
-
-.bs-icon.bs-icon-primary-light {
-  color: var(--bs-primary);
-  background: rgba(var(--bs-primary-rgb), 0.2);
-}
-
-.bs-icon.bs-icon-semi-white {
-  color: var(--bs-primary);
-  background: rgba(255, 255, 255, 0.5);
-}
-
-.bs-icon.bs-icon-rounded {
-  border-radius: 0.5rem;
-}
-
-.bs-icon.bs-icon-circle {
-  border-radius: 50%;
-}
-
-/* h3 {
-  margin: 40px 0 0;
-}
-
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-
-a {
-  color: #42b983;
-}
-
-.btn {
-  margin: 15px;
-} */
 </style>

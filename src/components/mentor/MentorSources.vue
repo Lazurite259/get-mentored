@@ -10,13 +10,13 @@
       <!-- End: Title -->
       <!-- Start: filter controls -->
       <div class="filtr-controls text-center lead mb-3">
-        <span class="active d-inline-block mx-3 py-1 position-relative" data-filter="all" type="button">All </span>
-        <span class="d-inline-block mx-3 py-1 position-relative" data-filter="1">Computer Science</span>
+        <span class="active d-inline-block mx-3 py-1 position-relative" data-filter="all" type="button">All</span>
+        <!-- <span class="d-inline-block mx-3 py-1 position-relative" data-filter="1">Computer Science</span>
         <span class="d-inline-block mx-3 py-1 position-relative" data-filter="2">Mechanics</span>
         <span class="d-inline-block mx-3 py-1 position-relative" data-filter="3">Designer</span>
         <span class="d-inline-block mx-3 py-1 position-relative" data-filter="4">Psychologist</span>
         <span class="d-inline-block mx-3 py-1 position-relative" data-filter="5">Doctor</span>
-        <span class="d-inline-block mx-3 py-1 position-relative" data-filter="6">Lawyer</span>
+        <span class="d-inline-block mx-3 py-1 position-relative" data-filter="6">Lawyer</span> -->
       </div>
       <!-- End: filter controls -->
       <!-- Start: Cards -->
@@ -24,19 +24,19 @@
         <!-- Start: Card column -->
         <div class="col-md-6 col-lg-4 filtr-item" v-for="(mentor, index) in displayList" :key="index">
           <div class="card shadow">
-            <img class="card-img-top w-100 d-block fit-cover" style="height: 200px"
-              src="https://cdn.bootstrapstudio.io/placeholders/1400x800.png" />
+            <img class="card-img-top w-100 d-block" style="height: 200px; object-fit: cover;"
+              src="@/assets/img/users.jpg" />
             <div class="card-body p-4">
               <h4 class="card-title">{{ mentor.first_name }} {{ mentor.last_name }}</h4>
               <p style="color: #212121; font-weight: bold">
-                {{ mentor.occupation_title }}
+                {{ mentor.career.occupation_title }}
               </p>
               <p class="card-text">
                 <span style="color: rgb(51, 51, 51)">{{ getIntro(mentor) }}</span><br />
               </p>
               <div class="d-flex">
                 <img class="rounded-circle flex-shrink-0 me-3 fit-cover" width="50" height="50"
-                  src="https://cdn.bootstrapstudio.io/placeholders/1400x800.png" />
+                  src="@/assets/img/users.jpg" />
                 <div>
                   <p class="fw-bold mb-0">{{ mentor.first_name }} {{ mentor.last_name }}</p>
                   <p class="text-muted mb-0">{{ mentor.company_name }}</p>
@@ -176,12 +176,6 @@ export default {
     }
   },
   computed: {
-    // filteredList () {
-    //   this.initiatePage()
-    //   return this.mentors.filter(mentor => {
-    //     return mentor.occupation_title.toLowerCase().includes()
-    //   })
-    // },
     displayList () {
       return this.paginate(this.mentors)
     },

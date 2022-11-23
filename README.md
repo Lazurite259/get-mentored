@@ -32,7 +32,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 touch .env
 ```
 
-### Add MongoDB connection string in `.env` file
+### Add MongoDB connection string to `.env` file
 ```
 MONGOBD_URI='mongodb+srv://{username}:{password}@{cluster}.mongodb.net/{dbname}?retryWrites=true&w=majority'
 ```
@@ -48,4 +48,16 @@ const dotenv = require("dotenv")
 dotenv.config()
 ```
 
+## Setup SMTP Server  
 
+### Add following string to `backend/.env` file
+```
+SMTP_HOST = 'smtp.offic365.com'
+SMTP_PORT = '587'
+SMTP_EMAIL = {Outlook Account}
+SMTP_PASSWORD = {Outlook Password}
+BASE_URI = 'http://localhost:8080'
+```
+Resource: https://nodemailer.com/about/
+
+Set account authentication: https://stackoverflow.com/questions/64166563/send-email-using-microsoft-365-email-server-in-nodejs

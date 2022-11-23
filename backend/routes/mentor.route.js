@@ -1,4 +1,6 @@
+const sendEmail = require('../sendEmail')
 const express = require('express')
+const crypto = require('crypto')
 const app = express()
 const auth = require('../auth')
 // model
@@ -27,7 +29,7 @@ app.post('/mentor-register', async (req, res) => {
       last_name: req.body.last_name,
       email: req.body.email,
       password: req.body.password.password,
-      occupation_title: req.body.occupation_title
+      career: req.body.career
     })
     const data = await mentor.save()
     const token = await mentor.generateAuthToken() // here it is calling the method that we created in the model
@@ -66,7 +68,7 @@ app.put('/mentor-update/:id', async (req, res) => {
     const mentor = await Mentor.findByIdAndUpdate(req.params.id, {
       first_name: req.body.first_name,
       last_name: req.body.last_name,
-      occupation_title: req.body.occupation_title,
+      career: req.body.career,
       birth_date: req.body.birth_date,
       company_name: req.body.company_name,
       location: req.body.location,
@@ -83,7 +85,7 @@ app.put('/mentor-update/:id', async (req, res) => {
 })
 // Get mentors by career
 app.get('/:career', async (req, res, next) => {
-  const mentors = await Mentor.find({ occupation_title: `${req.params.career}` })
+  const mentors = await Mentor.find({ 'career.onet_code': `${req.params.career}` })
   try {
     res.send(mentors)
   } catch (error) {
@@ -99,10 +101,56 @@ app.get('/mentor-detail/:id', async (req, res, next) => {
     res.status(500).send(error)
   }
 })
+// Forgot password
+app.post('/forgot-password', async (req, res, next) => {
+  const mentor = await Mentor.findOne({ email: req.body.email })
+  if (!mentor) {
+    return res.status(404).json({ message: 'Email does not exist' })
+  }
+  const resetToken = mentor.getResetPasswordToken()
+  await mentor.save({ validateBeforeSave: false })
+  // Create reset url
+  const resetUrl = `${process.env.BASE_URI}/mentor-reset-password/${resetToken}`
+  const message = `You have requested the reset of a password. Click this link to reset your password: ${resetUrl}.`
+  try {
+    await sendEmail({
+      email: mentor.email,
+      message
+    })
+    res.status(200).json({ success: true, message: 'Email sent' })
+  } catch (error) {
+    mentor.reset_password_token = undefined
+    mentor.reset_password_expire = undefined
+    await mentor.save({ validateBeforeSave: false })
+    return res.status(500).json({ message: 'Email could not be sent' })
+  }
+})
+// Reset password
+app.put('/reset-password/:resetToken', async (req, res, next) => {
+  try {
+    // Get hashed token
+    const resetPasswordToken = crypto.createHash('sha256').update(req.params.resetToken).digest('hex')
+    const mentor = await Mentor.findOne({
+      reset_password_token: resetPasswordToken,
+      reset_password_expire: { $gt: Date.now() }
+    })
+    if (!mentor) {
+      res.status(400).json({ message: 'Invalid token' })
+    }
+    // Set new password
+    mentor.password = req.body.password
+    mentor.reset_password_token = undefined
+    mentor.reset_password_expire = undefined
+    await mentor.save()
+    res.status(200).json({ mentor })
+  } catch (error) {
+    res.status(500).send(error)
+  }
+})
 
 // // Delete
-// mentorRoute.route('/delete-mentor/:id').delete((req, res, next) => {
-//     MentorModel.findByIdAndRemove(req.params.id, (error, data) => {
+// app.delete('/delete-mentor/:id', (req, res, next) => {
+//     Mentor.findByIdAndRemove(req.params.id, (error, data) => {
 //         if (error) {
 //             return next(error);
 //         } else {
