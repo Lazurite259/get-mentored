@@ -1,7 +1,9 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
+const crypto = require('crypto')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
+
 const menteeSchema = new Schema({
   first_name: {
     type: String
@@ -43,7 +45,13 @@ const menteeSchema = new Schema({
         required: true
       }
     }
-  ]
+  ],
+  reset_password_token: {
+    type: String
+  },
+  reset_password_expire: {
+    type: Date
+  }
 }, {
   collection: 'mentee'
 })
@@ -65,6 +73,16 @@ menteeSchema.methods.generateAuthToken = async function () {
   mentee.tokens = mentee.tokens.concat({ token })
   await mentee.save()
   return token
+}
+
+// This method generates and hashes password token
+menteeSchema.methods.getResetPasswordToken = function () {
+  const resetToken = crypto.randomBytes(20).toString('hex')
+  // Hash token and set to reset_password_token
+  this.reset_password_token = crypto.createHash('sha256').update(resetToken).digest('hex')
+  // Set expire
+  this.reset_password_expire = Date.now() + 10 * 60 * 1000
+  return resetToken
 }
 
 // This method search for a user by email and password.

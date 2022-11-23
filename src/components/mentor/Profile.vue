@@ -43,9 +43,11 @@
                 <label class="col-form-label" for="dropdown-input-field">Occupation Title</label>
               </div>
               <div class="col-sm-6 input-column">
-                <Dropdown class="dropdownlist" :options="careers" v-on:selected="validateSelection" :maxItem="20"
-                  :disabled="false" name="careerDropdown">
-                </Dropdown>
+                <Multiselect v-model="mentor.career" :options="careers" :close-on-select="true" :preserve-search="true"
+                  :allow-empty="false" placeholder="Choose your career" label="occupation_title" track-by="onet_code"
+                  :preselect-first="true">
+                  <template slot="singleLabel" slot-scope="{ option }">{{ option.occupation_title }}</template>
+                </Multiselect>
               </div>
             </div>
             <div class="row form-group">
@@ -100,9 +102,10 @@
                 <textarea type="text" class="form-control" v-model="mentor.introduction"></textarea>
               </div>
             </div>
-            <div class="form-group">
-              <router-link to="#">Reset password</router-link>
-            </div>
+            <!-- TODO: Change password -->
+            <!-- <div class="form-group">
+              <router-link to="#">Change password</router-link>
+            </div> -->
             <button class="btn btn-light submit-button" type="submit"
               style="background: #7057cc; color: var(--bs-btn-bg)">
               Save
@@ -115,11 +118,12 @@
 </template>
 <script>
 import VueJwtDecode from 'vue-jwt-decode'
-import Dropdown from 'vue-simple-search-dropdown'
 import swal from 'sweetalert'
+import Multiselect from 'vue-multiselect'
+
 export default {
   components: {
-    Dropdown
+    Multiselect
   },
   data () {
     return {
@@ -133,7 +137,6 @@ export default {
     try {
       const careerData = await this.$http.get('/career')
       this.careers = careerData.data
-      this.renameDropdownKeys()
       this.token = localStorage.getItem('mentor-jwt')
       this.decoded = VueJwtDecode.decode(this.token)
       const response = await this.$http.get(`/mentor/mentor-profile/${this.decoded._id}`, {
@@ -143,7 +146,6 @@ export default {
       })
       this.mentor = response.data
       console.log(this.mentor)
-      document.getElementsByName('careerDropdown')[0].setAttribute('value', this.mentor.occupation_title)
       if (this.mentor.birth_date !== undefined) {
         this.setDate(this.mentor.birth_date)
       }
@@ -161,19 +163,6 @@ export default {
       day = day <= 9 ? '0' + day : day
       this.mentor.birth_date = year + '-' + month + '-' + day
     },
-    renameDropdownKeys () {
-      this.careers = this.careers.map(function (obj) {
-        obj.name = obj.occupation_title // Assign new key
-        obj.id = obj.onet_code
-        delete obj.occupation_title // Delete old key
-        delete obj.onet_code
-        return obj
-      })
-      console.log(this.careers)
-    },
-    validateSelection (selection) {
-      this.mentor.occupation_title = selection.name
-    },
     async update () {
       try {
         const response = await this.$http.put(`/mentor/mentor-update/${this.decoded._id}`, this.mentor)
@@ -187,7 +176,7 @@ export default {
         }
       } catch (err) {
         const error = err.response
-        if (err.status === 409) {
+        if (error.status === 409) {
           swal('Error', error.data.message, 'error')
         } else {
           swal('Error', err.message, 'error')
@@ -197,34 +186,9 @@ export default {
   }
 }
 </script>
+
+<style src="vue-multiselect/dist/vue-multiselect.min.css" />
 <style scoped>
-::v-deep .dropdownlist .dropdown-input {
-  background: #fff;
-  border: 1px solid #dbdbdb;
-  border-radius: 2px;
-  box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.08);
-  font-size: 1rem;
-  padding: 12px;
-  min-width: auto;
-  width: 100%;
-  height: 42px;
-  outline: none;
-  color: #5f5f5f;
-}
-
-::v-deep .dropdownlist .dropdown-content {
-  min-width: auto;
-  width: 100%;
-  max-height: 200px;
-  border: 1px solid #dbdbdb;
-  box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.08);
-  overflow: scroll;
-}
-
-::v-deep .dropdownlist .dropdown-content .dropdown-item {
-  font-size: 1em;
-}
-
 @font-face {
   font-family: 'Poppins';
   src: url() format('woff2');
@@ -252,124 +216,8 @@ export default {
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
-.navbar {
-  background-color: rgba(112, 87, 204, 1);
-}
-
-.bg-primary-demo {
-  background-color: rgb(112, 87, 204);
-}
-
-.font-color {
-  background: linear-gradient(248.66deg, #FFF973 0%, #62FFE3 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.btn-outline-primary {
-  --bs-btn-color: #fde69a;
-  --bs-btn-border-color: #fde69a;
-  --bs-btn-hover-color: #fff;
-  --bs-btn-hover-bg: #fde69a;
-  --bs-btn-hover-border-color: #fde69a;
-  --bs-btn-focus-shadow-rgb: 13, 110, 253;
-  --bs-btn-active-color: #fff;
-  --bs-btn-active-bg: #fde69a;
-  --bs-btn-active-border-color: #fde69a;
-  --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
-  --bs-btn-disabled-color: #fde69a;
-  --bs-btn-disabled-bg: transparent;
-  --bs-btn-disabled-border-color: #fde69a;
-  --bs-gradient: none;
-}
-
-.card {
-  background-color: #ffffff;
-}
-
-.card-body {
-  flex: 1 1 auto;
-  padding: var(--bs-card-spacer-y) var(--bs-card-spacer-x);
-  color: var(--bs-card-color);
-}
-
-.btn-primary {
-  --bs-btn-color: #fff;
-  --bs-btn-bg: #fde69a;
-  --bs-btn-border-color: #fde69a;
-  --bs-btn-hover-color: #fff;
-  --bs-btn-hover-bg: #0b5ed7;
-  --bs-btn-hover-border-color: #0a58ca;
-  --bs-btn-focus-shadow-rgb: 49, 132, 253;
-  --bs-btn-active-color: #fff;
-  --bs-btn-active-bg: #0a58ca;
-  --bs-btn-active-border-color: #0a53be;
-  --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
-  --bs-btn-disabled-color: #fff;
-  --bs-btn-disabled-bg: #0d6efd;
-  --bs-btn-disabled-border-color: #0d6efd;
-}
-
 .bg-primary-gradient {
   background: linear-gradient(180deg, #7057cc, cornflowerblue);
-}
-
-.bs-icon {
-  --bs-icon-size: .75rem;
-  display: flex;
-  flex-shrink: 0;
-  justify-content: center;
-  align-items: center;
-  font-size: var(--bs-icon-size);
-  width: calc(var(--bs-icon-size) * 2);
-  height: calc(var(--bs-icon-size) * 2);
-  color: var(--bs-primary);
-}
-
-.bs-icon-xs {
-  --bs-icon-size: 1rem;
-  width: calc(var(--bs-icon-size) * 1.5);
-  height: calc(var(--bs-icon-size) * 1.5);
-}
-
-.bs-icon-sm {
-  --bs-icon-size: 1rem;
-}
-
-.bs-icon-md {
-  --bs-icon-size: 1.5rem;
-}
-
-.bs-icon-lg {
-  --bs-icon-size: 2rem;
-}
-
-.bs-icon-xl {
-  --bs-icon-size: 2.5rem;
-}
-
-.bs-icon.bs-icon-primary {
-  color: var(--bs-white);
-  background: var(--bs-primary);
-}
-
-.bs-icon.bs-icon-primary-light {
-  color: var(--bs-primary);
-  background: rgba(var(--bs-primary-rgb), .2);
-}
-
-.bs-icon.bs-icon-semi-white {
-  color: var(--bs-primary);
-  background: rgba(255, 255, 255, .5);
-}
-
-.bs-icon.bs-icon-rounded {
-  border-radius: .5rem;
-}
-
-.bs-icon.bs-icon-circle {
-  border-radius: 50%;
 }
 
 .profile-form form.custom-form {
@@ -409,12 +257,12 @@ export default {
 }
 
 @media (max-width:768px) {
-  .register-form .custom-form .label-column {
+  .profile-form .custom-form .label-column {
     text-align: left;
   }
 }
 
-.register-form .custom-form .input-column {
+.profile-form .custom-form .input-column {
   color: #5f5f5f;
   text-align: left;
 }

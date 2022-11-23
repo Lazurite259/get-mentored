@@ -3,39 +3,23 @@
     <div class="container">
       <div class="row mb-5">
         <div class="col-md-8 col-xl-6 text-center mx-auto">
-          <h2>Mentor Login</h2>
-          <p class="w-lg-50">Welcome to GetMentored</p>
+          <h2>Forgot Password</h2>
+          <p class="w-lg-50">Enter your email to reset password</p>
         </div>
       </div>
       <div class="row d-flex justify-content-center">
         <div class="col-md-6 col-xl-4">
           <div class="card mb-5" style="background: rgba(255, 255, 255, 0);border-color: rgba(255, 255, 255, 0);">
             <div class="card-body d-flex flex-column align-items-center">
-              <div class="bs-icon-xl bs-icon-circle bs-icon-primary bs-icon my-4">
-                <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16"
-                  class="bi bi-person">
-                  <path
-                    d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z">
-                  </path>
-                </svg>
-              </div>
-              <form @submit.prevent="login" class="text-center" method="post">
+              <form @submit.prevent="submit" class="text-center">
                 <div class="mb-3">
-                  <input class="form-control" v-model="mentor.email" type="email" name="email" placeholder="Email"
-                    required />
+                  <input type="email" v-model="email" class="form-control" placeholder="Email" required />
                 </div>
                 <div class="mb-3">
-                  <input class="form-control" v-model="mentor.password" type="password" name="password"
-                    placeholder="Password" required />
+                  <button class="btn btn-primary d-block w-100" type="submit">Submit</button>
                 </div>
                 <div class="mb-3">
-                  <button class="btn btn-primary d-block w-100" type="submit">Login</button>
-                </div>
-                <div class="mb-3">
-                  <router-link style="color: white;" to="/mentor-register">Create an account</router-link>
-                </div>
-                <div class="mb-3">
-                  <router-link style="color: white;" to="/mentor-forgot-password">Forgot password</router-link>
+                  <router-link style="color: white;" to="/mentor-login">Back to login</router-link>
                 </div>
               </form>
             </div>
@@ -45,32 +29,32 @@
     </div>
   </section>
 </template>
+
 <script>
 import swal from 'sweetalert'
-import EventBus from '@/eventbus'
 export default {
   data () {
     return {
-      mentor: {
-        email: '',
-        password: ''
-      }
+      email: ''
     }
   },
   methods: {
-    async login () {
+    async submit () {
       try {
-        const response = await this.$http.post('/mentor/mentor-login', this.mentor)
-        const token = response.data.token
-        localStorage.setItem('mentor-jwt', token)
-        if (token) {
-          EventBus.$emit('mentor-login', true)
-          swal('Success', 'Login Successful', 'success')
-          this.$router.push('/mentor-profile')
+        const response = await this.$http.post('/mentor/forgot-password', {
+          email: this.email
+        })
+        if (response.data.success) {
+          swal('Success', response.data.message, 'success')
+          this.$router.push('/')
+        } else {
+          swal('Error', 'Something went wrong', 'error')
         }
       } catch (err) {
         const error = err.response
-        if (error.status === 401) {
+        if (error.status === 404) {
+          swal('Error', error.data.message, 'error')
+        } else if (err.status === 500) {
           swal('Error', error.data.message, 'error')
         } else {
           swal('Error', err.message, 'error')
@@ -137,44 +121,5 @@ export default {
 
 .bg-primary-gradient {
   background: linear-gradient(180deg, #7057cc, cornflowerblue);
-}
-
-.bs-icon {
-  --bs-icon-size: .75rem;
-  display: flex;
-  flex-shrink: 0;
-  justify-content: center;
-  align-items: center;
-  font-size: var(--bs-icon-size);
-  width: calc(var(--bs-icon-size) * 2);
-  height: calc(var(--bs-icon-size) * 2);
-  color: var(--bs-primary);
-}
-
-.bs-icon-xl {
-  --bs-icon-size: 2.5rem;
-}
-
-.bs-icon.bs-icon-primary {
-  color: var(--bs-white);
-  background: var(--bs-primary);
-}
-
-.bs-icon.bs-icon-primary-light {
-  color: var(--bs-primary);
-  background: rgba(var(--bs-primary-rgb), .2);
-}
-
-.bs-icon.bs-icon-semi-white {
-  color: var(--bs-primary);
-  background: rgba(255, 255, 255, .5);
-}
-
-.bs-icon.bs-icon-rounded {
-  border-radius: .5rem;
-}
-
-.bs-icon.bs-icon-circle {
-  border-radius: 50%;
 }
 </style>

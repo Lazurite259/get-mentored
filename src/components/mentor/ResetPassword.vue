@@ -1,53 +1,25 @@
 <template>
   <div class="bg-primary-gradient">
     <div class="container-md">
-      <div class="row register-form">
+      <div class="row reset-form">
         <div class="col-md-8 offset-md-2">
           <form class="custom-form border rounded shadow" @submit.prevent="submit">
-            <h1 style="margin-bottom: 6px">Mentee Register</h1>
-            <p style="color: var(--bs-gray-500)">
-              Start your career journey with GetMentored
-            </p>
+            <h1 style="margin-bottom: 6px">Reset Password</h1>
             <div class="row form-group">
               <div class="col-sm-4 label-column">
-                <label class="col-form-label" for="name-input-field">First Name</label>
+                <label class="col-form-label">Password</label>
               </div>
               <div class="col-sm-6 input-column">
-                <input class="form-control" type="text" v-model="mentee.first_name" placeholder="First Name" required />
+                <input class="form-control" type="password" v-model="password" placeholder="Password" required />
               </div>
             </div>
             <div class="row form-group">
               <div class="col-sm-4 label-column">
-                <label class="col-form-label" for="name-input-field">Last Name</label>
+                <label class="col-form-label">Comfirm Password</label>
               </div>
               <div class="col-sm-6 input-column">
-                <input class="form-control" type="text" v-model="mentee.last_name" placeholder="Last Name" required />
-              </div>
-            </div>
-            <div class="row form-group">
-              <div class="col-sm-4 label-column">
-                <label class="col-form-label" for="email-input-field">Email</label>
-              </div>
-              <div class="col-sm-6 input-column">
-                <input class="form-control" type="email" v-model="mentee.email" placeholder="Email" required />
-              </div>
-            </div>
-            <div class="row form-group">
-              <div class="col-sm-4 label-column">
-                <label class="col-form-label" for="pawssword-input-field">Password</label>
-              </div>
-              <div class="col-sm-6 input-column">
-                <input class="form-control" type="password" v-model="mentee.password.password" placeholder="Password"
+                <input class="form-control" type="password" v-model="password_confirm" placeholder="Confirm Password"
                   required />
-              </div>
-            </div>
-            <div class="row form-group">
-              <div class="col-sm-4 label-column">
-                <label class="col-form-label" for="repeat-pawssword-input-field">Comfirm Password</label>
-              </div>
-              <div class="col-sm-6 input-column">
-                <input class="form-control" type="password" v-model="mentee.password.confirm"
-                  placeholder="Confirm Password" required />
               </div>
             </div>
             <div v-if="errors.length" style="color: red;">
@@ -56,12 +28,8 @@
                 <li v-for="(error, index) in errors" :key="index">{{ "- " + error.message }}</li>
               </ul>
             </div>
-            <!-- <div class="form-check" style="width: 340.664px">
-              <input class="form-check-input" type="checkbox" id="formCheck-1" /><label class="form-check-label"
-                for="formCheck-1">I've read and accept the terms and conditions</label>
-            </div> -->
             <button class="btn btn-light submit-button" type="submit"
-              style="background: #7057cc; color: var(--bs-btn-bg)">Sign Up</button>
+              style="background: #7057cc; color: var(--bs-btn-bg)">Submit</button>
           </form>
         </div>
       </div>
@@ -70,21 +38,12 @@
 </template>
 
 <script>
-import EventBus from '@/eventbus'
 import swal from 'sweetalert'
-
 export default {
   data () {
     return {
-      mentee: {
-        first_name: '',
-        last_name: '',
-        email: '',
-        password: {
-          password: '',
-          confirm: ''
-        }
-      },
+      password: '',
+      password_confirm: '',
       errors: []
     }
   },
@@ -98,8 +57,8 @@ export default {
     },
     async submit () {
       this.errors = []
-      const psw1 = this.mentee.password.password
-      const psw2 = this.mentee.password.confirm
+      const psw1 = this.password
+      const psw2 = this.password_confirm
       if (!this.validPassword(psw1)) {
         this.errors.push({
           message: 'Password must be Minimum eight characters, at least one letter, one number, and one special character(@$!%*#?&).'
@@ -112,22 +71,21 @@ export default {
       }
       if (!this.errors.length) {
         try {
-          const response = await this.$http.post('/mentee/mentee-register', this.mentee)
-          console.log(response)
-          const token = response.data.token
-          if (token) {
-            localStorage.setItem('mentee-jwt', token)
-            EventBus.$emit('mentee-login', true)
-            this.$router.push('/mentee-profile')
-            swal('Success', 'Registration was successful', 'success')
+          const response = await this.$http.put(`/mentor/reset-password/${this.$route.params.resetToken}`, {
+            password: this.password
+          })
+          if (response.status === 200) {
+            swal('Success', 'Password reset successful', 'success')
+            this.$router.push('/')
           } else {
             swal('Error', 'Something went wrong', 'error')
           }
         } catch (err) {
           const error = err.response
-          if (error.status === 409) {
+          if (err.status === 400) {
             swal('Error', error.data.message, 'error')
           } else {
+            console.log(err)
             swal('Error', err.message, 'error')
           }
         }
@@ -168,7 +126,7 @@ export default {
   background: linear-gradient(180deg, #7057cc, cornflowerblue);
 }
 
-.register-form form.custom-form {
+.reset-form form.custom-form {
   padding: 55px;
   box-sizing: border-box;
   background-color: #ffffff;
@@ -180,12 +138,12 @@ export default {
 }
 
 @media (max-width:400px) {
-  .register-form form.custom-form {
+  .reset-form form.custom-form {
     padding: 55px 10px;
   }
 }
 
-.register-form .custom-form h1 {
+.reset-form .custom-form h1 {
   display: inline-block;
   color: #4c565e;
   font-size: 24px;
@@ -195,27 +153,27 @@ export default {
   border-bottom: 2px solid rgb(108, 174, 224);
 }
 
-.register-form .custom-form .form-group {
+.reset-form .custom-form .form-group {
   margin-bottom: 25px;
 }
 
-.register-form .custom-form .label-column {
+.reset-form .custom-form .label-column {
   text-align: right;
   color: #5F5F5F;
 }
 
 @media (max-width:768px) {
-  .register-form .custom-form .label-column {
+  .reset-form .custom-form .label-column {
     text-align: left;
   }
 }
 
-.register-form .custom-form .input-column {
+.reset-form .custom-form .input-column {
   color: #5f5f5f;
   text-align: left;
 }
 
-.register-form .custom-form .input-column input {
+.reset-form .custom-form .input-column input {
   color: #5f5f5f;
   box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.08);
   padding: 12px;
@@ -224,7 +182,16 @@ export default {
   height: 42px;
 }
 
-.register-form .custom-form .submit-button {
+.reset-form .custom-form .input-column textarea {
+  color: #5f5f5f;
+  box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.08);
+  padding: 12px;
+  border: 1px solid #dbdbdb;
+  border-radius: 2px;
+  height: 100px;
+}
+
+.reset-form .custom-form .submit-button {
   border-radius: 2px;
   background: #6caee0;
   color: #ffffff;
