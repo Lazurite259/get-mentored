@@ -43,8 +43,9 @@
                 <label class="col-form-label" for="dropdown-input-field">Education Level</label>
               </div>
               <div class="col-sm-6 input-column">
-                <Multiselect v-model="mentee.education_level" :options="education_levels" :searchable="false"
-                  :close-on-select="true" :show-labels="false" placeholder="Education Level"></Multiselect>
+                <Multiselect class="education-dropdown" v-model="mentee.education_level" :options="education_levels"
+                  :searchable="false" :close-on-select="true" :show-labels="false" placeholder="Education Level">
+                </Multiselect>
               </div>
             </div>
             <div class="row form-group">
@@ -79,9 +80,9 @@
                 <label class="col-form-label" for="dropdown-input-field">Interested Careers</Label>
               </div>
               <div class="col-sm-6 input-column">
-                <Multiselect v-model="mentee.interested_industry" :options="careers" :multiple="true"
-                  :close-on-select="false" :clear-on-select="false" :preserve-search="true" placeholder="Choose careers"
-                  label="occupation_title" track-by="onet_code" :preselect-first="true">
+                <Multiselect class="career-multiselect" v-model="mentee.interested_industry" :options="careers"
+                  :multiple="true" :close-on-select="false" :clear-on-select="false" :preserve-search="true"
+                  placeholder="Choose careers" label="occupation_title" track-by="onet_code" :preselect-first="true">
                   <template slot="selection" slot-scope="{ values, isOpen }"><span class="multiselect__single"
                       v-if="values.length &amp;&amp; !isOpen">{{ values.length }} careers selected</span></template>
                 </Multiselect>
@@ -95,13 +96,11 @@
                 <input class="form-control" type="url" v-model="mentee.linkedin" placeholder="URL" />
               </div>
             </div>
-            <div class="form-group">
-              <router-link to="#">Reset password</router-link>
-            </div>
-            <button class="btn btn-light submit-button" type="submit"
-              style="background: #7057cc; color: var(--bs-btn-bg)">
-              Save
-            </button>
+            <!-- TODO: Change password -->
+            <!-- <div class="form-group">
+              <router-link to="#">Change password</router-link>
+            </div> -->
+            <button class="btn btn-light submit-button" type="submit">Save</button>
           </form>
         </div>
       </div>
@@ -188,7 +187,7 @@ export default {
         }
       } catch (err) {
         const error = err.response
-        if (err.status === 409) {
+        if (error.status === 409) {
           swal('Error', error.data.message, 'error')
         } else {
           swal('Error', err.message, 'error')
@@ -229,124 +228,8 @@ export default {
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
-.navbar {
-  background-color: rgba(112, 87, 204, 1);
-}
-
-.bg-primary-demo {
-  background-color: rgb(112, 87, 204);
-}
-
-.font-color {
-  background: linear-gradient(248.66deg, #FFF973 0%, #62FFE3 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.btn-outline-primary {
-  --bs-btn-color: #fde69a;
-  --bs-btn-border-color: #fde69a;
-  --bs-btn-hover-color: #fff;
-  --bs-btn-hover-bg: #fde69a;
-  --bs-btn-hover-border-color: #fde69a;
-  --bs-btn-focus-shadow-rgb: 13, 110, 253;
-  --bs-btn-active-color: #fff;
-  --bs-btn-active-bg: #fde69a;
-  --bs-btn-active-border-color: #fde69a;
-  --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
-  --bs-btn-disabled-color: #fde69a;
-  --bs-btn-disabled-bg: transparent;
-  --bs-btn-disabled-border-color: #fde69a;
-  --bs-gradient: none;
-}
-
-.card {
-  background-color: #ffffff;
-}
-
-.card-body {
-  flex: 1 1 auto;
-  padding: var(--bs-card-spacer-y) var(--bs-card-spacer-x);
-  color: var(--bs-card-color);
-}
-
-.btn-primary {
-  --bs-btn-color: #fff;
-  --bs-btn-bg: #fde69a;
-  --bs-btn-border-color: #fde69a;
-  --bs-btn-hover-color: #fff;
-  --bs-btn-hover-bg: #0b5ed7;
-  --bs-btn-hover-border-color: #0a58ca;
-  --bs-btn-focus-shadow-rgb: 49, 132, 253;
-  --bs-btn-active-color: #fff;
-  --bs-btn-active-bg: #0a58ca;
-  --bs-btn-active-border-color: #0a53be;
-  --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
-  --bs-btn-disabled-color: #fff;
-  --bs-btn-disabled-bg: #0d6efd;
-  --bs-btn-disabled-border-color: #0d6efd;
-}
-
 .bg-primary-gradient {
   background: linear-gradient(180deg, #7057cc, cornflowerblue);
-}
-
-.bs-icon {
-  --bs-icon-size: .75rem;
-  display: flex;
-  flex-shrink: 0;
-  justify-content: center;
-  align-items: center;
-  font-size: var(--bs-icon-size);
-  width: calc(var(--bs-icon-size) * 2);
-  height: calc(var(--bs-icon-size) * 2);
-  color: var(--bs-primary);
-}
-
-.bs-icon-xs {
-  --bs-icon-size: 1rem;
-  width: calc(var(--bs-icon-size) * 1.5);
-  height: calc(var(--bs-icon-size) * 1.5);
-}
-
-.bs-icon-sm {
-  --bs-icon-size: 1rem;
-}
-
-.bs-icon-md {
-  --bs-icon-size: 1.5rem;
-}
-
-.bs-icon-lg {
-  --bs-icon-size: 2rem;
-}
-
-.bs-icon-xl {
-  --bs-icon-size: 2.5rem;
-}
-
-.bs-icon.bs-icon-primary {
-  color: var(--bs-white);
-  background: var(--bs-primary);
-}
-
-.bs-icon.bs-icon-primary-light {
-  color: var(--bs-primary);
-  background: rgba(var(--bs-primary-rgb), .2);
-}
-
-.bs-icon.bs-icon-semi-white {
-  color: var(--bs-primary);
-  background: rgba(255, 255, 255, .5);
-}
-
-.bs-icon.bs-icon-rounded {
-  border-radius: .5rem;
-}
-
-.bs-icon.bs-icon-circle {
-  border-radius: 50%;
 }
 
 .profile-form form.custom-form {
@@ -386,12 +269,12 @@ export default {
 }
 
 @media (max-width:768px) {
-  .register-form .custom-form .label-column {
+  .profile-form .custom-form .label-column {
     text-align: left;
   }
 }
 
-.register-form .custom-form .input-column {
+.profile-form .custom-form .input-column {
   color: #5f5f5f;
   text-align: left;
 }
@@ -424,5 +307,49 @@ export default {
   border: 0;
   margin: 30px;
   outline: none;
+}
+
+::v-deep .education-dropdown .multiselect__option--highlight {
+  background: #bca3e4;
+  outline: none;
+  color: #fff
+}
+
+::v-deep .education-dropdown .multiselect__tags {
+  color: #5f5f5f;
+  box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.08);
+  border: 1px solid #dbdbdb;
+  border-radius: 2px;
+  font-weight: normal;
+}
+
+::v-deep .education-dropdown .multiselect__option {
+  font-weight: normal;
+}
+
+::v-deep .career-multiselect .multiselect__option--highlight {
+  background: #bca3e4;
+  outline: none;
+  color: #fff
+}
+
+::v-deep .career-multiselect .multiselect__tags {
+  color: #5f5f5f;
+  box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.08);
+  border: 1px solid #dbdbdb;
+  border-radius: 2px;
+}
+
+::v-deep .career-multiselect .multiselect__tag {
+  background: #a788dc;
+  font-weight: normal;
+}
+
+::v-deep .career-multiselect .multiselect__tag-icon:hover {
+  background: #936cd4
+}
+
+::v-deep .career-multiselect .multiselect__option {
+  font-weight: normal;
 }
 </style>

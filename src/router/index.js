@@ -7,6 +7,18 @@ const routes = [
     name: 'home',
     component: () => import('../components/Home')
   },
+  // career
+  {
+    path: '/career',
+    name: 'career',
+    component: () => import('../components/Career')
+  },
+  {
+    path: '/career/:id',
+    name: 'career-detail',
+    component: () => import('../components/CareerDetail')
+  },
+  // mentor
   {
     path: '/mentor-login',
     name: 'mentor-login',
@@ -14,27 +26,10 @@ const routes = [
     meta: { guest: true }
   },
   {
-    path: '/mentee-login',
-    name: 'mentee-login',
-    component: () => import('../components/mentee/Login'),
-    meta: { guest: true }
-  },
-  {
     path: '/mentor-register',
     name: 'mentor-register',
     component: () => import('../components/mentor/Register'),
     meta: { guest: true }
-  },
-  {
-    path: '/mentee-register',
-    name: 'mentee-register',
-    component: () => import('../components/mentee/Register'),
-    meta: { guest: true }
-  },
-  {
-    path: '/career',
-    name: 'career',
-    component: () => import('../components/Career')
   },
   {
     path: '/mentor-profile',
@@ -68,6 +63,47 @@ const routes = [
     name: 'mentor-detail',
     component: () => import('../components/mentor/MentorDetail'),
     meta: { requiresAuth: true }
+  },
+  {
+    path: '/mentor-forgot-password',
+    name: 'mentor-forgot-password',
+    component: () => import('../components/mentor/ForgotPassword'),
+    meta: { guest: true }
+  },
+  {
+    path: '/mentor-reset-password/:resetToken',
+    name: 'mentor-reset-password',
+    component: () => import('../components/mentor/ResetPassword')
+  },
+  // mentee
+  {
+    path: '/mentee-login',
+    name: 'mentee-login',
+    component: () => import('../components/mentee/Login'),
+    meta: { guest: true }
+  },
+  {
+    path: '/mentee-register',
+    name: 'mentee-register',
+    component: () => import('../components/mentee/Register'),
+    meta: { guest: true }
+  },
+  {
+    path: '/mentee-profile',
+    name: 'mentee-profile',
+    component: () => import('../components/mentee/Profile'),
+    meta: { requiresAuth: true }
+  },
+  {
+    path: '/mentee-forgot-password',
+    name: 'mentee-forgot-password',
+    component: () => import('../components/mentee/ForgotPassword'),
+    meta: { guest: true }
+  },
+  {
+    path: '/mentee-reset-password/:resetToken',
+    name: 'mentee-reset-password',
+    component: () => import('../components/mentee/ResetPassword')
   }
 ]
 const router = new VueRouter({

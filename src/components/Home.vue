@@ -32,11 +32,8 @@
           <div class="col-md-auto">
             <div class="card-body py-lg-5 card-frame">
               <div>
-                <h2 class="font-color" style="
-                      margin-bottom: 60px;
-                      color: var(--bs-white);
-                      font-family: Poppins, sans-serif;
-                    ">
+                <h2 class="font-color"
+                  style="margin-bottom: 60px;color: var(--bs-white);font-family: Poppins, sans-serif;">
                   Begin your Career Journey with GetMentored
                 </h2>
                 <router-link to="/mentee-register" tag="button" class="btn btn-outline-primary btn-lg"
@@ -174,9 +171,9 @@
                   <p class="fw-bold mb-0">Jessica Jams</p>
                   <p class="text-muted mb-0">ByteDance Inc</p>
                 </div>
-                <button class="btn btn-outline-dark btn-sm ms-auto" type="button">
-                  <i class="fa fa-plus"></i>&nbsp;Connect
-                </button>
+                <router-link class="btn btn-outline-dark btn-sm ms-auto" :to="{ name: 'mentors' }">
+                  <i class="fa fa-plus"></i>&nbsp;Connect&nbsp;
+                </router-link>
               </div>
             </div>
           </div>
@@ -201,9 +198,9 @@
                   <p class="fw-bold mb-0">Ryan Chen</p>
                   <p class="text-muted mb-0">Erat netus</p>
                 </div>
-                <button class="btn btn-outline-dark btn-sm ms-auto" type="button">
-                  <i class="fa fa-plus"></i>&nbsp;Connect
-                </button>
+                <router-link class="btn btn-outline-dark btn-sm ms-auto" :to="{ name: 'mentors' }">
+                  <i class="fa fa-plus"></i>&nbsp;Connect&nbsp;
+                </router-link>
               </div>
             </div>
           </div>
@@ -226,9 +223,9 @@
                   <p class="fw-bold mb-0">John Smith</p>
                   <p class="text-muted mb-0">Erat netus</p>
                 </div>
-                <button class="btn btn-outline-dark btn-sm ms-auto" type="button">
-                  <i class="fa fa-plus"></i>&nbsp;Connect
-                </button>
+                <router-link class="btn btn-outline-dark btn-sm ms-auto" :to="{ name: 'mentors' }">
+                  <i class="fa fa-plus"></i>&nbsp;Connect&nbsp;
+                </router-link>
               </div>
             </div>
           </div>
@@ -393,6 +390,11 @@ export default {
   background: rgba(255, 255, 255, 0.1);
   border-radius: 25px;
   padding-left: 33px;
+}
+
+.btn.btn-outline-dark.btn-sm {
+  display: flex;
+  align-items: center;
 }
 
 .bg-services {
