@@ -60,8 +60,7 @@
               <input class="form-check-input" type="checkbox" id="formCheck-1" /><label class="form-check-label"
                 for="formCheck-1">I've read and accept the terms and conditions</label>
             </div> -->
-            <button class="btn btn-light submit-button" type="submit"
-              style="background: #7057cc; color: var(--bs-btn-bg)">Sign Up</button>
+            <button class="btn btn-light submit-button" type="submit">Sign Up</button>
           </form>
         </div>
       </div>

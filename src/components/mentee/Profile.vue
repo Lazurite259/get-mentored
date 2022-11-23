@@ -43,8 +43,9 @@
                 <label class="col-form-label" for="dropdown-input-field">Education Level</label>
               </div>
               <div class="col-sm-6 input-column">
-                <Multiselect v-model="mentee.education_level" :options="education_levels" :searchable="false"
-                  :close-on-select="true" :show-labels="false" placeholder="Education Level"></Multiselect>
+                <Multiselect class="education-dropdown" v-model="mentee.education_level" :options="education_levels"
+                  :searchable="false" :close-on-select="true" :show-labels="false" placeholder="Education Level">
+                </Multiselect>
               </div>
             </div>
             <div class="row form-group">
@@ -79,9 +80,9 @@
                 <label class="col-form-label" for="dropdown-input-field">Interested Careers</Label>
               </div>
               <div class="col-sm-6 input-column">
-                <Multiselect v-model="mentee.interested_industry" :options="careers" :multiple="true"
-                  :close-on-select="false" :clear-on-select="false" :preserve-search="true" placeholder="Choose careers"
-                  label="occupation_title" track-by="onet_code" :preselect-first="true">
+                <Multiselect class="career-multiselect" v-model="mentee.interested_industry" :options="careers"
+                  :multiple="true" :close-on-select="false" :clear-on-select="false" :preserve-search="true"
+                  placeholder="Choose careers" label="occupation_title" track-by="onet_code" :preselect-first="true">
                   <template slot="selection" slot-scope="{ values, isOpen }"><span class="multiselect__single"
                       v-if="values.length &amp;&amp; !isOpen">{{ values.length }} careers selected</span></template>
                 </Multiselect>
@@ -99,10 +100,7 @@
             <!-- <div class="form-group">
               <router-link to="#">Change password</router-link>
             </div> -->
-            <button class="btn btn-light submit-button" type="submit"
-              style="background: #7057cc; color: var(--bs-btn-bg)">
-              Save
-            </button>
+            <button class="btn btn-light submit-button" type="submit">Save</button>
           </form>
         </div>
       </div>
@@ -199,8 +197,9 @@ export default {
   }
 }
 </script>
+<style src="vue-multiselect/dist/vue-multiselect.min.css">
 
-<style src="vue-multiselect/dist/vue-multiselect.min.css" />
+</style>
 <style scoped>
 @font-face {
   font-family: 'Poppins';
@@ -308,5 +307,49 @@ export default {
   border: 0;
   margin: 30px;
   outline: none;
+}
+
+::v-deep .education-dropdown .multiselect__option--highlight {
+  background: #bca3e4;
+  outline: none;
+  color: #fff
+}
+
+::v-deep .education-dropdown .multiselect__tags {
+  color: #5f5f5f;
+  box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.08);
+  border: 1px solid #dbdbdb;
+  border-radius: 2px;
+  font-weight: normal;
+}
+
+::v-deep .education-dropdown .multiselect__option {
+  font-weight: normal;
+}
+
+::v-deep .career-multiselect .multiselect__option--highlight {
+  background: #bca3e4;
+  outline: none;
+  color: #fff
+}
+
+::v-deep .career-multiselect .multiselect__tags {
+  color: #5f5f5f;
+  box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.08);
+  border: 1px solid #dbdbdb;
+  border-radius: 2px;
+}
+
+::v-deep .career-multiselect .multiselect__tag {
+  background: #a788dc;
+  font-weight: normal;
+}
+
+::v-deep .career-multiselect .multiselect__tag-icon:hover {
+  background: #936cd4
+}
+
+::v-deep .career-multiselect .multiselect__option {
+  font-weight: normal;
 }
 </style>
