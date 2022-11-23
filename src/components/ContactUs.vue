@@ -1,39 +1,11 @@
 <template>
-    <section class="position-relative py-5">
-      <div class="d-md-none">
-        <iframe
-          
-          frameborder="0"
-          src="https://cdn.bootstrapstudio.io/placeholders/map.html"
-          width="100%"
-          height="100%"
-        ></iframe>
-      </div>
-      <div
-        class="d-none d-md-block position-absolute top-0 start-0 w-100 h-100"
-      >
-        <iframe
-          frameborder="0"
-          src="https://cdn.bootstrapstudio.io/placeholders/map.html"
-          width="100%"
-          height="100%"
-        ></iframe>
-      </div>
-      <div class="position-relative mx-2 my-5 m-md-5">
-        <div class="container position-relative">
-          <div class="row">
-            <div
-              class="col-md-6 col-xl-5 col-xxl-4 offset-md-6 offset-xl-7 offset-xxl-8"
-            >
-              <div>
-                <form
-                  class="border rounded shadow p-3 p-md-4 p-lg-5"
-                  method="post"
-                  style="background: var(--bs-body-bg)"
-                >
-                  <h3 class="text-center mb-3">Contact us</h3>
-                  <!-- Start: Success Example -->
-                  <div class="mb-3">
+  <div class="bg-primary-gradient">
+    <div class="container-md">
+      <div class="row profile-form">
+        <div class="col-md-8 offset-md-2">
+          <form class="custom-form border rounded shadow" @submit.prevent="submit">
+            <h1 style="margin-bottom: 6px">Contact Us</h1>
+            <div class="mb-3">
                     <input
                       class="form-control"
                       type="text"
@@ -60,16 +32,12 @@
                       rows="6"
                     ></textarea>
                   </div>
-                  <div class="mb-3">
-                    <button class="btn btn-primary" type="submit">Send</button>
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div>
+            <button class="btn btn-light submit-button" type="submit">Send</button>
+          </form>
         </div>
       </div>
-    </section>
+    </div>
+  </div>
 </template>
 <script>
 
@@ -101,5 +69,102 @@
 	font-display: swap;
 	unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
+.bg-primary-gradient {
+  background: linear-gradient(180deg, #7057cc, cornflowerblue);
+}
 
+.profile-form form.custom-form {
+  padding: 55px;
+  box-sizing: border-box;
+  background-color: #ffffff;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+  font: bold 14px sans-serif;
+  text-align: center;
+  margin: 50px;
+  color: #333;
+}
+
+@media (max-width:400px) {
+  .profile-form form.custom-form {
+    padding: 55px 10px;
+  }
+}
+
+.profile-form .custom-form h1 {
+  display: inline-block;
+  color: #4c565e;
+  font-size: 24px;
+  font-weight: bold;
+  padding: 0 10px 15px;
+  margin-bottom: 60px;
+  border-bottom: 2px solid rgb(108, 174, 224);
+}
+
+.profile-form .custom-form .form-group {
+  margin-bottom: 25px;
+}
+
+.profile-form .custom-form .label-column {
+  text-align: right;
+  color: #5F5F5F;
+}
+
+@media (max-width:768px) {
+  .profile-form .custom-form .label-column {
+    text-align: left;
+  }
+}
+
+.profile-form .custom-form .input-column {
+  color: #5f5f5f;
+  text-align: left;
+}
+
+.profile-form .custom-form .input-column input {
+  color: #5f5f5f;
+  box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.08);
+  padding: 12px;
+  border: 1px solid #dbdbdb;
+  border-radius: 2px;
+  height: 42px;
+}
+
+.profile-form .custom-form .input-column textarea {
+  color: #5f5f5f;
+  box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.08);
+  padding: 12px;
+  border: 1px solid #dbdbdb;
+  border-radius: 2px;
+  height: 100px;
+}
+
+.profile-form .custom-form .submit-button {
+  border-radius: 2px;
+  background: #6caee0;
+  color: #ffffff;
+  font-weight: bold;
+  box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.08);
+  padding: 14px 22px;
+  border: 0;
+  margin: 30px;
+  outline: none;
+}
+
+::v-deep .career-dropdown .multiselect__option--highlight {
+  background: #bca3e4;
+  outline: none;
+  color: #fff
+}
+
+::v-deep .career-dropdown .multiselect__tags {
+  color: #5f5f5f;
+  box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.08);
+  border: 1px solid #dbdbdb;
+  border-radius: 2px;
+  font-weight: normal;
+}
+
+::v-deep .career-dropdown .multiselect__option {
+  font-weight: normal;
+}
 </style>
