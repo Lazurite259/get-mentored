@@ -1,9 +1,10 @@
 <template>
   <div>
     <!-- Nav bar -->
-    <nav class="navbar navbar-expand-lg">
-      <div class="container-fluid">
-        <router-link class="navbar-brand float-left" to="/">GetMentored</router-link>
+    <nav class="navbar navbar-light navbar-expand-lg">
+      <div class="container">
+        <router-link class="navbar-brand d-flex align-items-center" to="/"><span
+            style="font-weight: bold">GetMentored</span></router-link>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
           aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -16,6 +17,8 @@
             <li class="nav-item">
               <router-link class="nav-link pr-3" to="/mentors">Mentor Resources</router-link>
             </li>
+          </ul>
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
             <li class="nav-item">
               <router-link class="nav-link pr-3" to="/mentor-profile" v-if="mentorLoggedIn">Profile</router-link>
             </li>
@@ -174,11 +177,12 @@ export default {
   background-color: rgb(112, 87, 204);
 }
 
-/* .navbar-nav .nav-link {
-  color: #fff;
-} */
 .navbar .navbar-nav .nav-item .nav-link {
   color: #fff;
+}
+
+.navbar .navbar-nav .nav-item .nav-link:hover {
+  color: #000;
 }
 
 .navbar .navbar-brand {

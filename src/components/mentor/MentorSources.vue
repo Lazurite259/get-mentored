@@ -295,4 +295,8 @@ button.page-link {
   display: inline-block;
   color: #000;
 }
+
+.page-link.active {
+  color: #fff;
+}
 </style>
