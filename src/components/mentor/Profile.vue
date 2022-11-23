@@ -43,9 +43,9 @@
                 <label class="col-form-label" for="dropdown-input-field">Occupation Title</label>
               </div>
               <div class="col-sm-6 input-column">
-                <Multiselect v-model="mentor.career" :options="careers" :close-on-select="true" :preserve-search="true"
-                  :allow-empty="false" placeholder="Choose your career" label="occupation_title" track-by="onet_code"
-                  :preselect-first="true">
+                <Multiselect class="career-dropdown" v-model="mentor.career" :options="careers" :close-on-select="true"
+                  :preserve-search="true" :allow-empty="false" placeholder="Choose your career" label="occupation_title"
+                  track-by="onet_code" :preselect-first="true">
                   <template slot="singleLabel" slot-scope="{ option }">{{ option.occupation_title }}</template>
                 </Multiselect>
               </div>
@@ -106,10 +106,7 @@
             <!-- <div class="form-group">
               <router-link to="#">Change password</router-link>
             </div> -->
-            <button class="btn btn-light submit-button" type="submit"
-              style="background: #7057cc; color: var(--bs-btn-bg)">
-              Save
-            </button>
+            <button class="btn btn-light submit-button" type="submit">Save</button>
           </form>
         </div>
       </div>
@@ -186,8 +183,9 @@ export default {
   }
 }
 </script>
+<style src="vue-multiselect/dist/vue-multiselect.min.css">
 
-<style src="vue-multiselect/dist/vue-multiselect.min.css" />
+</style>
 <style scoped>
 @font-face {
   font-family: 'Poppins';
@@ -295,5 +293,23 @@ export default {
   border: 0;
   margin: 30px;
   outline: none;
+}
+
+::v-deep .career-dropdown .multiselect__option--highlight {
+  background: #bca3e4;
+  outline: none;
+  color: #fff
+}
+
+::v-deep .career-dropdown .multiselect__tags {
+  color: #5f5f5f;
+  box-shadow: 1px 2px 4px 0 rgba(0, 0, 0, 0.08);
+  border: 1px solid #dbdbdb;
+  border-radius: 2px;
+  font-weight: normal;
+}
+
+::v-deep .career-dropdown .multiselect__option {
+  font-weight: normal;
 }
 </style>

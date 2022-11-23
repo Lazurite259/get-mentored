@@ -28,8 +28,7 @@
                 <li v-for="(error, index) in errors" :key="index">{{ "- " + error.message }}</li>
               </ul>
             </div>
-            <button class="btn btn-light submit-button" type="submit"
-              style="background: #7057cc; color: var(--bs-btn-bg)">Submit</button>
+            <button class="btn btn-light submit-button" type="submit">Submit</button>
           </form>
         </div>
       </div>
