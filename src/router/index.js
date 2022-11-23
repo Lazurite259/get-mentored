@@ -7,6 +7,11 @@ const routes = [
     name: 'home',
     component: () => import('../components/Home')
   },
+  {
+    path: '/contact',
+    name: 'contact',
+    component: () => import('../components/ContactUs')
+  },
   // career
   {
     path: '/career',
@@ -36,22 +41,6 @@ const routes = [
     name: 'mentor-profile',
     component: () => import('../components/mentor/Profile'),
     meta: { requiresAuth: true }
-  },
-  {
-    path: '/mentee-profile',
-    name: 'mentee-profile',
-    component: () => import('../components/mentee/Profile'),
-    meta: { requiresAuth: true }
-  },
-  {
-    path: '/career/:id',
-    name: 'career-detail',
-    component: () => import('../components/CareerDetail')
-  },
-  {
-    path: '/contact',
-    name: 'contact',
-    component: () => import('../components/ContactUs')
   },
   {
     path: '/mentors',

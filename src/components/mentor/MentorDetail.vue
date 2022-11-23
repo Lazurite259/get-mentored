@@ -92,6 +92,7 @@ export default {
 
 .profile-bar {
   text-align: center;
+
 }
 
 .profile-back {
@@ -105,6 +106,7 @@ export default {
   width: 150px;
   height: 150px;
   margin-bottom: 10px;
+
 }
 
 .profile-block {

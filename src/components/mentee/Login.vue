@@ -122,7 +122,7 @@ export default {
 }
 
 .btn-primary {
-  --bs-btn-color: #7057cc;
+  --bs-btn-color: #1e266d;
   --bs-btn-bg: #fde69a;
   --bs-btn-border-color: #fde69a;
   --bs-btn-hover-color: #fff;

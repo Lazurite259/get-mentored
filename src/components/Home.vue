@@ -88,8 +88,8 @@
                           continuing development of you GetMentored is always
                           here to support your vision.</span>
                       </p>
-                      <router-link to="/mentors" tag="button" class="btn btn-primary"
-                        style="border-radius: 20px; color: #1e266d">Learn More</router-link>
+                      <router-link to="/mentors" tag="button" class="btn btn-primary" style="border-radius: 20px;">Learn
+                        More</router-link>
                     </div>
                   </div>
                 </div>
@@ -108,8 +108,8 @@
                           journey.&nbsp;We understand that you grow,
                           reconsider, and career plans pivot.&nbsp;&nbsp;</span>
                       </p>
-                      <router-link to="/career" tag="button" class="btn btn-primary"
-                        style="border-radius: 20px; color: #1e266d">Learn More</router-link>
+                      <router-link to="/career" tag="button" class="btn btn-primary" style="border-radius: 20px;">Learn
+                        More</router-link>
                     </div>
                   </div>
                 </div>
@@ -126,7 +126,7 @@
                           has a peer to peer social group where Mentorees can
                           connect with peers.</span>
                       </p>
-                      <!-- <button class="btn btn-primary" type="button" style="border-radius: 20px; color: #1e266d">
+                      <!-- <button class="btn btn-primary" type="button" style="border-radius: 20px;">
                         Learn more
                       </button> -->
                     </div>
@@ -154,9 +154,9 @@
       </div>
       <div class="row gy-4 row-cols-1 row-cols-sm-2 row-cols-xl-3">
         <div class="col">
-          <div class="card shadow">
+          <div class="card shadow mx-md-2">
             <img class="card-img-top w-100 d-block fit-cover" style="height: 200px; object-fit: cover;"
-              src="@/assets/img/th-01.jpg" />
+              src="@/assets/img/mentor04.jpeg" />
             <div class="card-body p-4">
               <h4 class="card-title">Jessica Jams</h4>
               <p style="color: #212121; font-weight: bold">Software Enginner</p>
@@ -166,7 +166,7 @@
               </p>
               <div class="d-flex">
                 <img class="rounded-circle flex-shrink-0 me-3 fit-cover" width="50" height="50"
-                  src="@/assets/img/th-01.jpg" />
+                  src="@/assets/img/mentor04.jpeg" />
                 <div>
                   <p class="fw-bold mb-0">Jessica Jams</p>
                   <p class="text-muted mb-0">ByteDance Inc</p>
@@ -179,9 +179,9 @@
           </div>
         </div>
         <div class="col">
-          <div class="card shadow">
+          <div class="card shadow mx-md-2">
             <img class="card-img-top w-100 d-block fit-cover" style="height: 200px; object-fit: cover;"
-              src="@/assets/img/th-03.jpg" />
+              src="@/assets/img/mentor05.jpeg" />
             <div class="card-body p-4">
               <h4 class="card-title">Ryan Chen</h4>
               <p style="color: #212121; font-weight: bold">
@@ -193,7 +193,7 @@
               </p>
               <div class="d-flex">
                 <img class="rounded-circle flex-shrink-0 me-3 fit-cover" width="50" height="50"
-                  src="@/assets/img/th-03.jpg" />
+                  src="@/assets/img/mentor05.jpeg" />
                 <div>
                   <p class="fw-bold mb-0">Ryan Chen</p>
                   <p class="text-muted mb-0">Erat netus</p>
@@ -206,9 +206,9 @@
           </div>
         </div>
         <div class="col">
-          <div class="card shadow">
+          <div class="card shadow mx-md-2">
             <img class="card-img-top w-100 d-block fit-cover" style="height: 200px; object-fit: cover;"
-              src="@/assets/img/th-08.jpg" />
+              src="@/assets/img/mentor08.jpg" />
             <div class="card-body p-4">
               <h4 class="card-title">John Smith</h4>
               <p style="color: #212121; font-weight: bold">Interior Designer</p>
@@ -218,7 +218,7 @@
               </p>
               <div class="d-flex">
                 <img class="rounded-circle flex-shrink-0 me-3 fit-cover" width="50" height="50"
-                  src="@/assets/img/th-08.jpg" />
+                  src="@/assets/img/mentor08.jpg" />
                 <div>
                   <p class="fw-bold mb-0">John Smith</p>
                   <p class="text-muted mb-0">Erat netus</p>
@@ -342,10 +342,6 @@ export default {
     U+FEFF, U+FFFD;
 }
 
-.navbar {
-  background-color: rgba(112, 87, 204);
-}
-
 .bg-primary-demo {
   background-color: rgb(112, 87, 204);
 }
@@ -360,7 +356,7 @@ export default {
 .btn-outline-primary {
   --bs-btn-color: #fde69a;
   --bs-btn-border-color: #fde69a;
-  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-color: #1e266d;
   --bs-btn-hover-bg: #fde69a;
   --bs-btn-hover-border-color: #fde69a;
   --bs-btn-focus-shadow-rgb: 13, 110, 253;
@@ -402,7 +398,7 @@ export default {
 }
 
 .btn-primary {
-  --bs-btn-color: #fff;
+  --bs-btn-color: #1e266d;
   --bs-btn-bg: #fde69a;
   --bs-btn-border-color: #fde69a;
   --bs-btn-hover-color: #fff;
@@ -421,83 +417,4 @@ export default {
 .bg-primary-gradient {
   background: linear-gradient(180deg, #7057cc, cornflowerblue);
 }
-
-.bs-icon {
-  --bs-icon-size: 0.75rem;
-  display: flex;
-  flex-shrink: 0;
-  justify-content: center;
-  align-items: center;
-  font-size: var(--bs-icon-size);
-  width: calc(var(--bs-icon-size) * 2);
-  height: calc(var(--bs-icon-size) * 2);
-  color: var(--bs-primary);
-}
-
-.bs-icon-xs {
-  --bs-icon-size: 1rem;
-  width: calc(var(--bs-icon-size) * 1.5);
-  height: calc(var(--bs-icon-size) * 1.5);
-}
-
-.bs-icon-sm {
-  --bs-icon-size: 1rem;
-}
-
-.bs-icon-md {
-  --bs-icon-size: 1.5rem;
-}
-
-.bs-icon-lg {
-  --bs-icon-size: 2rem;
-}
-
-.bs-icon-xl {
-  --bs-icon-size: 2.5rem;
-}
-
-.bs-icon.bs-icon-primary {
-  color: var(--bs-white);
-  background: var(--bs-primary);
-}
-
-.bs-icon.bs-icon-primary-light {
-  color: var(--bs-primary);
-  background: rgba(var(--bs-primary-rgb), 0.2);
-}
-
-.bs-icon.bs-icon-semi-white {
-  color: var(--bs-primary);
-  background: rgba(255, 255, 255, 0.5);
-}
-
-.bs-icon.bs-icon-rounded {
-  border-radius: 0.5rem;
-}
-
-.bs-icon.bs-icon-circle {
-  border-radius: 50%;
-}
-
-/* h3 {
-  margin: 40px 0 0;
-}
-
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-
-a {
-  color: #42b983;
-}
-
-.btn {
-  margin: 15px;
-} */
 </style>
