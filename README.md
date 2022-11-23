@@ -52,12 +52,10 @@ dotenv.config()
 
 ### Add following string to `backend/.env` file
 ```
-SMTP_HOST = 'smtp.gmail.com'
-SMTP_PORT = 465
-SMTP_EMAIL = {Gmail Account}
-SMTP_PASSWORD = {Gmail App Password}
+SMTP_HOST = 'smtp.offic365.com'
+SMTP_PORT = '587'
+SMTP_EMAIL = {Outlook Account}
+SMTP_PASSWORD = {Outlook Password}
 BASE_URI = 'http://localhost:8080'
 ```
 Resource: https://nodemailer.com/about/
-
-How to generate gmail app password: https://miracleio.me/snippets/use-gmail-with-nodemailer/
