@@ -6,7 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'
 
 const base = axios.create({
-  baseURL: 'http://localhost:3000'
+  baseURL: process.env.VUE_APP_BASE_URI
 })
 Vue.prototype.$http = base
 Vue.config.productionTip = false
