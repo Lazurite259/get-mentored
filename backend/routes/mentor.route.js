@@ -110,7 +110,7 @@ app.post('/forgot-password', async (req, res, next) => {
   const resetToken = mentor.getResetPasswordToken()
   await mentor.save({ validateBeforeSave: false })
   // Create reset url
-  const resetUrl = `${process.env.BASE_URI}/mentor-reset-password/${resetToken}`
+  const resetUrl = `${req.get('Referer')}mentor-reset-password/${resetToken}`
   const message = `You have requested the reset of a password. Click this link to reset your password: ${resetUrl}.`
   try {
     await sendEmail({

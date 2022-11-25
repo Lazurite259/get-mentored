@@ -90,7 +90,7 @@ app.post('/forgot-password', async (req, res, next) => {
   const resetToken = mentee.getResetPasswordToken()
   await mentee.save({ validateBeforeSave: false })
   // Create reset url
-  const resetUrl = `${process.env.BASE_URI}/mentee-reset-password/${resetToken}`
+  const resetUrl = `${req.get('Referer')}mentee-reset-password/${resetToken}`
   const message = `You have requested the reset of a password. Click this link to reset your password: ${resetUrl}.`
   try {
     await sendEmail({

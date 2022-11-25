@@ -56,7 +56,6 @@ SMTP_HOST = 'smtp.offic365.com'
 SMTP_PORT = '587'
 SMTP_EMAIL = {Outlook Account}
 SMTP_PASSWORD = {Outlook Password}
-BASE_URI = 'http://localhost:8080'
 ```
 Resource: https://nodemailer.com/about/
 
