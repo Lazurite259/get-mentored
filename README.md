@@ -1,8 +1,22 @@
 # get-mentored
 
+# Frontend
+
 ## Project setup
 ```
 npm install
+```
+
+### Set environment variables
+
+Create `.env` file 
+```
+touch .env
+```
+
+### Add server uri
+```
+VUE_APP_BASE_URI = 'http://localhost:3000'
 ```
 
 ### Compiles and hot-reloads for development
@@ -23,11 +37,19 @@ npm run standard
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
+
 <br/>
+# Backend
+
+## Project setup
+```
+cd backend
+npm install
+```
 
 ## Connect database  
 
-### Create a `.env` file in `/backend`
+### Create a `.env` file
 ```
 touch .env
 ```
