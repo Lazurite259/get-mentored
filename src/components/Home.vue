@@ -8,11 +8,10 @@
             class="col-md-6 text-center text-md-start d-flex d-sm-flex d-md-flex justify-content-center align-items-center justify-content-md-start align-items-md-center justify-content-xl-center">
             <div style="max-width: 650px">
               <h2 class="text-uppercase fw-bold font-color" style="font-family: Poppins, sans-serif; font-size: 46px">
-                <i>Your career is a lifetime journey</i>
+                <i>Start your career journey</i>
               </h2>
               <p class="my-3" style="color: rgb(255, 255, 255)">
-                Let’s get started with the support and guidance from Mentors who
-                have accomplished their goal
+                Let’s get started with the support and guidance from Mentors              
               </p>
             </div>
           </div>
@@ -37,7 +36,7 @@
                   Begin your Career Journey with GetMentored
                 </h2>
                 <router-link to="/mentee-register" tag="button" class="btn btn-outline-primary btn-lg"
-                  style="border-radius: 20px">Become a Mentee</router-link>
+                  style="border-radius: 20px">Be Mentored</router-link>
               </div>
             </div>
           </div>
@@ -53,7 +52,7 @@
                 </h2>
                 <router-link to="/mentor-register" tag="button" class="btn btn-outline-primary btn-lg"
                   style="border-radius: 20px">
-                  Become a Mentor
+                  Be a Mentor
                 </router-link>
               </div>
             </div>
