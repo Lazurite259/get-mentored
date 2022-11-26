@@ -17,11 +17,11 @@
             <li class="nav-item">
               <router-link class="nav-link pr-3" to="/mentors">Mentor Resources</router-link>
             </li>
-          </ul>
-          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
             <li class="nav-item">
               <router-link class="nav-link pr-3" to="/contact">Contact Us</router-link>
             </li>
+          </ul>
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
             <li class="nav-item">
               <router-link class="nav-link pr-3" to="/mentor-profile" v-if="mentorLoggedIn">Profile</router-link>
             </li>
