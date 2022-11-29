@@ -160,7 +160,7 @@
               <h4 class="card-title">John Smith</h4>
               <p style="color: #212121; font-weight: bold">Software Enginner</p>
               <p class="card-text">
-                <span style="color: rgb(51, 51, 51)">Bachelor’s degree in Information Technology. Help in
+                <span style="color: rgb(51, 51, 51)">BS in Information Technology. Help in
                   computers, networking, and programming.</span><br />
               </p>
               <div class="d-flex">
@@ -171,7 +171,7 @@
                   <p class="text-muted mb-0">ByteDance Inc</p>
                 </div>
                 <router-link class="btn btn-outline-dark btn-sm ms-auto" :to="{ name: 'mentors' }">
-                  <i class="fa fa-plus"></i>&nbsp;Connect&nbsp;
+                  <i class="fa fa-plus"></i>&nbsp;More&nbsp;
                 </router-link>
               </div>
             </div>
@@ -198,7 +198,7 @@
                   <p class="text-muted mb-0">Think Magnificent</p>
                 </div>
                 <router-link class="btn btn-outline-dark btn-sm ms-auto" :to="{ name: 'mentors' }">
-                  <i class="fa fa-plus"></i>&nbsp;Connect&nbsp;
+                  <i class="fa fa-plus"></i>&nbsp;More&nbsp;
                 </router-link>
               </div>
             </div>
@@ -223,7 +223,7 @@
                   <p class="text-muted mb-0">IKEA</p>
                 </div>
                 <router-link class="btn btn-outline-dark btn-sm ms-auto" :to="{ name: 'mentors' }">
-                  <i class="fa fa-plus"></i>&nbsp;Connect&nbsp;
+                  <i class="fa fa-plus"></i>&nbsp;More&nbsp;
                 </router-link>
               </div>
             </div>
@@ -263,8 +263,9 @@
         <div class="col">
           <div class="d-flex flex-column justify-content-center align-items-center">
             <p class="text-center">
-              Best Mentor website I've ever seen. John Smith taught me how to prepare my interview and shared his own experience
+              Best Mentor website I've ever seen. John Smith taught me how to prepare for my interview and shared his own experience
               in his software career.
+                 
             </p>
             <div class="d-flex">
               <img class="rounded-circle flex-shrink-0 me-3 fit-cover" width="50" height="50"
