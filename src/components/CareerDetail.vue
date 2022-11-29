@@ -28,7 +28,7 @@
                   <th>Name</th>
                   <th>Location</th>
                   <th>Company</th>
-                  <th>Experiences</th>
+                  <th>Year of Experience</th>
                   <th>Connect</th>
                 </tr>
               </thead>
