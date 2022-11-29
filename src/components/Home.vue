@@ -167,7 +167,7 @@
                 <img class="rounded-circle flex-shrink-0 me-3 fit-cover" width="50" height="50"
                   src="@/assets/img/mentor04.jpeg" />
                 <div>
-                  <p class="fw-bold mb-0">Jessica Jams</p>
+                  <p class="fw-bold mb-0">John Smith</p>
                   <p class="text-muted mb-0">ByteDance Inc</p>
                 </div>
                 <router-link class="btn btn-outline-dark btn-sm ms-auto" :to="{ name: 'mentors' }">
@@ -195,7 +195,7 @@
                   src="@/assets/img/mentor05.jpeg" />
                 <div>
                   <p class="fw-bold mb-0">Ryan Chen</p>
-                  <p class="text-muted mb-0">Erat netus</p>
+                  <p class="text-muted mb-0">Think Magnificent</p>
                 </div>
                 <router-link class="btn btn-outline-dark btn-sm ms-auto" :to="{ name: 'mentors' }">
                   <i class="fa fa-plus"></i>&nbsp;Connect&nbsp;
@@ -219,8 +219,8 @@
                 <img class="rounded-circle flex-shrink-0 me-3 fit-cover" width="50" height="50"
                   src="@/assets/img/mentor08.jpg" />
                 <div>
-                  <p class="fw-bold mb-0">John Smith</p>
-                  <p class="text-muted mb-0">Erat netus</p>
+                  <p class="fw-bold mb-0">Jessica James</p>
+                  <p class="text-muted mb-0">IKEA</p>
                 </div>
                 <router-link class="btn btn-outline-dark btn-sm ms-auto" :to="{ name: 'mentors' }">
                   <i class="fa fa-plus"></i>&nbsp;Connect&nbsp;
@@ -263,7 +263,7 @@
         <div class="col">
           <div class="d-flex flex-column justify-content-center align-items-center">
             <p class="text-center">
-              Best Mentor website I've ever seen. John Smith teach me how to prepare my interview and his own experience
+              Best Mentor website I've ever seen. John Smith taught me how to prepare my interview and shared his own experience
               in his software career.
             </p>
             <div class="d-flex">
