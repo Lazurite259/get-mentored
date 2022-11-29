@@ -157,7 +157,7 @@
             <img class="card-img-top w-100 d-block fit-cover" style="height: 200px; object-fit: cover;"
               src="@/assets/img/mentor04.jpeg" />
             <div class="card-body p-4">
-              <h4 class="card-title">Jessica Jams</h4>
+              <h4 class="card-title">John Smith</h4>
               <p style="color: #212121; font-weight: bold">Software Enginner</p>
               <p class="card-text">
                 <span style="color: rgb(51, 51, 51)">Bachelor’s degree in Information Technology. Help in
@@ -209,7 +209,7 @@
             <img class="card-img-top w-100 d-block fit-cover" style="height: 200px; object-fit: cover;"
               src="@/assets/img/mentor08.jpg" />
             <div class="card-body p-4">
-              <h4 class="card-title">John Smith</h4>
+              <h4 class="card-title">Jessica James</h4>
               <p style="color: #212121; font-weight: bold">Interior Designer</p>
               <p class="card-text">
                 <span style="color: rgb(51, 51, 51)">Currently working in IKEA with 10 year's experience in the
