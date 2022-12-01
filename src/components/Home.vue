@@ -263,9 +263,8 @@
         <div class="col">
           <div class="d-flex flex-column justify-content-center align-items-center">
             <p class="text-center">
-              Best Mentor website I've ever seen. John Smith taught me how to prepare for my interview and shared his own experience
-              in his software career.
-                 
+              Best Mentor website I've ever seen. John Smith taught me how to prepare for my interview and shared his
+              own experience in his software career.
             </p>
             <div class="d-flex">
               <img class="rounded-circle flex-shrink-0 me-3 fit-cover" width="50" height="50"
