@@ -17,7 +17,7 @@ app.get('/', async (req, res, next) => {
 // Register
 app.post('/mentee-register', async (req, res) => {
   try {
-    const isUser = await Mentee.find({ email: req.body.email })
+    const isUser = await Mentee.find({ email: req.body.email.toLowerCase() })
     console.log(isUser)
     if (isUser.length >= 1) {
       return res.status(409).json({
@@ -27,7 +27,7 @@ app.post('/mentee-register', async (req, res) => {
     const mentee = new Mentee({
       first_name: req.body.first_name,
       last_name: req.body.last_name,
-      email: req.body.email,
+      email: req.body.email.toLowerCase(),
       password: req.body.password.password
     })
     const data = await mentee.save()
@@ -40,7 +40,7 @@ app.post('/mentee-register', async (req, res) => {
 // Login
 app.post('/mentee-login', async (req, res) => {
   try {
-    const email = req.body.email
+    const email = req.body.email.toLowerCase()
     const password = req.body.password
     const mentee = await Mentee.findByCredentials(email, password)
     if (!mentee) {
@@ -83,7 +83,7 @@ app.put('/mentee-update/:id', async (req, res) => {
 })
 // Forgot password
 app.post('/forgot-password', async (req, res, next) => {
-  const mentee = await Mentee.findOne({ email: req.body.email })
+  const mentee = await Mentee.findOne({ email: req.body.email.toLowerCase() })
   if (!mentee) {
     return res.status(404).json({ message: 'Email does not exist' })
   }
