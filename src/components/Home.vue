@@ -11,7 +11,7 @@
                 <i>Start your career journey</i>
               </h2>
               <p class="my-3" style="color: rgb(255, 255, 255)">
-                Let’s get started with the support and guidance from Mentors              
+                Let’s get started with the support and guidance from Mentors
               </p>
             </div>
           </div>
