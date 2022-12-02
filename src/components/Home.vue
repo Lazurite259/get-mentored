@@ -158,7 +158,7 @@
               src="@/assets/img/mentor04.jpeg" />
             <div class="card-body p-4">
               <h4 class="card-title">John Smith</h4>
-              <p style="color: #212121; font-weight: bold">Software Enginner</p>
+              <p style="color: #212121; font-weight: bold">Software Engineer</p>
               <p class="card-text">
                 <span style="color: rgb(51, 51, 51)">BS in Information Technology. Help in
                   computers, networking, and programming.</span><br />
