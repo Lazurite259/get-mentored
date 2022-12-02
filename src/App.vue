@@ -4,7 +4,7 @@
     <nav class="navbar navbar-light navbar-expand-lg">
       <div class="container">
         <router-link to="/">
-          <img src="@/assets/img/Picture2.png" width=270 height=90 class="logo" />
+          <img src="@/assets/img/Picture2.png" width=200 height=65 class="logo" />
         </router-link>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
           aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

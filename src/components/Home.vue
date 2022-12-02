@@ -2,7 +2,7 @@
   <div>
     <div class="bg-primary-demo">
       <!-- Start: Hero Clean Reverse -->
-      <div class="container py-4 py-xl-5">
+      <div class="container py-4 py-md-0">
         <div class="row gy-4 gy-md-0">
           <div
             class="col-md-6 text-center text-md-start d-flex d-sm-flex d-md-flex justify-content-center align-items-center justify-content-md-start align-items-md-center justify-content-xl-center">
@@ -16,7 +16,7 @@
             </div>
           </div>
           <div class="col-md-6">
-            <div class="pb-5 mb-5">
+            <div class="pb-1 mb-1">
               <img class="rounded img-fluid w-100 fit-cover" style="min-height: 300px"
                 src="@/assets/img/mentorship-program-at-work.jpeg" />
             </div>
@@ -25,31 +25,28 @@
       </div>
       <!-- End: Hero Clean Reverse -->
     </div>
-    <div class="bg-primary-gradient" style="height: 500px">
+    <div class="bg-primary-gradient" style="height: 450px">
       <div class="container">
         <div class="row">
-          <div class="col-md-auto">
-            <div class="card-body py-lg-5 card-frame">
+          <div class="col-md-auto m-2">
+            <div class="card-body py-lg-4 card-frame pb-2">
               <div>
-                <h2 class="font-color"
-                  style="margin-bottom: 60px;color: var(--bs-white);font-family: Poppins, sans-serif;">
+                <h4 class="font-color"
+                  style="margin-bottom: 30px;color: var(--bs-white);font-family: Poppins, sans-serif;">
                   Begin your Career Journey with GetMentored
-                </h2>
+                </h4>
                 <router-link to="/mentee-register" tag="button" class="btn btn-outline-primary btn-lg"
                   style="border-radius: 20px">Be Mentored</router-link>
               </div>
             </div>
           </div>
-          <div class="col-md-auto">
-            <div class="card-body py-lg-5 card-frame">
+          <div class="col-md-auto m-2">
+            <div class="card-body py-lg-4 card-frame pb-2">
               <div>
-                <h2 class="font-color" style="
-                      margin-bottom: 60px;
-                      color: var(--bs-white);
-                      font-family: Poppins, sans-serif;
-                    ">
+                <h4 class="font-color"
+                  style="margin-bottom: 30px;color: var(--bs-white);font-family: Poppins, sans-serif;">
                   Support a new generation in developing career skills
-                </h2>
+                </h4>
                 <router-link to="/mentor-register" tag="button" class="btn btn-outline-primary btn-lg"
                   style="border-radius: 20px">
                   Be a Mentor
@@ -377,7 +374,7 @@ export default {
 }
 
 .card-frame {
-  width: 315px;
+  width: 250px;
   padding-right: 33px;
   background: rgba(255, 255, 255, 0.1);
   border-radius: 25px;
