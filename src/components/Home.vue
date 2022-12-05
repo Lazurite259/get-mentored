@@ -4,13 +4,14 @@
       <!-- Start: Hero Clean Reverse -->
       <div class="container py-4 py-xl-5">
         <div class="row gy-4 gy-md-0">
-          <div class="col-md-6 text-center text-md-start d-flex d-sm-flex d-md-flex justify-content-center align-items-center justify-content-md-start align-items-md-center justify-content-xl-center">
+          <div
+            class="col-md-6 text-center text-md-start d-flex d-sm-flex d-md-flex justify-content-center align-items-center justify-content-md-start align-items-md-center justify-content-xl-center">
             <div style="max-width: 650px">
               <h2 class="text-uppercase fw-bold font-color" style="font-family: Poppins, sans-serif; font-size: 46px">
                 <i>Start your career journey</i>
               </h2>
               <p class="my-3" style="color: rgb(255, 255, 255)">
-                Let’s get started with the support and guidance from Mentors              
+                Let’s get started with the support and guidance from Mentors
               </p>
             </div>
           </div>

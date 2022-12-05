@@ -3,12 +3,9 @@
     <!-- Nav bar -->
     <nav class="navbar navbar-light navbar-expand-lg">
       <div class="container">
-          <router-link to="/">
-          <img src= "@/assets/img/Picture2.png"
-          width=270
-          height=90  
-          class = "logo"/>
-          </router-link>
+        <router-link to="/">
+          <img src="@/assets/img/Picture2.png" width=270 height=90 class="logo" />
+        </router-link>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
           aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -67,7 +64,7 @@
     </nav>
     <!-- Router view -->
     <div>
-      <router-view></router-view>
+      <router-view style="min-height:800px"></router-view>
       <footer class="text-white text-center bg-primary-demo">
         <div class="container text-white py-4 py-lg-5">
           <ul class="list-inline">
@@ -169,15 +166,13 @@ export default {
   margin-top: 60px;
 }
 
-.logo{
+.logo {
   color: #fff;
 }
 
-.logo:hover{
+.logo:hover {
   content: url(@/assets/img/Picture1.png)
 }
-
-
 
 .navbar {
   background-color: rgb(112, 87, 204);
