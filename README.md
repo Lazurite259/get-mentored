@@ -14,7 +14,7 @@ Create `.env` file
 touch .env
 ```
 
-### Add server uri
+Add server uri
 ```
 VUE_APP_BASE_URI = 'http://localhost:3000'
 ```
