@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-primary-gradient">
+  <div class="py-4 py-xl-5 bg-primary-gradient">
     <div class="container-md">
       <div class="row register-form">
         <div class="col-md-8 offset-md-2">

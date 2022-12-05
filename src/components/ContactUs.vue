@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-primary-gradient">
+  <div class="py-4 py-xl-5 bg-primary-gradient">
     <div class="container-md">
       <div class="row contact-form">
         <div class="col-md-8 offset-md-2">
@@ -58,7 +58,6 @@ export default {
 }
 </script>
 <style scoped>
-
 .bg-primary-gradient {
   background: linear-gradient(180deg, #7057cc, cornflowerblue);
 }

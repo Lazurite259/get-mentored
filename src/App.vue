@@ -64,20 +64,9 @@
     </nav>
     <!-- Router view -->
     <div>
-      <router-view></router-view>
+      <router-view style="min-height:800px"></router-view>
       <footer class="text-white text-center bg-primary-demo">
         <div class="container text-white py-4 py-lg-5">
-          <!-- <ul class="list-inline">
-            <li class="list-inline-item me-4">
-              <a class="link-light" href="#">Web design</a>
-            </li>
-            <li class="list-inline-item me-4">
-              <a class="link-light" href="#">Development</a>
-            </li>
-            <li class="list-inline-item">
-              <a class="link-light" href="#">Hosting</a>
-            </li>
-          </ul> -->
           <ul class="list-inline">
             <li class="list-inline-item me-4">
               <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16"
@@ -168,15 +157,6 @@ export default {
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-
 .logo {
   color: #fff;
 }

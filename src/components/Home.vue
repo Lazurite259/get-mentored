@@ -25,7 +25,7 @@
       </div>
       <!-- End: Hero Clean Reverse -->
     </div>
-    <div class="bg-primary-gradient" style="height: 500px">
+    <div class="bg-primary-gradient" style="height: 450px">
       <div class="container">
         <div class="row">
           <div class="col-md-auto">
