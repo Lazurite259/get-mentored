@@ -168,6 +168,7 @@ export default {
         if (this.token) {
           localStorage.setItem('mentor-jwt', this.token)
           swal('Success', 'Profile updated', 'success')
+          this.$router.push('/')
         } else {
           swal('Error', 'Something went wrong', 'error')
         }

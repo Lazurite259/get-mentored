@@ -17,7 +17,7 @@ app.get('/', async (req, res, next) => {
 // Register
 app.post('/mentor-register', async (req, res) => {
   try {
-    const isUser = await Mentor.find({ email: req.body.email })
+    const isUser = await Mentor.find({ email: req.body.email.toLowerCase() })
     console.log(isUser)
     if (isUser.length >= 1) {
       return res.status(409).json({
@@ -27,7 +27,7 @@ app.post('/mentor-register', async (req, res) => {
     const mentor = new Mentor({
       first_name: req.body.first_name,
       last_name: req.body.last_name,
-      email: req.body.email,
+      email: req.body.email.toLowerCase(),
       password: req.body.password.password,
       career: req.body.career
     })
@@ -41,7 +41,7 @@ app.post('/mentor-register', async (req, res) => {
 // Login
 app.post('/mentor-login', async (req, res) => {
   try {
-    const email = req.body.email
+    const email = req.body.email.toLowerCase()
     const password = req.body.password
     const mentor = await Mentor.findByCredentials(email, password)
     if (!mentor) {
@@ -103,7 +103,7 @@ app.get('/mentor-detail/:id', async (req, res, next) => {
 })
 // Forgot password
 app.post('/forgot-password', async (req, res, next) => {
-  const mentor = await Mentor.findOne({ email: req.body.email })
+  const mentor = await Mentor.findOne({ email: req.body.email.toLowerCase() })
   if (!mentor) {
     return res.status(404).json({ message: 'Email does not exist' })
   }

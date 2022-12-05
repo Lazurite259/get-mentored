@@ -14,7 +14,7 @@
             </p>
           </div>
         </div>
-        <form class="d-flex justify-content-center flex-wrap" method="post">
+        <form class="d-flex justify-content-center flex-wrap" onkeydown="return event.key != 'Enter';">
           <div class="mb-3">
             <input class="form-control" type="text" v-model="searchKey" name="" placeholder="Keyword" />
           </div>

@@ -157,21 +157,21 @@
             <img class="card-img-top w-100 d-block fit-cover" style="height: 200px; object-fit: cover;"
               src="@/assets/img/mentor04.jpeg" />
             <div class="card-body p-4">
-              <h4 class="card-title">Jessica Jams</h4>
-              <p style="color: #212121; font-weight: bold">Software Enginner</p>
+              <h4 class="card-title">John Smith</h4>
+              <p style="color: #212121; font-weight: bold">Software Engineer</p>
               <p class="card-text">
-                <span style="color: rgb(51, 51, 51)">Bachelor’s degree in Information Technology. Help in
+                <span style="color: rgb(51, 51, 51)">BS in Information Technology. Help in
                   computers, networking, and programming.</span><br />
               </p>
               <div class="d-flex">
                 <img class="rounded-circle flex-shrink-0 me-3 fit-cover" width="50" height="50"
                   src="@/assets/img/mentor04.jpeg" />
                 <div>
-                  <p class="fw-bold mb-0">Jessica Jams</p>
+                  <p class="fw-bold mb-0">John Smith</p>
                   <p class="text-muted mb-0">ByteDance Inc</p>
                 </div>
                 <router-link class="btn btn-outline-dark btn-sm ms-auto" :to="{ name: 'mentors' }">
-                  <i class="fa fa-plus"></i>&nbsp;Connect&nbsp;
+                  <i class="fa fa-plus"></i>&nbsp;More&nbsp;
                 </router-link>
               </div>
             </div>
@@ -195,10 +195,10 @@
                   src="@/assets/img/mentor05.jpeg" />
                 <div>
                   <p class="fw-bold mb-0">Ryan Chen</p>
-                  <p class="text-muted mb-0">Erat netus</p>
+                  <p class="text-muted mb-0">Think Magnificent</p>
                 </div>
                 <router-link class="btn btn-outline-dark btn-sm ms-auto" :to="{ name: 'mentors' }">
-                  <i class="fa fa-plus"></i>&nbsp;Connect&nbsp;
+                  <i class="fa fa-plus"></i>&nbsp;More&nbsp;
                 </router-link>
               </div>
             </div>
@@ -209,7 +209,7 @@
             <img class="card-img-top w-100 d-block fit-cover" style="height: 200px; object-fit: cover;"
               src="@/assets/img/mentor08.jpg" />
             <div class="card-body p-4">
-              <h4 class="card-title">John Smith</h4>
+              <h4 class="card-title">Jessica James</h4>
               <p style="color: #212121; font-weight: bold">Interior Designer</p>
               <p class="card-text">
                 <span style="color: rgb(51, 51, 51)">Currently working in IKEA with 10 year's experience in the
@@ -219,11 +219,11 @@
                 <img class="rounded-circle flex-shrink-0 me-3 fit-cover" width="50" height="50"
                   src="@/assets/img/mentor08.jpg" />
                 <div>
-                  <p class="fw-bold mb-0">John Smith</p>
-                  <p class="text-muted mb-0">Erat netus</p>
+                  <p class="fw-bold mb-0">Jessica James</p>
+                  <p class="text-muted mb-0">IKEA</p>
                 </div>
                 <router-link class="btn btn-outline-dark btn-sm ms-auto" :to="{ name: 'mentors' }">
-                  <i class="fa fa-plus"></i>&nbsp;Connect&nbsp;
+                  <i class="fa fa-plus"></i>&nbsp;More&nbsp;
                 </router-link>
               </div>
             </div>
@@ -263,8 +263,8 @@
         <div class="col">
           <div class="d-flex flex-column justify-content-center align-items-center">
             <p class="text-center">
-              Best Mentor website I've ever seen. John Smith teach me how to prepare my interview and his own experience
-              in his software career.
+              Best Mentor website I've ever seen. John Smith taught me how to prepare for my interview and shared his
+              own experience in his software career.
             </p>
             <div class="d-flex">
               <img class="rounded-circle flex-shrink-0 me-3 fit-cover" width="50" height="50"

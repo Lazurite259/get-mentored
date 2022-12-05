@@ -43,7 +43,7 @@
             </div>
             <div class="row form-group">
               <div class="col-sm-4 label-column">
-                <label class="col-form-label" for="repeat-pawssword-input-field">Comfirm Password</label>
+                <label class="col-form-label" for="repeat-pawssword-input-field">Confirm Password</label>
               </div>
               <div class="col-sm-6 input-column">
                 <input class="form-control" type="password" v-model="mentor.password.confirm"
