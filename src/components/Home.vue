@@ -4,8 +4,7 @@
       <!-- Start: Hero Clean Reverse -->
       <div class="container py-4 py-xl-5">
         <div class="row gy-4 gy-md-0">
-          <div
-            class="col-md-6 text-center text-md-start d-flex d-sm-flex d-md-flex justify-content-center align-items-center justify-content-md-start align-items-md-center justify-content-xl-center">
+          <div class="col-md-6 text-center text-md-start d-flex d-sm-flex d-md-flex justify-content-center align-items-center justify-content-md-start align-items-md-center justify-content-xl-center">
             <div style="max-width: 650px">
               <h2 class="text-uppercase fw-bold font-color" style="font-family: Poppins, sans-serif; font-size: 46px">
                 <i>Start your career journey</i>
@@ -25,7 +24,7 @@
       </div>
       <!-- End: Hero Clean Reverse -->
     </div>
-    <div class="bg-primary-gradient" style="height: 500px">
+    <div class="bg-primary-gradient" style="height: 450px">
       <div class="container">
         <div class="row">
           <div class="col-md-auto">

@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-primary-gradient">
+  <div class="py-4 py-xl-5 bg-primary-gradient" style="height:800px">
     <div class="container-md">
       <div class="row contact-form">
         <div class="col-md-8 offset-md-2">
