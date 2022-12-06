@@ -83,3 +83,16 @@ SMTP_PASSWORD = {Outlook Password}
 Resource: https://nodemailer.com/about/
 
 Set account authentication: https://stackoverflow.com/questions/64166563/send-email-using-microsoft-365-email-server-in-nodejs
+
+### Add following string to `/.env` file
+```
+VUE_APP_BASE_URI = 'http://localhost:3000'
+```
+
+### Connect to databse
+```
+cd backend
+npm install
+brew services start mongodb-community@4.4
+nodemon     
+```
